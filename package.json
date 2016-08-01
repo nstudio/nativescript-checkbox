@@ -5,7 +5,8 @@
 	"main": "checkbox.js",
 	"nativescript": {
 		"platforms": {
-			"android": "2.0.0"
+			"android": "2.1.1",
+      "ios": "2.1.1"
 		}
 	},
 	"scripts": {
@@ -33,6 +34,13 @@
 		"name": "Brad Martin",
 		"email": "bradwaynemartin@gmail.com"
 	},
+  "contributors": [
+    {
+      "name": "Nathan Walker",
+      "email": "walkerrunpdx@gmail.com",
+      "url": "https://github.com/NathanWalker"
+    }
+  ],
 	"bugs": {
 		"url": "https://github.com/bradmartin/nativescript-checkbox/issues"
 	},
@@ -43,6 +51,7 @@
 	"homepage": "https://github.com/bradmartin/nativescript-checkbox",
 	"readmeFilename": "README.md",
 	"devDependencies": {
+    "tns-platform-declarations": "^2.0.0",
 		"typescript": "^1.8.10"
 	}
 }

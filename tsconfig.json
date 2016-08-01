@@ -4,11 +4,16 @@
         "module": "commonjs",
         "removeComments": true,
         "experimentalDecorators": true,
-        "sourceMap": true
+        "sourceMap": false,
+        "noEmitHelpers": true,
+        "noEmitOnError": false
     },
     "files": [
       "demo/node_modules/tns-core-modules/tns-core-modules.d.ts",
-      "checkbox.android.ts"
+      "node_modules/tns-platform-declarations/android17.d.ts",
+      "node_modules/tns-platform-declarations/ios.d.ts",
+      "checkbox.android.ts",
+      "checkbox.ios.ts"
     ],
     "compileOnSave": false
 }
