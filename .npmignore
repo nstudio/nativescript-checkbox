@@ -1,0 +1,7 @@
+demo/
+screens/
+*.png
+*.log
+*.ts
+!index.d.ts
+!checkbox.d.ts

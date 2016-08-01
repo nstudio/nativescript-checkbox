@@ -1,0 +1,10 @@
+<Page 
+  xmlns="http://schemas.nativescript.org/tns.xsd" 
+  xmlns:CheckBox="nativescript-checkbox" loaded="pageLoaded">
+  <ActionBar title="Native Checkbox" />
+  <StackLayout padding="10">
+    <Button text="Toggle" tap="{{ toggleCheck }}" />
+    <CheckBox:CheckBox checked="{{ checkProp }}" text="{{ myCheckText }}" color="{{ myCheckColor }}" id="myCheckbox" />
+    <CheckBox:CheckBox text="CheckBox Label" checked="false" />
+  </StackLayout>
+</Page>

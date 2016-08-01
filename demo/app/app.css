@@ -1,0 +1,24 @@
+﻿.title {
+    font-size: 16;
+    horizontal-align: center;
+    margin: 20;
+}
+
+Label {
+    vertical-align: center
+}
+
+button {
+    horizontal-align: center;
+}
+
+.message {
+    font-size: 20;
+    color: #284848;
+    horizontal-align: center;
+}
+
+ActionBar {
+    background-color: #f44336;
+    color: #fff;
+}
