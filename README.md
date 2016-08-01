@@ -5,6 +5,7 @@
 
 # NativeScript CheckBox :white_check_mark:
 A NativeScript plugin for the native checkbox widget.
+
 ** Android only - there is no concept of a checkbox on iOS. I'm looking to find a cocoapod to bring this plugin to both platforms. **
 
 #### Platform controls used: 
