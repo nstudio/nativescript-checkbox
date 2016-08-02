@@ -107,10 +107,10 @@ function onTextPropertyChanged(data: PropertyChangeData) {
 
 
 export class CheckBoxStyler implements style.Styler {
-    private static setColorProperty(view: View, newValue: any) {        
+    private static setColorProperty(view: any, newValue: any) {        
         var cb = <android.widget.CheckBox>view._nativeView;
         if (cb) {            
-            cb.setButtonTintList(android.content.res.ColorStateList.valueOf(new Color(newValue).android));
+            (<any>cb).setButtonTintList(android.content.res.ColorStateList.valueOf(new Color(newValue).android));
         }
     }
 

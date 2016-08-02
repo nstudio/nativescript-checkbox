@@ -4,7 +4,7 @@
   <ActionBar title="Native Checkbox" />
   <StackLayout padding="10">
     <Button text="Toggle" tap="{{ toggleCheck }}" />
-    <CheckBox:CheckBox checked="{{ checkProp }}" text="{{ myCheckText }}" color="{{ myCheckColor }}" id="myCheckbox" />
-    <CheckBox:CheckBox text="CheckBox Label" checked="false" />
+    <CheckBox:CheckBox checked="{{ checkProp }}" text="{{ myCheckText }}" color="{{ myCheckColor }}" id="myCheckbox" width="50" height="50" marginBottom="10" lineWidth="3" onAnimationType="3" />
+    <CheckBox:CheckBox text="CheckBox Label" checked="false" width="100" height="100" boxType="2" />
   </StackLayout>
 </Page>
