@@ -9,8 +9,10 @@ import { HelloWorldModel } from './main-view-model';
 export function pageLoaded(args: EventData) {
     // Get the event sender
     var page = <Page>args.object;
-    page.bindingContext = new HelloWorldModel(page);
+     let model = new HelloWorldModel();
+     page.bindingContext = model;
  
+    //Not related to checkboxes
     if (isAndroid && device.sdkVersion >= "21") {
         let window = android.startActivity.getWindow();
         window.setStatusBarColor(new Color("#d32f2f").android);

@@ -3,7 +3,7 @@ import { Color } from "color";
 import { isAndroid, device } from "platform";
 import { Property, PropertyChangeData } from "ui/core/dependency-observable";
 import { PropertyMetadata } from "ui/core/proxy";
-import style = require("ui/styling/style");
+//import style = require("ui/styling/style");
 
 declare var android: any;
 
@@ -105,7 +105,7 @@ function onTextPropertyChanged(data: PropertyChangeData) {
 (<PropertyMetadata>CheckBox.textProperty.metadata).onSetNativeValue = onTextPropertyChanged;
 
 
-
+/*
 export class CheckBoxStyler implements style.Styler {
     private static setColorProperty(view: any, newValue: any) {        
         var cb = <android.widget.CheckBox>view._nativeView;
@@ -129,4 +129,4 @@ export class CheckBoxStyler implements style.Styler {
     }
 }
 
-CheckBoxStyler.registerHandlers();
+CheckBoxStyler.registerHandlers();*/

@@ -2,9 +2,14 @@
   xmlns="http://schemas.nativescript.org/tns.xsd" 
   xmlns:CheckBox="nativescript-checkbox" loaded="pageLoaded">
   <ActionBar title="Native Checkbox" />
-  <StackLayout padding="10">
-    <Button text="Toggle" tap="{{ toggleCheck }}" />
-    <CheckBox:CheckBox checked="{{ checkProp }}" text="{{ myCheckText }}" color="{{ myCheckColor }}" id="myCheckbox" width="50" height="50" marginBottom="10" lineWidth="3" onAnimationType="3" />
-    <CheckBox:CheckBox text="CheckBox Label" checked="false" width="100" height="100" boxType="2" />
-  </StackLayout>
+
+  <GridLayout rows="*" columns="*">
+    <Repeater row="0" items="{{ data }}">
+        <Repeater.itemTemplate>
+          <StackLayout class="listitem">
+            <CheckBox:CheckBox text="{{ text }}" checked="{{ checked }}" width="25" height="25" />   
+          </StackLayout>  
+        </Repeater.itemTemplate>
+    </Repeater>
+  </GridLayout>
 </Page>

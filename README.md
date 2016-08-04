@@ -6,13 +6,13 @@
 # NativeScript CheckBox :white_check_mark:
 A NativeScript plugin for the native checkbox widget.
 
-** Android only - there is no concept of a checkbox on iOS. I'm looking to find a cocoapod to bring this plugin to both platforms. **
-
 #### Platform controls used: 
 Android |
 ---------- |
 [Android CheckBox](https://developer.android.com/reference/android/widget/CheckBox.html) |
-
+iOS |
+---------- |
+[BEMCheckBox](http://cocoapods.org/pods/BEMCheckBox) |
 
 ## Sample Usage
 
@@ -70,3 +70,8 @@ public getCheckProp() {
 ## Styling
 
 - **color** - set the checkbox color tint - Android 21+ only.
+
+## Demo Setup
+* npm install tns-platform-declarations
+* preparedemo
+* npm run demo.ios

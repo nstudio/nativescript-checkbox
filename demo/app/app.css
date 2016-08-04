@@ -22,3 +22,8 @@ ActionBar {
     background-color: #f44336;
     color: #fff;
 }
+
+.listitem{
+    padding: 10;
+    horizontal-align: left;
+}

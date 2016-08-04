@@ -13,6 +13,8 @@
 		"build": "tsc",
     "demo.ios": "npm run preparedemo && cd demo && tns emulate ios",
 		"demo.android": "npm run preparedemo && cd demo && tns run android",
+		"debug.ios": "npm run preparedemo && cd demo && tns debug ios",
+		"debug.android": "npm run preparedemo && cd demo && tns debug android",
 		"preparedemo": "npm run build && cd demo && tns plugin remove nativescript-checkbox && tns plugin add .. && tns install",
 		"setup": "cd demo && npm install && cd .. && npm run build && cd demo && tns plugin add .. && cd .."
 	},
@@ -39,6 +41,11 @@
       "name": "Nathan Walker",
       "email": "walkerrunpdx@gmail.com",
       "url": "https://github.com/NathanWalker"
+    },
+		{
+      "name": "Steve McNiven-Scott",
+      "email": "steve@sitefinitysteve.com",
+      "url": "https://github.com/sitefinitysteve"
     }
   ],
 	"bugs": {
