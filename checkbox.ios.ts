@@ -11,6 +11,7 @@ import {Style, properties as styleProps} from 'ui/styling';
 declare var CGRectMake: any;
 
 export class CheckBox extends ContentView{
+  private _initalizing: boolean = true;
   private _iosCheckbox: BEMCheckBox;
   private _iosLabel: UILabel;
   private _delegate: BEMCheckBoxDelegateImpl;
@@ -149,6 +150,7 @@ export class CheckBox extends ContentView{
   }
 
   public onLoaded() {
+    this._iosCheckbox.delegate = this._delegate;
     // Only here is where the view xml width/height is defined 
     this._iosCheckbox.frame.size.width = this.width;
     this._iosCheckbox.frame.size.height = this.height;
@@ -188,6 +190,8 @@ export class CheckBox extends ContentView{
     if (typeof this._offAnimationType !== 'undefined') {
       this.offAnimationType = this._offAnimationType;
     }
+
+    this._initalizing = false;
   }
 
   public toggle(){
@@ -213,10 +217,10 @@ export class CheckBox extends ContentView{
 }
 
 function onCheckedPropertyChanged(data: PropertyChangeData) {
-    console.log("Check Changed");
-    
-    if(this._ios){
-      this._ios.on = data.newValue;
+    if(!this._initalizing){
+      if(this._ios){
+        this._ios.on = data.newValue;
+      }
     }
 }
 
@@ -225,8 +229,10 @@ function onCheckedPropertyChanged(data: PropertyChangeData) {
 
 
 function onTextPropertyChanged(data: PropertyChangeData) {
-  if(this._iosLabel)
-    this._iosLabel.text = this.text;
+    if(!this._initalizing){
+      if(this._iosLabel)
+        this._iosLabel.text = this.text;
+    }
 }
 
 // register the setNativeValue callbacks
@@ -246,12 +252,10 @@ class BEMCheckBoxDelegateImpl extends NSObject implements BEMCheckBoxDelegate {
     }
 
     public animationDidStopForCheckBox(checkBox: BEMCheckBox): void {
-        debugger;
-        console.log("animationDidStopForCheckBox");
+        //TODO: Maybe trigger event
     }
 
     public didTapCheckBox(checkBox: BEMCheckBox): void {
-        debugger;
-        console.log("didTapCheckBox");
+        this._owner.get().checked = checkBox.on;
     }
 }
