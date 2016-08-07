@@ -11,7 +11,7 @@ import {Style, properties as styleProps} from 'ui/styling';
 declare var CGRectMake: any, CGPointMake: any;
 
 export class CheckBox extends Label {
-  public static checkedProperty = new Property("checked", "CheckBox", new PropertyMetadata(true));
+  public static checkedProperty = new Property("checked", "CheckBox", new PropertyMetadata(false));
 
   private _iosCheckbox: BEMCheckBox;
   private _delegate: BEMCheckBoxDelegateImpl;
