@@ -3,13 +3,28 @@
   xmlns:CheckBox="nativescript-checkbox" loaded="pageLoaded">
   <ActionBar title="Native Checkbox" />
 
-  <GridLayout rows="*" columns="*">
-    <Repeater row="0" items="{{ data }}">
-        <Repeater.itemTemplate>
-          <StackLayout class="listitem">
-            <CheckBox:CheckBox text="{{ text }}" checked="{{ checked }}" width="25" height="25" />   
-          </StackLayout>  
-        </Repeater.itemTemplate>
-    </Repeater>
-  </GridLayout>
+<ScrollView>
+  <StackLayout id="wrapper">
+    <Label text="Functions" class="title" />
+    <StackLayout class="listitem">
+      <GridLayout columns="*, auto" class="demosection">
+        <CheckBox:CheckBox id="toggleTest" col="0" text="toggle()" checked="false"  />
+        <Button col="1" text="GO" tap="onToggleTest" class="button" />  
+      </GridLayout>
+    </StackLayout>
+
+    <Label text="Bound to Repeater" class="title" />
+    <StackLayout class="demosection">  
+      <Repeater items="{{ data }}">
+          <Repeater.itemTemplate>
+            <StackLayout class="listitem" >
+              <CheckBox:CheckBox text="{{ text }}" checked="{{ checked }}" />
+            </StackLayout>  
+          </Repeater.itemTemplate>
+      </Repeater>
+    </StackLayout>   
+  </StackLayout>
+  
+</ScrollView>
+
 </Page>

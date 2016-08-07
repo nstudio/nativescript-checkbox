@@ -8,12 +8,12 @@ import {Label} from "ui/label";
 import {StackLayout} from "ui/layouts/stack-layout";
 import {Style, properties as styleProps} from 'ui/styling';
 
-declare var CGRectMake: any;
+declare var CGRectMake: any, CGPointMake: any;
 
-export class CheckBox extends ContentView{
-  private _initalizing: boolean = true;
+export class CheckBox extends Label {
+  public static checkedProperty = new Property("checked", "CheckBox", new PropertyMetadata(true));
+
   private _iosCheckbox: BEMCheckBox;
-  private _iosLabel: UILabel;
   private _delegate: BEMCheckBoxDelegateImpl;
   private _checked: boolean;
   private _lineWidth: number;
@@ -29,29 +29,19 @@ export class CheckBox extends ContentView{
 
   constructor() {
     super();
-
+debugger;
     // just create with any width/height as XML view width/height is undefined at this point
     // we modify width/height later below in onLoaded
-    this._iosCheckbox = <BEMCheckBox>BEMCheckBox.alloc().initWithFrame(CGRectMake(0, 0, 25, 25));
-    this._iosLabel =  UILabel.alloc().initWithFrame(CGRectMake(30,0, 300, 30));
+    this._onCheckColor = "#ffffff";
+    this._onFillColor = "#0075ff";
+    this._onTintColor = "#0075ff";
+    this._onAnimationType = 2;
+    this._offAnimationType = 2;
+        
+    this._iosCheckbox = <BEMCheckBox>BEMCheckBox.alloc().initWithFrame(CGRectMake(0, 0, 21, 21));
     this._delegate = BEMCheckBoxDelegateImpl.initWithOwner(new WeakRef(this));
   }  
 
-  public static checkedProperty = new Property(
-      "checked",
-      "CheckBox",
-      new PropertyMetadata(false)
-  );
-
-  public static textProperty = new Property(
-      "text",
-      "CheckBox",
-      new PropertyMetadata(false)
-  );
-
-  get _nativeView(): any {
-    return this._iosCheckbox;
-  }
   get checked(): boolean {
       return this._getValue(CheckBox.checkedProperty);
   }
@@ -59,13 +49,7 @@ export class CheckBox extends ContentView{
     this._setValue(CheckBox.checkedProperty, value);
   }
 
-  get text(): string {
-      return this._getValue(CheckBox.textProperty);
-  }
-  set text(value: string) {
-      this._setValue(CheckBox.textProperty, value);
-  }
-
+  /* NATIVE PROPERTIES */
   set checkedAnimated(value: boolean) {
     if (this._iosCheckbox)
       this._iosCheckbox.setOnAnimated(value, true);
@@ -144,22 +128,31 @@ export class CheckBox extends ContentView{
     else
       this._offAnimationType = value;
   }
-  
+
   public reload(value: boolean) {
     this._iosCheckbox.reload();
   }
+  /* END NATIVE PROPERTIES */
+
 
   public onLoaded() {
+    super.onLoaded();
+
     this._iosCheckbox.delegate = this._delegate;
-    // Only here is where the view xml width/height is defined 
-    this._iosCheckbox.frame.size.width = this.width;
-    this._iosCheckbox.frame.size.height = this.height;
-    
-    this._iosLabel.text = this.text;
-    this._iosCheckbox.addSubview(this._iosLabel);
+    this._iosCheckbox.frame = CGRectMake(0,0,21,21);
+    this.ios.addSubview(this._iosCheckbox);
+    this.style.paddingLeft = 30;
+
+    //Allow label click to change the textbox
+    /*
+    this.addEventListener("tap", args =>{
+        this.toggle();
+    });
+    */
+    this.ios.addSubview(this._iosCheckbox);
 
     this._iosCheckbox.on = this.checked;
-
+    
     if (typeof this._lineWidth !== 'undefined') {
       this.lineWidth = this._lineWidth;
     }
@@ -190,9 +183,13 @@ export class CheckBox extends ContentView{
     if (typeof this._offAnimationType !== 'undefined') {
       this.offAnimationType = this._offAnimationType;
     }
-
-    this._initalizing = false;
   }
+
+  public onUnloaded() {
+        this._iosCheckbox.delegate = null;
+        super.onUnloaded();
+    }
+
 
   public toggle(){
     this.checked = !this.checked;
@@ -214,29 +211,26 @@ export class CheckBox extends ContentView{
         return BEMAnimationType.Fade;
     }
   }
+
+  public _onCheckedPropertyChanged(data: PropertyChangeData) {
+    console.log("_onCheckedPropertyChanged");
+      debugger;
+      if(this._iosCheckbox){
+            this._iosCheckbox.setOnAnimated(data.newValue, true);
+      }
+  }
 }
 
 function onCheckedPropertyChanged(data: PropertyChangeData) {
-    if(!this._initalizing){
-      if(this._ios){
-        this._ios.on = data.newValue;
-      }
-    }
+  console.log("onCheckedPropertyChanged");
+  debugger;
+    var checkbox = <CheckBox>data.object;
+    checkbox._onCheckedPropertyChanged(data);
 }
+
 
 // register the setNativeValue callbacks
 (<PropertyMetadata>CheckBox.checkedProperty.metadata).onSetNativeValue = onCheckedPropertyChanged;
-
-
-function onTextPropertyChanged(data: PropertyChangeData) {
-    if(!this._initalizing){
-      if(this._iosLabel)
-        this._iosLabel.text = this.text;
-    }
-}
-
-// register the setNativeValue callbacks
-(<PropertyMetadata>CheckBox.textProperty.metadata).onSetNativeValue = onTextPropertyChanged;
 
 
 class BEMCheckBoxDelegateImpl extends NSObject implements BEMCheckBoxDelegate {
@@ -247,15 +241,19 @@ class BEMCheckBoxDelegateImpl extends NSObject implements BEMCheckBoxDelegate {
     public static initWithOwner(owner: WeakRef<CheckBox>): BEMCheckBoxDelegateImpl {
         let delegate = <BEMCheckBoxDelegateImpl>BEMCheckBoxDelegateImpl.new();
         delegate._owner = owner;
-
         return delegate;
     }
 
     public animationDidStopForCheckBox(checkBox: BEMCheckBox): void {
-        //TODO: Maybe trigger event
+        //TODO: Maybe trigger event later?
     }
 
     public didTapCheckBox(checkBox: BEMCheckBox): void {
-        this._owner.get().checked = checkBox.on;
+      debugger;
+      console.log("delegate check");
+      let owner = this._owner.get();
+        if (owner) {
+            owner._onPropertyChangedFromNative(CheckBox.checkedProperty, checkBox.on);
+        }
     }
 }

@@ -1,15 +1,33 @@
-﻿.title {
-    font-size: 16;
-    horizontal-align: center;
-    margin: 20;
+﻿Page {
+    background-color: #282e48;
+    color: #FFF;
+    
+}
+
+#wrapper{
+    padding: 10;
+    width: 100%;
+}
+
+.title {
+    font-size: 12;
+    horizontal-align: left;
+    color: #83889e;
+    margin-bottom: 10;
 }
 
 Label {
     vertical-align: center
 }
 
-button {
-    horizontal-align: center;
+.button {
+    vertical-align: center;
+    horizontal-align: right;
+    background-color: #5fbce6;
+    color: #FFF;
+    border-radius: 4;
+    font-size: 10;
+    margin:0 20;
 }
 
 .message {
@@ -18,12 +36,27 @@ button {
     horizontal-align: center;
 }
 
+CheckBox{
+    vertical-align: center;
+}
+
 ActionBar {
-    background-color: #f44336;
+    background-color: #363b58;
     color: #fff;
 }
 
-.listitem{
-    padding: 10;
+.demosection{
+    margin-bottom: 50;
     horizontal-align: left;
+}
+
+.listitem{
+    vertical-align: center;
+    horizontal-align: left;
+    margin-bottom: 10;
+    width: 100%;
+}
+
+.title{
+
 }
