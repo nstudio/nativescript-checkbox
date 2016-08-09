@@ -10,16 +10,44 @@ export class HelloWorldModel extends Observable {
   public check1: DataItem;
   public check2: DataItem;
   public check3: DataItem;
-
+  private _eventLabel: string;
+  private _state: string;
+  private _eventCount: number;
 
   constructor() {
     super();
+    this._state = "";
+    this._eventCount = 0;
     this.data = new observableArrayModule.ObservableArray<DataItem>();
     this.data.push(new DataItem("Brad Martin", false, "#eab557"));
     this.data.push(new DataItem("Nathan Walker", true, "#57bbed"));
     this.data.push(new DataItem("Steve McNiven-Scott", false, "#7559e7"));
     this.data.push(new DataItem("Ron Burgundy", true, "#eb5481"));
   }
+
+    get eventLabel(): string {
+        return this._eventLabel;
+    }
+    set eventLabel(value: string) {
+        if (this._eventLabel !== value) {
+            this._eventLabel = value;
+            this.notifyPropertyChange("eventLabel", value)
+        }
+    }
+
+    get state(): string {
+        return this._state;
+    }
+    set state(value: string) {
+        this._state = value;
+        this.notifyPropertyChange("state", value);
+    }
+
+    public updateMessage(){
+        this._eventCount++;
+        this.eventLabel = "Triggered " + this._eventCount + " times";
+    }
+
 }
 
 export class DataItem{

@@ -1,14 +1,19 @@
+import {CheckBoxInterface} from "./checkbox";
 import { View } from "ui/core/view";
 import { Color } from "color";
 import { isAndroid, device } from "platform";
 import { Property, PropertyChangeData } from "ui/core/dependency-observable";
 import { PropertyMetadata } from "ui/core/proxy";
+import {Font} from "ui/styling/font";
+import enums = require("ui/enums");
 import style = require("ui/styling/style");
 
 declare var android: any;
 
-export class CheckBox extends View {
+export class CheckBox extends View implements CheckBoxInterface {
     private _android: any; /// android.widget.CheckBox
+    private _fillColor: string;
+    private _checkBoxSize: number;
 
     public static checkedProperty = new Property(
         "checked",
@@ -22,6 +27,11 @@ export class CheckBox extends View {
         new PropertyMetadata(false)
     );
 
+    constructor() {
+        super();
+
+        this._checkBoxSize = 21;
+    }
 
     get android() {
         return this._android;
@@ -34,15 +44,44 @@ export class CheckBox extends View {
     get checked(): boolean {
         return this._getValue(CheckBox.checkedProperty);
     }
+
     set checked(value: boolean) {
         this._setValue(CheckBox.checkedProperty, value);
     }
 
-    get text(): boolean {
+    get text(): string {
         return this._getValue(CheckBox.textProperty);
     }
-    set text(value: boolean) {
+    set text(value: string) {
         this._setValue(CheckBox.textProperty, value);
+    }
+
+    get fillColor() : string {
+        return this._fillColor;
+    }
+
+    set fillColor(color: string) {
+        this._fillColor = color;
+
+        if(this._android)
+            this._android.setButtonTintList(android.content.res.ColorStateList.valueOf(new Color(this._fillColor).android));
+    }
+
+    get checkboxSize(){
+        return this._checkBoxSize;
+    }
+
+    set checkBoxSize(size: number) {
+        this._checkBoxSize = size;
+    }
+
+    //There is no difference between tint and fill on the android widget
+    get tintColor() : string {
+        return this.fillColor;
+    }
+
+    set tintColor(color: string) {
+        this.fillColor = color;
     }
 
 
@@ -52,6 +91,12 @@ export class CheckBox extends View {
 
         if (this.text) {
             this._android.setText(this.text);
+        }
+
+        //Set bound colors
+        if(this._android){
+            if(this.fillColor)
+                this._android.setButtonTintList(android.content.res.ColorStateList.valueOf(new Color(this._fillColor).android));
         }
 
         var that = new WeakRef(this);
@@ -73,9 +118,6 @@ export class CheckBox extends View {
     public toggle(): void {
         this._android.toggle();
     }
-
-
-
 }
 
 
@@ -107,21 +149,68 @@ function onTextPropertyChanged(data: PropertyChangeData) {
 
 
 export class CheckBoxStyler implements style.Styler {
-    private static setColorProperty(view: any, newValue: any) {        
+    private static setColorLabelProperty(view: any, newValue: any) {        
         var cb = <android.widget.CheckBox>view._nativeView;
         if (cb) {            
-            (<any>cb).setButtonTintList(android.content.res.ColorStateList.valueOf(new Color(newValue).android));
+            (<any>cb).setTextColor(new Color(newValue).android);
         }
     }
 
+// font
+    private static setFontInternalProperty(view: any, newValue: any, nativeValue?: any) {
+        var tv = <android.widget.CheckBox>view._nativeView;
+        var fontValue = <Font>newValue;
+
+        var typeface = fontValue.getAndroidTypeface();
+        if (typeface) {
+            tv.setTypeface(typeface);
+        }
+        else {
+            tv.setTypeface(nativeValue.typeface);
+        }
+
+        if (fontValue.fontSize) {
+            tv.setTextSize(fontValue.fontSize);
+        }
+        else {
+            tv.setTextSize(android.util.TypedValue.COMPLEX_UNIT_PX, nativeValue.size);
+        }
+    }
+
+    private static resetFontInternalProperty(view: any, nativeValue: any) {
+        var tv: android.widget.CheckBox = <android.widget.CheckBox>view._nativeView;
+        if (tv && nativeValue) {
+            tv.setTypeface(nativeValue.typeface);
+            tv.setTextSize(android.util.TypedValue.COMPLEX_UNIT_PX, nativeValue.size);
+        }
+    }
+
+    private static getNativeFontInternalValue(view: any): any {
+        var tv: android.widget.TextView = <android.widget.CheckBox>view._nativeView;
+        return {
+            typeface: tv.getTypeface(),
+            size: tv.getTextSize()
+        };
+    }
     private static resetColorProperty(view: View, nativeValue: number) {
         // Do nothing.
     }
 
+
     public static registerHandlers() {
         style.registerHandler(style.colorProperty, new style.StylePropertyChangedHandler(
-            CheckBoxStyler.setColorProperty,
+            CheckBoxStyler.setColorLabelProperty,
             CheckBoxStyler.resetColorProperty), "CheckBox");
+
+        style.registerHandler(style.fontInternalProperty, new style.StylePropertyChangedHandler(
+            CheckBoxStyler.setFontInternalProperty,
+            CheckBoxStyler.resetFontInternalProperty,
+            CheckBoxStyler.getNativeFontInternalValue), "CheckBox");
+/*
+        style.registerHandler(style.backgroundColorProperty, new style.StylePropertyChangedHandler(
+            CheckBoxStyler.setColorLabelProperty,
+            CheckBoxStyler.resetColorProperty), "CheckBox");
+            */
 
         style.registerHandler(style.borderWidthProperty, style.ignorePropertyHandler, "CheckBox");
         style.registerHandler(style.borderColorProperty, style.ignorePropertyHandler, "CheckBox");

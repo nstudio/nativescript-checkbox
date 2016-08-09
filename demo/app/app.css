@@ -4,6 +4,13 @@
     
 }
 
+
+ActionBar {
+    background-color: #363b58;
+    color: #fff;
+}
+
+
 #wrapper{
     padding: 10;
     width: 100%;
@@ -28,21 +35,22 @@ Label {
     border-radius: 4;
     font-size: 10;
     margin:0 20;
+
 }
 
 .message {
-    font-size: 20;
-    color: #284848;
-    horizontal-align: center;
+    font-size: 14;
+    color: #83889e;
+    horizontal-align: left;
+    margin-top: 5;
 }
 
 CheckBox{
     vertical-align: center;
-}
-
-ActionBar {
-    background-color: #363b58;
-    color: #fff;
+    color: white;
+    border-color: yellow;
+    border-width: 1;
+    font-size: 20;
 }
 
 .demosection{

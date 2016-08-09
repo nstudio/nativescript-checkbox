@@ -20,13 +20,22 @@ export function pageLoaded(args: EventData) {
     //Not related to checkboxes
     if (isAndroid && device.sdkVersion >= "21") {
         let window = android.startActivity.getWindow();
-        window.setStatusBarColor(new Color("#d32f2f").android);
+        window.setStatusBarColor(new Color("#363b58").android);
     }
 }
 
 export function onToggleTest(args){
-    debugger;
     console.log("toggle tap")
     let toggleTest = <CheckBox>page.getViewById("toggleTest");
     toggleTest.toggle();
+}
+
+export function onTapTest(args){
+    console.log("tap event test");
+    model.updateMessage();
+}
+
+export function onCheckedTest(args: any){
+    debugger;
+    model.state = "Checkbox is " + (args.checked ? "checked" : "not checked");
 }

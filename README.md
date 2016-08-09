@@ -9,7 +9,7 @@ A NativeScript plugin for the native checkbox widget.
 #### Platform controls used: 
 Android |
 ---------- |
-[Android CheckBox](https://developer.android.com/reference/android/widget/CheckBox.html) |
+[Android CheckBox](https://developer.android.com/reference/android/widget/CheckBox.html) 
 iOS |
 ---------- |
 [BEMCheckBox](http://cocoapods.org/pods/BEMCheckBox) |
@@ -35,7 +35,7 @@ From your command prompt/terminal go to your app's root folder and execute:
   xmlns:CheckBox="nativescript-checkbox" loaded="pageLoaded">
   <ActionBar title="Native Checkbox" />
   <StackLayout>
-    <CheckBox:CheckBox checked="{{ checkProp }}" text="{{ myCheckText }}" color="{{ myCheckColor }}" id="myCheckbox" />
+    <CheckBox:CheckBox checked="{{ checkProp }}" text="{{ myCheckText }}" fillColor="{{ myCheckColor }}" id="myCheckbox" />
     <CheckBox:CheckBox text="CheckBox Label" checked="false" />
   </StackLayout>
 </Page>
@@ -62,6 +62,10 @@ public getCheckProp() {
 
 - **checked** - boolean
 - **text** - text to use with the checkbox
+- **fillColor** - Color of the checkbox element
+
+## Events
+- **checkedChanged** - When the state of the checkbox changes
 
 ## API
 
@@ -69,7 +73,8 @@ public getCheckProp() {
 
 ## Styling
 
-- **color** - set the checkbox color tint - Android 21+ only.
+- **color** - set the text label color
+- **border-width** - set the line width of the checkbox element: iOS only
 
 ## Demo Setup
 * npm install tns-platform-declarations

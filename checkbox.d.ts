@@ -35,6 +35,16 @@ declare module "nativescript-checkbox" {
          */
         toggle(): void;
 
-    }
 
+    }
+}
+
+export interface CheckBoxInterface{
+    text: string;
+    checked: boolean;
+    fillColor: string;
+    tintColor: string;
+    checkBoxSize: number;
+
+    toggle(): void;
 }

@@ -12,6 +12,7 @@
 	"scripts": {
 		"build": "tsc",
 		"copy.ios": "cp -R checkbox.*.js demo/node_modules/nativescript-checkbox && cd demo && tns livesync ios --watch",
+		"copy.android": "cp -R checkbox.*.js demo/node_modules/nativescript-checkbox && cd demo && tns livesync android --watch",
 		"buildrun": "npm run build && cp -R checkbox.*.js demo/node_modules/nativescript-checkbox",
     "demo.ios": "npm run preparedemo && cdcd demo && tns emulate ios",
 		"demo.android": "npm run preparedemo && cd demo && tns run android",
