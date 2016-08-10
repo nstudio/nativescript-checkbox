@@ -7,3 +7,5 @@ app/
 *.ts
 !index.d.ts
 !BEMCheckBox.d.ts
+tsconfig.json
+README.md
