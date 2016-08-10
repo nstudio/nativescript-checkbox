@@ -6,6 +6,7 @@ import { android } from "application";
 import { HelloWorldModel } from './main-view-model';
 import { DataItem } from './main-view-model';
 import { CheckBox } from 'nativescript-checkbox';
+import { Label } from 'ui/label';
 
 let model: HelloWorldModel;
 let page: Page;
@@ -35,7 +36,7 @@ export function onTapTest(args){
     model.updateMessage();
 }
 
-export function onCheckedTest(args: any){
-    debugger;
-    model.state = "Checkbox is " + (args.checked ? "checked" : "not checked");
+export function onDumpModel(args: any){
+    var label = <Label>page.getViewById("modelDumpLabel");
+    label.text = JSON.stringify(model.data.getItem(0));
 }

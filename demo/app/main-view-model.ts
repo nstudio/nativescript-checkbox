@@ -7,9 +7,6 @@ import observableArrayModule = require("data/observable-array");
 
 export class HelloWorldModel extends Observable {
   public data: observableArrayModule.ObservableArray<DataItem>;
-  public check1: DataItem;
-  public check2: DataItem;
-  public check3: DataItem;
   private _eventLabel: string;
   private _state: string;
   private _eventCount: number;

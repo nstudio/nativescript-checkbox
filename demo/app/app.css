@@ -34,7 +34,7 @@ Label {
     color: #FFF;
     border-radius: 4;
     font-size: 10;
-    margin:0 20;
+    padding: 5 9;
 
 }
 
@@ -50,7 +50,7 @@ CheckBox{
     color: white;
     border-color: yellow;
     border-width: 1;
-    font-size: 15;
+    font-size: 20;
 }
 
 .demosection{

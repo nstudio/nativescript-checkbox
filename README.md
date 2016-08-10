@@ -64,16 +64,14 @@ public getCheckProp() {
 - **text** - text to use with the checkbox
 - **fillColor** - Color of the checkbox element
 
-## Events
-- **checkedChanged** - When the state of the checkbox changes
-
 ## API
 
 - **toggle()** - Change the checked state of the view to the inverse of its current state.
 
-## Styling
+## Css Styling
 
 - **color** - set the text label color
+- **font-size** - checkbox is sized to text from here 
 - **border-width** - set the line width of the checkbox element: iOS only
 
 ## Demo Setup

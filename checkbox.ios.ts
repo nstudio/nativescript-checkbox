@@ -22,7 +22,7 @@ export class CheckBox extends Button implements CheckBoxInterface {
   private _checked: boolean;
   private _fillColor: string = "#0075ff";
   private _tintColor: string = "#0075ff";
-  private _lineWidth: number;
+  private _lineWidth: number = 1;
   private _hideBox: boolean;
   private _boxType: number;
   private _tint: string;
@@ -223,8 +223,6 @@ export class CheckBox extends Button implements CheckBoxInterface {
   }
 
   public _onCheckedPropertyChanged(data: PropertyChangeData) {
-    console.log("_onCheckedPropertyChanged to " + data.newValue);
-      debugger;
       if(this._iosCheckbox){
             this._iosCheckbox.setOnAnimated(data.newValue, true);
       }
@@ -232,8 +230,6 @@ export class CheckBox extends Button implements CheckBoxInterface {
 }
 
 function onCheckedPropertyChanged(data: PropertyChangeData) {
-  console.log("onCheckedPropertyChanged to " + data.newValue);
-  debugger;
     var checkbox = <CheckBox>data.object;
     checkbox._onCheckedPropertyChanged(data);
 }
@@ -264,7 +260,6 @@ class BEMCheckBoxDelegateImpl extends NSObject implements BEMCheckBoxDelegate {
     public didTapCheckBox(checkBox: BEMCheckBox): void {
       let owner = this._owner.get();
         if (owner) {
-                console.log("delegate check " + checkBox.on);
             owner._onPropertyChangedFromNative(CheckBox.checkedProperty, checkBox.on);
         }
     }

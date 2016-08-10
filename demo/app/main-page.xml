@@ -8,7 +8,7 @@
     <Label text="Functions" class="title" />
     <StackLayout class="listitem">
       <GridLayout columns="*, auto" class="demosection">
-        <CheckBox:CheckBox id="toggleTest" col="0" text="toggle()" checked="false"  />
+        <CheckBox:CheckBox id="toggleTest" col="0" text="toggle()" checked="false" style="margin-right: 10"  />
         <Button col="1" text="GO" tap="onToggleTest" class="button" />  
       </GridLayout>
     </StackLayout>
@@ -30,6 +30,11 @@
         <Label text="{{ eventLabel }}" textWrap="true" class="message" />
     </StackLayout>
 
+    <Label text="Debug" class="title" />
+    <StackLayout class="listitem">
+        <Button text="View Model" tap="onDumpModel" class="button" style="horizontal-align: left;" />
+        <Label id="modelDumpLabel" textWrap="true" class="message" />
+    </StackLayout>
   </StackLayout>
 </ScrollView>
 
