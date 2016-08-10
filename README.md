@@ -16,10 +16,9 @@ iOS |
 
 ## Sample Usage
 
-                Sample             |
--------------------------------------|
-![Sample Usage](./screens/checkbox.gif) |
-
+Android Sample |  iOS Sample
+-------- | ---------
+![Sample1](./screens/checkbox.gif) | ![Sample2](./screens/iosCheckbox.gif)
 
 ## Installation
 From your command prompt/terminal go to your app's root folder and execute:

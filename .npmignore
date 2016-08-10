@@ -1,5 +1,7 @@
 demo/
 screens/
+app/
+.vscode/
 *.png
 *.log
 *.ts
