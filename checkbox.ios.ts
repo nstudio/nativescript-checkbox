@@ -30,7 +30,6 @@ export class CheckBox extends Button implements CheckBoxInterface {
   private _animationDuration: number;
   private _onAnimationType: number;
   private _offAnimationType: number;
-  private _checkBoxSize: number;
 
   constructor() {
     super();
@@ -42,9 +41,8 @@ export class CheckBox extends Button implements CheckBoxInterface {
     this._tintColor = "#0075ff";
     this._onAnimationType = 2;
     this._offAnimationType = 2;
-    this._checkBoxSize = 21;
-        
-    this._iosCheckbox = <BEMCheckBox>BEMCheckBox.alloc().initWithFrame(CGRectMake(0, 0, this._checkBoxSize, this._checkBoxSize));
+    
+    this._iosCheckbox = <BEMCheckBox>BEMCheckBox.alloc().initWithFrame(CGRectMake(0, 0, 21, 21));
     this._delegate = BEMCheckBoxDelegateImpl.initWithOwner(new WeakRef(this));
   }  
 
@@ -63,14 +61,6 @@ export class CheckBox extends Button implements CheckBoxInterface {
   set tintColor(color: string) {
       this._tintColor = color;
       this._iosCheckbox.onTintColor = new Color(color).ios;
-  }
-
-  get checkboxSize(){
-    return this._checkBoxSize;
-  }
-
-  set checkBoxSize(size: number) {
-    this._checkBoxSize = size;
   }
 
   /* NATIVE PROPERTIES */
@@ -152,10 +142,14 @@ export class CheckBox extends Button implements CheckBoxInterface {
   public onLoaded() {
     super.onLoaded();
 
+    var fontSize = this.style.fontSize;
     this._iosCheckbox.delegate = this._delegate;
-    this._iosCheckbox.frame = CGRectMake(0,0,this._checkBoxSize,this._checkBoxSize);
 
-    this.style.paddingLeft = this._checkBoxSize + 10;
+    //Positioning
+    this._iosCheckbox.frame = CGRectMake(0,0,fontSize,fontSize);
+    this._iosCheckbox.center = CGPointMake( this._iosCheckbox.center.x, (fontSize / 2) + 3);
+    
+    this.style.paddingLeft = fontSize + (fontSize > 20 ? 10 : 5);
     this.style.textAlignment = "left";
 
     this.ios.addSubview(this._iosCheckbox);
@@ -229,7 +223,7 @@ export class CheckBox extends Button implements CheckBoxInterface {
   }
 
   public _onCheckedPropertyChanged(data: PropertyChangeData) {
-    console.log("_onCheckedPropertyChanged");
+    console.log("_onCheckedPropertyChanged to " + data.newValue);
       debugger;
       if(this._iosCheckbox){
             this._iosCheckbox.setOnAnimated(data.newValue, true);
@@ -238,7 +232,7 @@ export class CheckBox extends Button implements CheckBoxInterface {
 }
 
 function onCheckedPropertyChanged(data: PropertyChangeData) {
-  console.log("onCheckedPropertyChanged");
+  console.log("onCheckedPropertyChanged to " + data.newValue);
   debugger;
     var checkbox = <CheckBox>data.object;
     checkbox._onCheckedPropertyChanged(data);
@@ -268,10 +262,9 @@ class BEMCheckBoxDelegateImpl extends NSObject implements BEMCheckBoxDelegate {
     }
 
     public didTapCheckBox(checkBox: BEMCheckBox): void {
-      debugger;
-      console.log("delegate check");
       let owner = this._owner.get();
         if (owner) {
+                console.log("delegate check " + checkBox.on);
             owner._onPropertyChangedFromNative(CheckBox.checkedProperty, checkBox.on);
         }
     }

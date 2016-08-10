@@ -44,7 +44,7 @@ export interface CheckBoxInterface{
     checked: boolean;
     fillColor: string;
     tintColor: string;
-    checkBoxSize: number;
+    //checkBoxSize: number;
 
     toggle(): void;
 }

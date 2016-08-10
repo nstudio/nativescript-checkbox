@@ -8,7 +8,7 @@
     <Label text="Functions" class="title" />
     <StackLayout class="listitem">
       <GridLayout columns="*, auto" class="demosection">
-        <CheckBox:CheckBox id="toggleTest" col="0" text="toggle()" checked="false" checkBoxSize="30"  />
+        <CheckBox:CheckBox id="toggleTest" col="0" text="toggle()" checked="false"  />
         <Button col="1" text="GO" tap="onToggleTest" class="button" />  
       </GridLayout>
     </StackLayout>

@@ -13,7 +13,6 @@ declare var android: any;
 export class CheckBox extends View implements CheckBoxInterface {
     private _android: any; /// android.widget.CheckBox
     private _fillColor: string;
-    private _checkBoxSize: number;
 
     public static checkedProperty = new Property(
         "checked",
@@ -29,8 +28,6 @@ export class CheckBox extends View implements CheckBoxInterface {
 
     constructor() {
         super();
-
-        this._checkBoxSize = 21;
     }
 
     get android() {
@@ -67,14 +64,6 @@ export class CheckBox extends View implements CheckBoxInterface {
             this._android.setButtonTintList(android.content.res.ColorStateList.valueOf(new Color(this._fillColor).android));
     }
 
-    get checkboxSize(){
-        return this._checkBoxSize;
-    }
-
-    set checkBoxSize(size: number) {
-        this._checkBoxSize = size;
-    }
-
     //There is no difference between tint and fill on the android widget
     get tintColor() : string {
         return this.fillColor;
@@ -93,10 +82,13 @@ export class CheckBox extends View implements CheckBoxInterface {
             this._android.setText(this.text);
         }
 
-        //Set bound colors
+        
         if(this._android){
-            if(this.fillColor)
+            if(this.fillColor){
+                //Set bound colors
                 this._android.setButtonTintList(android.content.res.ColorStateList.valueOf(new Color(this._fillColor).android));
+            }
+
         }
 
         var that = new WeakRef(this);
