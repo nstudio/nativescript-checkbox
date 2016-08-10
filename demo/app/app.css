@@ -1,24 +1,70 @@
-﻿.title {
-    font-size: 16;
-    horizontal-align: center;
-    margin: 20;
+﻿Page {
+    background-color: #282e48;
+    color: #FFF;
+    
+}
+
+
+ActionBar {
+    background-color: #363b58;
+    color: #fff;
+}
+
+
+#wrapper{
+    padding: 10;
+    width: 100%;
+}
+
+.title {
+    font-size: 12;
+    horizontal-align: left;
+    color: #83889e;
+    margin-bottom: 10;
 }
 
 Label {
     vertical-align: center
 }
 
-button {
-    horizontal-align: center;
+.button {
+    vertical-align: center;
+    horizontal-align: right;
+    background-color: #5fbce6;
+    color: #FFF;
+    border-radius: 4;
+    font-size: 10;
+    padding: 5 9;
+
 }
 
 .message {
-    font-size: 20;
-    color: #284848;
-    horizontal-align: center;
+    font-size: 14;
+    color: #83889e;
+    horizontal-align: left;
+    margin-top: 5;
 }
 
-ActionBar {
-    background-color: #f44336;
-    color: #fff;
+CheckBox{
+    vertical-align: center;
+    color: white;
+    border-color: yellow;
+    border-width: 1;
+    font-size: 20;
+}
+
+.demosection{
+    margin-bottom: 50;
+    horizontal-align: left;
+}
+
+.listitem{
+    vertical-align: center;
+    horizontal-align: left;
+    margin-bottom: 10;
+    width: 100%;
+}
+
+.title{
+
 }

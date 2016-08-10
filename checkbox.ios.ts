@@ -1,141 +1,168 @@
+/// <reference path="BEMCheckBox.d.ts" /> Needed for autocompletion and compilation.
+
+import {CheckBoxInterface} from "./checkbox";
+import { View } from "ui/core/view";
 import {ContentView} from "ui/content-view";
+import { Property, PropertyChangeData } from "ui/core/dependency-observable";
+import { PropertyMetadata } from "ui/core/proxy";
 import {Color} from "color";
+import {Label} from "ui/label";
+import {Button} from "ui/button";
+import {StackLayout} from "ui/layouts/stack-layout";
+import style = require("ui/styling/style");
 
-declare var BEMCheckBox: any, CGRectMake: any, BEMBoxType: any, BEMAnimationType: any;
 
-export class CheckBox extends ContentView {
-  private _ios: any;
+declare var CGRectMake: any, CGPointMake: any;
+
+export class CheckBox extends Button implements CheckBoxInterface {
+  public static checkedProperty = new Property("checked", "CheckBox", new PropertyMetadata(false));
+
+  private _iosCheckbox: BEMCheckBox;
+  private _delegate: BEMCheckBoxDelegateImpl;
   private _checked: boolean;
-  private _lineWidth: number;
+  private _fillColor: string = "#0075ff";
+  private _tintColor: string = "#0075ff";
+  private _lineWidth: number = 1;
   private _hideBox: boolean;
   private _boxType: number;
   private _tint: string;
   private _onCheckColor: string;
-  private _onFillColor: string;
-  private _onTintColor: string;
   private _animationDuration: number;
   private _onAnimationType: number;
   private _offAnimationType: number;
 
   constructor() {
     super();
+
     // just create with any width/height as XML view width/height is undefined at this point
     // we modify width/height later below in onLoaded
-    this._ios = BEMCheckBox.alloc().initWithFrame(CGRectMake(0, 0, 50, 50));
+    this._onCheckColor = "#ffffff";
+    this._fillColor = "#0075ff";
+    this._tintColor = "#0075ff";
+    this._onAnimationType = 2;
+    this._offAnimationType = 2;
+    
+    this._iosCheckbox = <BEMCheckBox>BEMCheckBox.alloc().initWithFrame(CGRectMake(0, 0, 21, 21));
+    this._delegate = BEMCheckBoxDelegateImpl.initWithOwner(new WeakRef(this));
   }  
 
-  get _nativeView(): any {
-    return this._ios;
-  }
-
   get checked(): boolean {
-    if (this._ios)
-      return this._ios.on;
-    else
-      return false;
+      return this._getValue(CheckBox.checkedProperty);
   }
-  
   set checked(value: boolean) {
-    if (this._ios)
-      this._ios.on = value;
-    else
-      this._checked = value;
+    this._setValue(CheckBox.checkedProperty, value);
   }
 
+  set fillColor(color: string) {
+      this._iosCheckbox.onFillColor = new Color(color).ios;
+      this._fillColor = color;
+  }
+
+  set tintColor(color: string) {
+      this._tintColor = color;
+      this._iosCheckbox.onTintColor = new Color(color).ios;
+  }
+
+  /* NATIVE PROPERTIES */
   set checkedAnimated(value: boolean) {
-    if (this._ios)
-      this._ios.setOnAnimated(value, true);
+    if (this._iosCheckbox)
+      this._iosCheckbox.setOnAnimated(value, true);
   }
 
   set lineWidth(value: number) {
-    if (this._ios)
-      this._ios.lineWidth = value;
+    if (this._iosCheckbox)
+      this._iosCheckbox.lineWidth = value;
     else
       this._lineWidth = value;
   }
 
   set hideBox(value: boolean) {
-    if (this._ios)
-      this._ios.hideBox = value;
+    if (this._iosCheckbox)
+      this._iosCheckbox.hideBox = value;
     else
       this._hideBox = value;
   }
 
   set boxType(value: number) {
-    let type = BEMBoxType.BEMBoxTypeCircle;
+    let type = BEMBoxType.Circle;
     if (value === 2) {
-      type = BEMBoxType.BEMBoxTypeSquare;
+      type = BEMBoxType.Square;
     }
-    if (this._ios)
-      this._ios.boxType = type;
+    if (this._iosCheckbox)
+      this._iosCheckbox.boxType = type;
     else
       this._boxType = value;
   }
 
   set tint(color: string) {
-    if (this._ios)
-      this._ios.tintColor = new Color(color).ios;
+    if (this._iosCheckbox)
+      this._iosCheckbox.tintColor = new Color(color).ios;
     else
       this._tint = color;
   }
 
   set onCheckColor(color: string) {
-    if (this._ios)
-      this._ios.onCheckColor = new Color(color).ios;
+    if (this._iosCheckbox)
+      this._iosCheckbox.onCheckColor = new Color(color).ios;
     else
       this._onCheckColor = color;
   }
 
-  set onFillColor(color: string) {
-    if (this._ios)
-      this._ios.onFillColor = new Color(color).ios;
-    else
-      this._onFillColor = color;
-  }
-
-  set onTintColor(color: string) {
-    if (this._ios)
-      this._ios.onTintColor = new Color(color).ios;
-    else
-      this._onTintColor = color;
-  }
-
   set animationDuration(value: number) {
-    if (this._ios)
-      this._ios.animationDuration = value;
+    if (this._iosCheckbox)
+      this._iosCheckbox.animationDuration = value;
     else
       this._animationDuration = value;
   }
 
   set onAnimationType(value: number) {
-    if (this._ios)
-      this._ios.onAnimationType = this.getAnimationType(value);
+    if (this._iosCheckbox)
+      this._iosCheckbox.onAnimationType = this.getAnimationType(value);
     else
       this._onAnimationType = value;
   }
 
   set offAnimationType(value: number) {
-    if (this._ios)
-      this._ios.offAnimationType = this.getAnimationType(value);
+    if (this._iosCheckbox)
+      this._iosCheckbox.offAnimationType = this.getAnimationType(value);
     else
       this._offAnimationType = value;
   }
-  
-  public reload(value: boolean) {
-    this._ios.reload();
+
+  get nativeiOSCheckBox() {
+    return this._iosCheckbox;
   }
 
-  public onLoaded() {
-    console.log(`onLoaded`);
-    // Only here is where the view xml width/height is defined 
-    console.log(this.width + ', ' + this.height);
-    this._ios.frame.size.width = this.width;
-    this._ios.frame.size.height = this.height;
-    // console.log(this._ios);
+  public reload(value: boolean) {
+    this._iosCheckbox.reload();
+  }
+  /* END NATIVE PROPERTIES */
 
-    if (typeof this._checked !== 'undefined') {
-      this.checked = this._checked;
-    }
+
+  public onLoaded() {
+    super.onLoaded();
+
+    var fontSize = this.style.fontSize;
+    this._iosCheckbox.delegate = this._delegate;
+
+    //Positioning
+    this._iosCheckbox.frame = CGRectMake(0,0,fontSize,fontSize);
+    this._iosCheckbox.center = CGPointMake( this._iosCheckbox.center.x, (fontSize / 2) + 3);
+    
+    this.style.paddingLeft = fontSize + (fontSize > 20 ? 10 : 5);
+    this.style.textAlignment = "left";
+
+    this.ios.addSubview(this._iosCheckbox);
+
+    this._iosCheckbox.on = this.checked;
+
+
+    //Allow label click to change the textbox
+    this.addEventListener("tap", function(args){
+        var checkbox = <CheckBox>args.object;
+        checkbox.checked = !checkbox.checked;
+    });    
+    
     if (typeof this._lineWidth !== 'undefined') {
       this.lineWidth = this._lineWidth;
     }
@@ -151,11 +178,11 @@ export class CheckBox extends ContentView {
     if (typeof this._onCheckColor !== 'undefined') {
       this.onCheckColor = this._onCheckColor;
     }
-    if (typeof this._onFillColor !== 'undefined') {
-      this.onFillColor = this._onFillColor;
+    if (typeof this._fillColor !== 'undefined') {
+      this.fillColor = this._fillColor;
     }
-    if (typeof this._onTintColor !== 'undefined') {
-      this.onTintColor = this._onTintColor;
+    if (typeof this._tintColor !== 'undefined') {
+      this.tintColor = this._tintColor;
     }
     if (typeof this._animationDuration !== 'undefined') {
       this.animationDuration = this._animationDuration;
@@ -168,20 +195,101 @@ export class CheckBox extends ContentView {
     }
   }
 
+  public onUnloaded() {
+        this._iosCheckbox.delegate = null;
+        super.onUnloaded();
+    }
+
+
+  public toggle(){
+    this.checked = !this.checked;
+  }
+
   private getAnimationType(value: number) {
     switch (value) {
       case 1:
-        return BEMAnimationType.BEMAnimationTypeStroke;
+        return BEMAnimationType.Stroke;
       case 2:
-        return BEMAnimationType.BEMAnimationTypeFill;
+        return BEMAnimationType.Fill;
       case 3:
-        return BEMAnimationType.BEMAnimationTypeBounce;
+        return BEMAnimationType.Bounce;
       case 4:
-        return BEMAnimationType.BEMAnimationTypeFlat;
+        return BEMAnimationType.Flat;
       case 5:
-        return BEMAnimationType.BEMAnimationTypeOneStroke;
+        return BEMAnimationType.Stroke;
       case 6:
-        return BEMAnimationType.BEMAnimationTypeFade;
+        return BEMAnimationType.Fade;
     }
   }
+
+  public _onCheckedPropertyChanged(data: PropertyChangeData) {
+      if(this._iosCheckbox){
+            this._iosCheckbox.setOnAnimated(data.newValue, true);
+      }
+  }
 }
+
+function onCheckedPropertyChanged(data: PropertyChangeData) {
+    var checkbox = <CheckBox>data.object;
+    checkbox._onCheckedPropertyChanged(data);
+}
+
+
+// register the setNativeValue callbacks
+(<PropertyMetadata>CheckBox.checkedProperty.metadata).onSetNativeValue = onCheckedPropertyChanged;
+
+
+class BEMCheckBoxDelegateImpl extends NSObject implements BEMCheckBoxDelegate {
+    public static ObjCProtocols = [BEMCheckBoxDelegate];
+    /*public static ObjCExposedMethods = {
+        "didTapCheckBox": { returns: interop.types.void, params: [NSObject] }
+    };*/
+
+    private _owner: WeakRef<CheckBox>;
+
+    public static initWithOwner(owner: WeakRef<CheckBox>): BEMCheckBoxDelegateImpl {
+        let delegate = <BEMCheckBoxDelegateImpl>BEMCheckBoxDelegateImpl.new();
+        delegate._owner = owner;
+        return delegate;
+    }
+
+    public animationDidStopForCheckBox(checkBox: BEMCheckBox): void {
+        //TODO: Maybe trigger event later?
+    }
+
+    public didTapCheckBox(checkBox: BEMCheckBox): void {
+      let owner = this._owner.get();
+        if (owner) {
+            owner._onPropertyChangedFromNative(CheckBox.checkedProperty, checkBox.on);
+        }
+    }
+}
+
+export class CheckBoxStyler implements style.Styler {
+    private static setBorderColorProperty(view: any, newValue: any) {  
+        if (view.nativeiOSCheckBox){
+          var color = new Color(newValue);
+          console.log("setBorderColorProperty to "+ color);
+            view.nativeiOSCheckBox.tintColor = color.ios;
+        }
+    }
+
+  private static setBorderWidthProperty(view: any, newValue: any) {  
+        if (view.nativeiOSCheckBox){
+            view.nativeiOSCheckBox.lineWidth = newValue;
+        }
+    }
+
+    private static resetColorProperty(view: View, nativeValue: number) {
+        // Do nothing.
+    }
+
+    public static registerHandlers() {
+        style.registerHandler(style.borderColorProperty, new style.StylePropertyChangedHandler(CheckBoxStyler.setBorderColorProperty, CheckBoxStyler.resetColorProperty), "CheckBox");
+        style.registerHandler(style.borderWidthProperty, new style.StylePropertyChangedHandler(CheckBoxStyler.setBorderWidthProperty, CheckBoxStyler.resetColorProperty), "CheckBox");
+
+        style.registerHandler(style.borderRadiusProperty, style.ignorePropertyHandler, "CheckBox");
+    }
+}
+
+CheckBoxStyler.registerHandlers();

@@ -20,6 +20,11 @@ declare module "nativescript-checkbox" {
          */
         android: any /* android.widget.CheckBox */;
 
+         /**
+         * Gets the ios Label with the checkbox as a subview
+         */
+        ios: any /* Label */;
+
         /**
          * Gets or sets if a switch is checked or not.
          */
@@ -30,6 +35,16 @@ declare module "nativescript-checkbox" {
          */
         toggle(): void;
 
-    }
 
+    }
+}
+
+export interface CheckBoxInterface{
+    text: string;
+    checked: boolean;
+    fillColor: string;
+    tintColor: string;
+    //checkBoxSize: number;
+
+    toggle(): void;
 }

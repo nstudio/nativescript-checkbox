@@ -6,13 +6,13 @@
 # NativeScript CheckBox :white_check_mark:
 A NativeScript plugin for the native checkbox widget.
 
-** Android only - there is no concept of a checkbox on iOS. I'm looking to find a cocoapod to bring this plugin to both platforms. **
-
 #### Platform controls used: 
 Android |
 ---------- |
-[Android CheckBox](https://developer.android.com/reference/android/widget/CheckBox.html) |
-
+[Android CheckBox](https://developer.android.com/reference/android/widget/CheckBox.html) 
+iOS |
+---------- |
+[BEMCheckBox](http://cocoapods.org/pods/BEMCheckBox) |
 
 ## Sample Usage
 
@@ -35,7 +35,7 @@ From your command prompt/terminal go to your app's root folder and execute:
   xmlns:CheckBox="nativescript-checkbox" loaded="pageLoaded">
   <ActionBar title="Native Checkbox" />
   <StackLayout>
-    <CheckBox:CheckBox checked="{{ checkProp }}" text="{{ myCheckText }}" color="{{ myCheckColor }}" id="myCheckbox" />
+    <CheckBox:CheckBox checked="{{ checkProp }}" text="{{ myCheckText }}" fillColor="{{ myCheckColor }}" id="myCheckbox" />
     <CheckBox:CheckBox text="CheckBox Label" checked="false" />
   </StackLayout>
 </Page>
@@ -62,11 +62,19 @@ public getCheckProp() {
 
 - **checked** - boolean
 - **text** - text to use with the checkbox
+- **fillColor** - Color of the checkbox element
 
 ## API
 
 - **toggle()** - Change the checked state of the view to the inverse of its current state.
 
-## Styling
+## Css Styling
 
-- **color** - set the checkbox color tint - Android 21+ only.
+- **color** - set the text label color
+- **font-size** - checkbox is sized to text from here 
+- **border-width** - set the line width of the checkbox element: iOS only
+
+## Demo Setup
+* npm install tns-platform-declarations
+* preparedemo
+* npm run demo.ios

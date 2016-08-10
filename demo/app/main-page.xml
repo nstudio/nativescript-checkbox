@@ -2,9 +2,40 @@
   xmlns="http://schemas.nativescript.org/tns.xsd" 
   xmlns:CheckBox="nativescript-checkbox" loaded="pageLoaded">
   <ActionBar title="Native Checkbox" />
-  <StackLayout padding="10">
-    <Button text="Toggle" tap="{{ toggleCheck }}" />
-    <CheckBox:CheckBox checked="{{ checkProp }}" text="{{ myCheckText }}" color="{{ myCheckColor }}" id="myCheckbox" width="50" height="50" marginBottom="10" lineWidth="3" onAnimationType="3" />
-    <CheckBox:CheckBox text="CheckBox Label" checked="false" width="100" height="100" boxType="2" />
+
+<ScrollView>
+  <StackLayout id="wrapper">
+    <Label text="Functions" class="title" />
+    <StackLayout class="listitem">
+      <GridLayout columns="*, auto" class="demosection">
+        <CheckBox:CheckBox id="toggleTest" col="0" text="toggle()" checked="false" style="margin-right: 10"  />
+        <Button col="1" text="GO" tap="onToggleTest" class="button" />  
+      </GridLayout>
+    </StackLayout>
+
+    <Label text="Bound to Repeater" class="title" />
+    <StackLayout class="demosection">  
+      <Repeater items="{{ data }}">
+          <Repeater.itemTemplate>
+            <StackLayout class="listitem" >
+              <CheckBox:CheckBox text="{{ text }}" checked="{{ checked }}" fillColor="{{ color }}" tintColor="{{ color }}" />
+            </StackLayout>  
+          </Repeater.itemTemplate>
+      </Repeater>
+    </StackLayout>
+    
+    <Label text="Events" class="title" />
+    <StackLayout class="listitem">
+        <CheckBox:CheckBox text="tap test" checked="false" tap="onTapTest" />
+        <Label text="{{ eventLabel }}" textWrap="true" class="message" />
+    </StackLayout>
+
+    <Label text="Debug" class="title" />
+    <StackLayout class="listitem">
+        <Button text="View Model" tap="onDumpModel" class="button" style="horizontal-align: left;" />
+        <Label id="modelDumpLabel" textWrap="true" class="message" />
+    </StackLayout>
   </StackLayout>
+</ScrollView>
+
 </Page>

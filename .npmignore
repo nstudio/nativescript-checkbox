@@ -5,3 +5,4 @@ screens/
 *.ts
 !index.d.ts
 !checkbox.d.ts
+!BEMCheckBox.d.ts
