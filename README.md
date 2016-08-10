@@ -7,12 +7,10 @@
 A NativeScript plugin for the native checkbox widget.
 
 #### Platform controls used: 
-Android |
----------- |
-[Android CheckBox](https://developer.android.com/reference/android/widget/CheckBox.html) 
-iOS |
----------- |
-[BEMCheckBox](http://cocoapods.org/pods/BEMCheckBox) |
+Android |   iOS
+---------- | -------
+[Android CheckBox](https://developer.android.com/reference/android/widget/CheckBox.html) | [BEMCheckBox](http://cocoapods.org/pods/BEMCheckBox) 
+
 
 ## Sample Usage
 
