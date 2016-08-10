@@ -1,8 +1,9 @@
 {
 	"name": "nativescript-checkbox",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"description": "NativeScript plugin for checkbox widget.",
 	"main": "checkbox.js",
+	"typings": "index.d.ts",
 	"nativescript": {
 		"platforms": {
 			"android": "2.1.1",
@@ -30,6 +31,7 @@
 		"JavaScript",
 		"TypeScript",
 		"Android",
+		"iOS",
 		"Material Design",
 		"CheckBox",
 		"bradmartin",
