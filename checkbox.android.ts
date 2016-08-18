@@ -1,10 +1,10 @@
-import {CheckBoxInterface} from "./checkbox";
+import { CheckBoxInterface } from "./checkbox";
 import { View } from "ui/core/view";
 import { Color } from "color";
 import { isAndroid, device } from "platform";
 import { Property, PropertyChangeData } from "ui/core/dependency-observable";
 import { PropertyMetadata } from "ui/core/proxy";
-import {Font} from "ui/styling/font";
+import { Font } from "ui/styling/font";
 import enums = require("ui/enums");
 import style = require("ui/styling/style");
 
@@ -60,7 +60,7 @@ export class CheckBox extends View implements CheckBoxInterface {
     set fillColor(color: string) {
         this._fillColor = color;
 
-        if(this._android)
+        if(this._android && device.sdkVersion >= "21")
             this._android.setButtonTintList(android.content.res.ColorStateList.valueOf(new Color(this._fillColor).android));
     }
 
