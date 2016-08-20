@@ -268,9 +268,12 @@ class BEMCheckBoxDelegateImpl extends NSObject implements BEMCheckBoxDelegate {
 export class CheckBoxStyler implements style.Styler {
     private static setBorderColorProperty(view: any, newValue: any) {  
         if (view.nativeiOSCheckBox){
-          var color = new Color(newValue);
-          console.log("setBorderColorProperty to "+ color);
-            view.nativeiOSCheckBox.tintColor = color.ios;
+          try{
+              var color = new Color(newValue);
+              view.nativeiOSCheckBox.tintColor = color.ios;
+            }catch(error){
+                //Do nothing, catch bad color value
+            }
         }
     }
 
