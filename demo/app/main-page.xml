@@ -18,7 +18,7 @@
       <Repeater items="{{ data }}">
           <Repeater.itemTemplate>
             <StackLayout class="listitem" >
-              <CheckBox:CheckBox text="{{ text }}" checked="{{ checked }}" fillColor="{{ color }}" tintColor="{{ color }}" />
+              <CheckBox:CheckBox text="{{ text }}" checked="{{ checked }}" fillColor="{{ color }}" tintColor="{{ color }}" propertyChanged="onPropertyChanged" />
             </StackLayout>  
           </Repeater.itemTemplate>
       </Repeater>

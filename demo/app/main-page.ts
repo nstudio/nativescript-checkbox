@@ -40,3 +40,7 @@ export function onDumpModel(args: any){
     var label = <Label>page.getViewById("modelDumpLabel");
     label.text = JSON.stringify(model.data.getItem(0));
 }
+
+export function onPropertyChanged(args: any){
+    console.log("Property Changed");
+}
