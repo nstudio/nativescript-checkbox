@@ -84,7 +84,7 @@ export class CheckBox extends View implements CheckBoxInterface {
 
         
         if(this._android){
-            if(this.fillColor){
+            if(this.fillColor && device.sdkVersion >= "21"){
                 //Set bound colors
                 this._android.setButtonTintList(android.content.res.ColorStateList.valueOf(new Color(this._fillColor).android));
             }
