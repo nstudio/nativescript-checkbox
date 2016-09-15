@@ -7,7 +7,8 @@ import observableArrayModule = require("data/observable-array");
 
 export class HelloWorldModel extends Observable {
   public data: observableArrayModule.ObservableArray<DataItem>;
-  private _eventLabel: string;
+  public uberData: observableArrayModule.ObservableArray<DataItem>;
+  private _eventLabel: string = "Click text or checkbox";
   private _state: string;
   private _eventCount: number;
 
@@ -20,6 +21,68 @@ export class HelloWorldModel extends Observable {
     this.data.push(new DataItem("Nathan Walker", true, "#57bbed"));
     this.data.push(new DataItem("Steve McNiven-Scott", false, "#7559e7"));
     this.data.push(new DataItem("Ron Burgundy", true, "#eb5481"));
+
+    this.uberData = new observableArrayModule.ObservableArray<DataItem>();
+    //Copy\paste ...hacky I know, dont have time to make this elegant atm :)
+    this.uberData.push(new DataItem("Brad Martin", false, "#eab557"));
+    this.uberData.push(new DataItem("Nathan Walker", true, "#57bbed"));
+    this.uberData.push(new DataItem("Steve McNiven-Scott", false, "#7559e7"));
+    this.uberData.push(new DataItem("Ron Burgundy", true, "#eb5481"));
+
+    this.uberData.push(new DataItem("Brad Martin", false, "#eab557"));
+    this.uberData.push(new DataItem("Nathan Walker", true, "#57bbed"));
+    this.uberData.push(new DataItem("Steve McNiven-Scott", false, "#7559e7"));
+    this.uberData.push(new DataItem("Ron Burgundy", true, "#eb5481"));
+
+    this.uberData.push(new DataItem("Brad Martin", false, "#eab557"));
+    this.uberData.push(new DataItem("Nathan Walker", true, "#57bbed"));
+    this.uberData.push(new DataItem("Steve McNiven-Scott", false, "#7559e7"));
+    this.uberData.push(new DataItem("Ron Burgundy", true, "#eb5481"));
+
+    this.uberData.push(new DataItem("Brad Martin", false, "#eab557"));
+    this.uberData.push(new DataItem("Nathan Walker", true, "#57bbed"));
+    this.uberData.push(new DataItem("Steve McNiven-Scott", false, "#7559e7"));
+    this.uberData.push(new DataItem("Ron Burgundy", true, "#eb5481"));
+
+    this.uberData.push(new DataItem("Brad Martin", false, "#eab557"));
+    this.uberData.push(new DataItem("Nathan Walker", true, "#57bbed"));
+    this.uberData.push(new DataItem("Steve McNiven-Scott", false, "#7559e7"));
+    this.uberData.push(new DataItem("Ron Burgundy", true, "#eb5481"));
+
+    this.uberData.push(new DataItem("Brad Martin", false, "#eab557"));
+    this.uberData.push(new DataItem("Nathan Walker", true, "#57bbed"));
+    this.uberData.push(new DataItem("Steve McNiven-Scott", false, "#7559e7"));
+    this.uberData.push(new DataItem("Ron Burgundy", true, "#eb5481"));
+
+    this.uberData.push(new DataItem("Brad Martin", false, "#eab557"));
+    this.uberData.push(new DataItem("Nathan Walker", true, "#57bbed"));
+    this.uberData.push(new DataItem("Steve McNiven-Scott", false, "#7559e7"));
+    this.uberData.push(new DataItem("Ron Burgundy", true, "#eb5481"));
+    
+    this.uberData.push(new DataItem("Brad Martin", false, "#eab557"));
+    this.uberData.push(new DataItem("Nathan Walker", true, "#57bbed"));
+    this.uberData.push(new DataItem("Steve McNiven-Scott", false, "#7559e7"));
+    this.uberData.push(new DataItem("Ron Burgundy", true, "#eb5481"));
+
+    this.uberData.push(new DataItem("Brad Martin", false, "#eab557"));
+    this.uberData.push(new DataItem("Nathan Walker", true, "#57bbed"));
+    this.uberData.push(new DataItem("Steve McNiven-Scott", false, "#7559e7"));
+    this.uberData.push(new DataItem("Ron Burgundy", true, "#eb5481"));
+
+    this.uberData.push(new DataItem("Brad Martin", false, "#eab557"));
+    this.uberData.push(new DataItem("Nathan Walker", true, "#57bbed"));
+    this.uberData.push(new DataItem("Steve McNiven-Scott", false, "#7559e7"));
+    this.uberData.push(new DataItem("Ron Burgundy", true, "#eb5481"));
+
+    this.uberData.push(new DataItem("Brad Martin", false, "#eab557"));
+    this.uberData.push(new DataItem("Nathan Walker", true, "#57bbed"));
+    this.uberData.push(new DataItem("Steve McNiven-Scott", false, "#7559e7"));
+    this.uberData.push(new DataItem("Ron Burgundy", true, "#eb5481"));
+
+    this.uberData.push(new DataItem("Brad Martin", false, "#eab557"));
+    this.uberData.push(new DataItem("Nathan Walker", true, "#57bbed"));
+    this.uberData.push(new DataItem("Steve McNiven-Scott", false, "#7559e7"));
+    this.uberData.push(new DataItem("Ron Burgundy", true, "#eb5481"));
   }
 
     get eventLabel(): string {
