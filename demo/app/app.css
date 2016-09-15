@@ -63,8 +63,10 @@ CheckBox{
     horizontal-align: left;
     margin-bottom: 10;
     width: 100%;
+    background-color: transparent;
 }
 
 .title{
 
 }
+

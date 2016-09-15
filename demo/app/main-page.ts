@@ -37,11 +37,14 @@ export function onTapTest(args){
     model.updateMessage(box.checked);
 }
 
-export function onDumpModel(args: any){
+export function onRepeaterItemTap(args: any){
     var label = <Label>page.getViewById("modelDumpLabel");
-    label.text = JSON.stringify(model.data.getItem(0));
-}
+    let data = new Array<DataItem>();
+    console.log(model.data.length);
 
-export function onPropertyChanged(args: any){
-    console.log("Property Changed");
+    model.data.forEach(x => function(value: DataItem, index: number, array: Array<DataItem>){
+        console.log(value);
+    });
+
+    label.text = JSON.stringify(data);
 }
