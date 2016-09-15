@@ -73,5 +73,5 @@ public getCheckProp() {
 
 ## Demo Setup
 * npm install tns-platform-declarations
-* preparedemo
+* npm preparedemo
 * npm run demo.ios
