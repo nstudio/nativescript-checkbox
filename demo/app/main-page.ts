@@ -42,9 +42,9 @@ export function onRepeaterItemTap(args: any){
     let data = new Array<DataItem>();
     console.log(model.data.length);
 
-    model.data.forEach(x => function(value: DataItem, index: number, array: Array<DataItem>){
-        console.log(value);
-    });
+    for(var i=0; i < model.data.length; i++){
+        data.push(model.data.getItem(i));
+    }
 
     label.text = JSON.stringify(data);
 }
