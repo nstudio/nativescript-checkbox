@@ -33,7 +33,8 @@ export function onToggleTest(args){
 
 export function onTapTest(args){
     console.log("tap event test");
-    model.updateMessage();
+    let box = <CheckBox>args.object;
+    model.updateMessage(box.checked);
 }
 
 export function onDumpModel(args: any){

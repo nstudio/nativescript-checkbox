@@ -260,6 +260,12 @@ class BEMCheckBoxDelegateImpl extends NSObject implements BEMCheckBoxDelegate {
     public didTapCheckBox(checkBox: BEMCheckBox): void {
       let owner = this._owner.get();
         if (owner) {
+            var eventData = {
+                eventName: "tap",
+                object: owner
+            };
+            
+            owner.notify(eventData);
             owner._onPropertyChangedFromNative(CheckBox.checkedProperty, checkBox.on);
         }
     }

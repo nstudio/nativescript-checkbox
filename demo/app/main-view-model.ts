@@ -40,9 +40,9 @@ export class HelloWorldModel extends Observable {
         this.notifyPropertyChange("state", value);
     }
 
-    public updateMessage(){
+    public updateMessage(state){
         this._eventCount++;
-        this.eventLabel = "Triggered " + this._eventCount + " times";
+        this.eventLabel = "Triggered " + this._eventCount + " times, current state:" + state;
     }
 
 }
