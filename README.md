@@ -55,6 +55,9 @@ public getCheckProp() {
 
 ```
 
+### Angular Usage Help:
+[Here](https://github.com/bradmartin/nativescript-drawingpad#angular) is a sample on using UI components in Angular Native (NativeScript + Angular2)
+
 ## Properties
 
 - **checked** - boolean
