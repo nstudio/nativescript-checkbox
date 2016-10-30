@@ -10,6 +10,11 @@ ActionBar {
     color: #fff;
 }
 
+.tab-item {
+    color: #fff;
+    background-color: #fff000;
+}
+
 
 #wrapper{
     padding: 10;

@@ -3,7 +3,7 @@
   xmlns:CheckBox="nativescript-checkbox" loaded="pageLoaded">
   <ActionBar title="Native Checkbox" />
 
-<TabView id="tabViewContainer">
+<TabView id="tabViewContainer" selectedColor="#fff" tabsBackgroundColor="#336699">
     <TabView.items>
         <TabViewItem title="General" class="tab-item">
             <TabViewItem.view>
@@ -19,7 +19,7 @@
                     
                     <Label text="Events" class="title" />
                     <StackLayout class="listitem">
-                        <CheckBox:CheckBox text="tap test" checked="false" tap="onTapTest" />
+                        <CheckBox:CheckBox text="tap test" tintColor="#fff000" checked="false" tap="onTapTest" />
                         <Label text="{{ eventLabel }}" textWrap="true" class="message" />
                     </StackLayout>
 
@@ -46,7 +46,7 @@
                 <ListView items="{{ uberData }}" separatorColor="#d0d0d0">
                     <ListView.itemTemplate>
                         <StackLayout class="list-item" >
-                              <CheckBox:CheckBox class="list-check" text="{{ text }}" checked="{{ checked }}" fillColor="{{ color }}" tintColor="{{ color }}" propertyChanged="onPropertyChanged" />
+                              <CheckBox:CheckBox class="list-check" ios:color="#555" text="{{ text }}" checked="{{ checked }}" fillColor="{{ color }}" tintColor="{{ color }}" propertyChanged="onPropertyChanged" />
                             </StackLayout>  
                     </ListView.itemTemplate>
                 </ListView>

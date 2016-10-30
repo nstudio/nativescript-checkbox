@@ -55,8 +55,33 @@ public getCheckProp() {
 
 ```
 
-### Angular Usage Help:
-[Here](https://github.com/bradmartin/nativescript-drawingpad#angular) is a sample on using UI components in Angular Native (NativeScript + Angular2)
+### Angular Usage Sample:
+
+```typescript
+import { CheckBox } from 'nativescript-checkbox';
+import { registerElement } from "nativescript-angular/element-registry";
+registerElement("CheckBox", () => require("nativescript-checkbox").CheckBox);
+
+export class SomeComponent  {
+    @ViewChild("CB1") FirstCheckBox: ElementRef;
+    constructor() {}
+    public toggleCheck() {
+        this.FirstCheckBox.nativeElement.toggle();
+    }
+
+    public getCheckProp() {
+        console.log('checked prop value = ' + this.FirstCheckBox.nativeElement.checked);
+    }
+}
+```
+
+```html
+<StackLayout>
+    <CheckBox #CB1 text="CheckBox Label" checked="false"></CheckBox>
+    <Button (tap)="toggleCheck()" text="Toggle it!"></Button>
+    <Button (tap)="getCheckProp()" text="Check Property"></
+</StackLayout>
+```
 
 ## Properties
 
