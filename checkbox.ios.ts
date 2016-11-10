@@ -295,7 +295,7 @@ export class CheckBoxStyler implements style.Styler {
 
     public static registerHandlers() {
         style.registerHandler(style.borderColorProperty, new style.StylePropertyChangedHandler(CheckBoxStyler.setBorderColorProperty, CheckBoxStyler.resetColorProperty), "CheckBox");
-        style.registerHandler(style.borderWidthProperty, new style.StylePropertyChangedHandler(CheckBoxStyler.setBorderWidthProperty, CheckBoxStyler.resetColorProperty), "CheckBox");
+       /* style.registerHandler(style.borderWidthProperty, new style.StylePropertyChangedHandler(CheckBoxStyler.setBorderWidthProperty, CheckBoxStyler.resetColorProperty), "CheckBox"); */ //removed for 2.4+
 
         style.registerHandler(style.borderRadiusProperty, style.ignorePropertyHandler, "CheckBox");
     }
