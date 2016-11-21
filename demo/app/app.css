@@ -53,8 +53,6 @@ Label {
 CheckBox{
     vertical-align: center;
     color: white;
-    border-color: yellow;
-    border-width: 1;
     font-size: 20;
 }
 
