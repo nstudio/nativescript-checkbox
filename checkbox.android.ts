@@ -1,4 +1,4 @@
-import { CheckBoxInterface } from "./checkbox";
+import { CheckBoxInterface } from "./";
 import { View } from "ui/core/view";
 import { Color } from "color";
 import { isAndroid, device } from "platform";
@@ -198,15 +198,10 @@ export class CheckBoxStyler implements style.Styler {
             CheckBoxStyler.setFontInternalProperty,
             CheckBoxStyler.resetFontInternalProperty,
             CheckBoxStyler.getNativeFontInternalValue), "CheckBox");
-/*
+
         style.registerHandler(style.backgroundColorProperty, new style.StylePropertyChangedHandler(
             CheckBoxStyler.setColorLabelProperty,
             CheckBoxStyler.resetColorProperty), "CheckBox");
-            */
-
-        /*style.registerHandler(style.borderWidthProperty, style.ignorePropertyHandler, "CheckBox");*/ //removed for 2.4+
-        style.registerHandler(style.borderColorProperty, style.ignorePropertyHandler, "CheckBox");
-        style.registerHandler(style.borderRadiusProperty, style.ignorePropertyHandler, "CheckBox");
     }
 }
 

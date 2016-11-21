@@ -1,6 +1,6 @@
 /// <reference path="BEMCheckBox.d.ts" /> Needed for autocompletion and compilation.
 
-import {CheckBoxInterface} from "./checkbox";
+import {CheckBoxInterface} from "./";
 import { View } from "ui/core/view";
 import {ContentView} from "ui/content-view";
 import { Property, PropertyChangeData } from "ui/core/dependency-observable";
@@ -270,35 +270,3 @@ class BEMCheckBoxDelegateImpl extends NSObject implements BEMCheckBoxDelegate {
         }
     }
 }
-
-export class CheckBoxStyler implements style.Styler {
-    private static setBorderColorProperty(view: any, newValue: any) {  
-        if (view.nativeiOSCheckBox){
-          try{
-              var color = new Color(newValue);
-              view.nativeiOSCheckBox.tintColor = color.ios;
-            }catch(error){
-                //Do nothing, catch bad color value
-            }
-        }
-    }
-
-  private static setBorderWidthProperty(view: any, newValue: any) {  
-        if (view.nativeiOSCheckBox){
-            view.nativeiOSCheckBox.lineWidth = newValue;
-        }
-    }
-
-    private static resetColorProperty(view: View, nativeValue: number) {
-        // Do nothing.
-    }
-
-    public static registerHandlers() {
-        style.registerHandler(style.borderColorProperty, new style.StylePropertyChangedHandler(CheckBoxStyler.setBorderColorProperty, CheckBoxStyler.resetColorProperty), "CheckBox");
-       /* style.registerHandler(style.borderWidthProperty, new style.StylePropertyChangedHandler(CheckBoxStyler.setBorderWidthProperty, CheckBoxStyler.resetColorProperty), "CheckBox"); */ //removed for 2.4+
-
-        style.registerHandler(style.borderRadiusProperty, style.ignorePropertyHandler, "CheckBox");
-    }
-}
-
-CheckBoxStyler.registerHandlers();

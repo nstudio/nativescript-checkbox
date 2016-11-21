@@ -3,11 +3,10 @@
 	"version": "1.1.6",
 	"description": "NativeScript plugin for checkbox widget.",
 	"main": "checkbox.js",
-	"typings": "index.d.ts",
 	"nativescript": {
 		"platforms": {
-			"android": "2.3.0",
-      "ios": "2.3.0"
+			"android": "2.4.0",
+      "ios": "2.4.0"
 		}
 	},
 	"scripts": {
@@ -56,10 +55,7 @@
 	"bugs": {
 		"url": "https://github.com/bradmartin/nativescript-checkbox/issues"
 	},
-	"license": {
-		"type": "MIT",
-		"url": "https://github.com/bradmartin/nativescript-checkbox/blob/master/LICENSE"
-	},
+	"license":"MIT",
 	"homepage": "https://github.com/bradmartin/nativescript-checkbox",
 	"readmeFilename": "README.md",
 	"devDependencies": {
