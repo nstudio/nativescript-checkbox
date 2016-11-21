@@ -1,6 +1,6 @@
 {
 	"name": "nativescript-checkbox",
-	"version": "1.1.6",
+	"version": "1.2.0",
 	"description": "NativeScript plugin for checkbox widget.",
 	"main": "checkbox.js",
 	"nativescript": {
@@ -50,7 +50,11 @@
       "name": "Steve McNiven-Scott",
       "email": "steve@sitefinitysteve.com",
       "url": "https://github.com/sitefinitysteve"
-    }
+    },{
+			"name":"Osei Fortune",
+			"email": "fortune.osei@yahoo.com",
+			"url": "https://github.com/triniwiz"
+		}
   ],
 	"bugs": {
 		"url": "https://github.com/bradmartin/nativescript-checkbox/issues"
