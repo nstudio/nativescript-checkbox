@@ -1,6 +1,6 @@
 {
 	"name": "nativescript-checkbox",
-	"version": "1.2.1",
+	"version": "1.2.2",
 	"description": "NativeScript plugin for checkbox widget.",
 	"main": "checkbox.js",
 	"nativescript": {
