@@ -96,7 +96,7 @@ export class SomeComponent  {
 ## Css Styling
 
 - **color** - set the text label color
-- **font-size** - checkbox is sized to text from here 
+- **font-size** - checkbox is sized to text from here  : default 15
 - **border-width** - set the line width of the checkbox element: iOS only
 
 ## Demo Setup

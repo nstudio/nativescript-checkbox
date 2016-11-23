@@ -27,7 +27,7 @@ export declare class CheckBox {
 }
 
 export interface CheckBoxInterface {
-    text: string;
+    text?: string;
     checked: boolean;
     fillColor: string;
     tintColor: string;

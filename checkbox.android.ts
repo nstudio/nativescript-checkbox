@@ -53,19 +53,19 @@ export class CheckBox extends View implements CheckBoxInterface {
         this._setValue(CheckBox.textProperty, value);
     }
 
-    get fillColor() : string {
+    get fillColor(): string {
         return this._fillColor;
     }
 
     set fillColor(color: string) {
         this._fillColor = color;
 
-        if(this._android && device.sdkVersion >= "21")
+        if (this._android && device.sdkVersion >= "21")
             this._android.setButtonTintList(android.content.res.ColorStateList.valueOf(new Color(this._fillColor).android));
     }
 
     //There is no difference between tint and fill on the android widget
-    get tintColor() : string {
+    get tintColor(): string {
         return this.fillColor;
     }
 
@@ -81,10 +81,13 @@ export class CheckBox extends View implements CheckBoxInterface {
         if (this.text) {
             this._android.setText(this.text);
         }
+        if (!this.style.fontSize) {
+            this.style.fontSize = 15;
+        }
 
-        
-        if(this._android){
-            if(this.fillColor && device.sdkVersion >= "21"){
+
+        if (this._android) {
+            if (this.fillColor && device.sdkVersion >= "21") {
                 //Set bound colors
                 this._android.setButtonTintList(android.content.res.ColorStateList.valueOf(new Color(this._fillColor).android));
             }
@@ -141,14 +144,14 @@ function onTextPropertyChanged(data: PropertyChangeData) {
 
 
 export class CheckBoxStyler implements style.Styler {
-    private static setColorLabelProperty(view: any, newValue: any) {        
+    private static setColorLabelProperty(view: any, newValue: any) {
         var cb = <android.widget.CheckBox>view._nativeView;
-        if (cb) {            
+        if (cb) {
             (<any>cb).setTextColor(new Color(newValue).android);
         }
     }
 
-// font
+    // font
     private static setFontInternalProperty(view: any, newValue: any, nativeValue?: any) {
         var tv = <android.widget.CheckBox>view._nativeView;
         var fontValue = <Font>newValue;

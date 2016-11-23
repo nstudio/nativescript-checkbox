@@ -1,25 +1,22 @@
 /// <reference path="BEMCheckBox.d.ts" /> Needed for autocompletion and compilation.
 
-import {CheckBoxInterface} from "./";
+import { CheckBoxInterface } from "./";
 import { View } from "ui/core/view";
-import {ContentView} from "ui/content-view";
+import { ContentView } from "ui/content-view";
 import { Property, PropertyChangeData } from "ui/core/dependency-observable";
 import { PropertyMetadata } from "ui/core/proxy";
-import {Color} from "color";
-import {Label} from "ui/label";
-import {Button} from "ui/button";
-import {StackLayout} from "ui/layouts/stack-layout";
-import style = require("ui/styling/style");
+import { Color } from "color";
+import { Label } from "ui/label";
+import { Button } from "ui/button";
+import { StackLayout } from "ui/layouts/stack-layout";
 
 
 declare var CGRectMake: any, CGPointMake: any;
 
 export class CheckBox extends Button implements CheckBoxInterface {
   public static checkedProperty = new Property("checked", "CheckBox", new PropertyMetadata(false));
-
   private _iosCheckbox: BEMCheckBox;
   private _delegate: BEMCheckBoxDelegateImpl;
-  private _checked: boolean;
   private _fillColor: string = "#0075ff";
   private _tintColor: string = "#0075ff";
   private _lineWidth: number = 1;
@@ -41,26 +38,26 @@ export class CheckBox extends Button implements CheckBoxInterface {
     this._tintColor = "#0075ff";
     this._onAnimationType = 2;
     this._offAnimationType = 2;
-    
     this._iosCheckbox = <BEMCheckBox>BEMCheckBox.alloc().initWithFrame(CGRectMake(0, 0, 21, 21));
     this._delegate = BEMCheckBoxDelegateImpl.initWithOwner(new WeakRef(this));
-  }  
+  }
 
   get checked(): boolean {
-      return this._getValue(CheckBox.checkedProperty);
+    return this._getValue(CheckBox.checkedProperty);
   }
+
   set checked(value: boolean) {
     this._setValue(CheckBox.checkedProperty, value);
   }
 
   set fillColor(color: string) {
-      this._iosCheckbox.onFillColor = new Color(color).ios;
-      this._fillColor = color;
+    this._iosCheckbox.onFillColor = new Color(color).ios;
+    this._fillColor = color;
   }
 
   set tintColor(color: string) {
-      this._tintColor = color;
-      this._iosCheckbox.onTintColor = new Color(color).ios;
+    this._tintColor = color;
+    this._iosCheckbox.onTintColor = new Color(color).ios;
   }
 
   /* NATIVE PROPERTIES */
@@ -136,19 +133,25 @@ export class CheckBox extends Button implements CheckBoxInterface {
   public reload(value: boolean) {
     this._iosCheckbox.reload();
   }
+
   /* END NATIVE PROPERTIES */
 
 
   public onLoaded() {
     super.onLoaded();
 
-    var fontSize = this.style.fontSize;
-    this._iosCheckbox.delegate = this._delegate;
+    var fontSize;
 
-    //Positioning
-    this._iosCheckbox.frame = CGRectMake(0,0,fontSize,fontSize);
-    this._iosCheckbox.center = CGPointMake( this._iosCheckbox.center.x, (fontSize / 2) + 3);
-    
+    if (!this.style.fontSize) {
+      fontSize = 15;
+    } else {
+      fontSize = this.style.fontSize;
+    }
+    this._iosCheckbox.delegate = this._delegate;
+    // //Positioning
+    this._iosCheckbox.frame = CGRectMake(0, 0, fontSize, fontSize);
+    this._iosCheckbox.center = CGPointMake(this._iosCheckbox.center.x, (fontSize / 2) + 3);
+
     this.style.paddingLeft = fontSize + (fontSize > 20 ? 10 : 5);
     this.style.textAlignment = "left";
 
@@ -158,11 +161,11 @@ export class CheckBox extends Button implements CheckBoxInterface {
 
 
     //Allow label click to change the textbox
-    this.addEventListener("tap", function(args){
-        var checkbox = <CheckBox>args.object;
-        checkbox.checked = !checkbox.checked;
-    });    
-    
+    this.addEventListener("tap", function (args) {
+      var checkbox = <CheckBox>args.object;
+      checkbox.checked = !checkbox.checked;
+    });
+
     if (typeof this._lineWidth !== 'undefined') {
       this.lineWidth = this._lineWidth;
     }
@@ -196,12 +199,12 @@ export class CheckBox extends Button implements CheckBoxInterface {
   }
 
   public onUnloaded() {
-        this._iosCheckbox.delegate = null;
-        super.onUnloaded();
-    }
+    this._iosCheckbox.delegate = null;
+    super.onUnloaded();
+  }
 
 
-  public toggle(){
+  public toggle() {
     this.checked = !this.checked;
   }
 
@@ -223,15 +226,15 @@ export class CheckBox extends Button implements CheckBoxInterface {
   }
 
   public _onCheckedPropertyChanged(data: PropertyChangeData) {
-      if(this._iosCheckbox){
-            this._iosCheckbox.setOnAnimated(data.newValue, true);
-      }
+    if (this._iosCheckbox) {
+      this._iosCheckbox.setOnAnimated(data.newValue, true);
+    }
   }
 }
 
 function onCheckedPropertyChanged(data: PropertyChangeData) {
-    var checkbox = <CheckBox>data.object;
-    checkbox._onCheckedPropertyChanged(data);
+  var checkbox = <CheckBox>data.object;
+  checkbox._onCheckedPropertyChanged(data);
 }
 
 
@@ -240,33 +243,33 @@ function onCheckedPropertyChanged(data: PropertyChangeData) {
 
 
 class BEMCheckBoxDelegateImpl extends NSObject implements BEMCheckBoxDelegate {
-    public static ObjCProtocols = [BEMCheckBoxDelegate];
-    /*public static ObjCExposedMethods = {
-        "didTapCheckBox": { returns: interop.types.void, params: [NSObject] }
-    };*/
+  public static ObjCProtocols = [BEMCheckBoxDelegate];
+  /*public static ObjCExposedMethods = {
+   "didTapCheckBox": { returns: interop.types.void, params: [NSObject] }
+   };*/
 
-    private _owner: WeakRef<CheckBox>;
+  private _owner: WeakRef<CheckBox>;
 
-    public static initWithOwner(owner: WeakRef<CheckBox>): BEMCheckBoxDelegateImpl {
-        let delegate = <BEMCheckBoxDelegateImpl>BEMCheckBoxDelegateImpl.new();
-        delegate._owner = owner;
-        return delegate;
+  public static initWithOwner(owner: WeakRef<CheckBox>): BEMCheckBoxDelegateImpl {
+    let delegate = <BEMCheckBoxDelegateImpl>BEMCheckBoxDelegateImpl.new();
+    delegate._owner = owner;
+    return delegate;
+  }
+
+  public animationDidStopForCheckBox(checkBox: BEMCheckBox): void {
+    //TODO: Maybe trigger event later?
+  }
+
+  public didTapCheckBox(checkBox: BEMCheckBox): void {
+    let owner = this._owner.get();
+    if (owner) {
+      var eventData = {
+        eventName: "tap",
+        object: owner
+      };
+
+      owner.notify(eventData);
+      owner._onPropertyChangedFromNative(CheckBox.checkedProperty, checkBox.on);
     }
-
-    public animationDidStopForCheckBox(checkBox: BEMCheckBox): void {
-        //TODO: Maybe trigger event later?
-    }
-
-    public didTapCheckBox(checkBox: BEMCheckBox): void {
-      let owner = this._owner.get();
-        if (owner) {
-            var eventData = {
-                eventName: "tap",
-                object: owner
-            };
-            
-            owner.notify(eventData);
-            owner._onPropertyChangedFromNative(CheckBox.checkedProperty, checkBox.on);
-        }
-    }
+  }
 }
