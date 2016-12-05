@@ -1,8 +1,8 @@
 {
 	"name": "nativescript-checkbox",
-	"version": "1.2.2",
+	"version": "1.2.3",
 	"description": "NativeScript plugin for checkbox widget.",
-	"main": "checkbox.js",
+	"main": "checkbox",
 	"nativescript": {
 		"platforms": {
 			"android": "2.4.0",
