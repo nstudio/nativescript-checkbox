@@ -134,19 +134,19 @@ export class CheckBox extends View implements CheckBoxInterface {
         this._android = new android.widget.CheckBox(this._context, null);
 
         if(this.checkPaddingLeft){
-            this._android.setPadding(this.checkPaddingLeft,this._android.getPaddingTop(),this._android.getPaddingRight(),this._android.getPaddingBottom());
+            this._android.setPadding(parseInt(this.checkPaddingLeft),this._android.getPaddingTop(),this._android.getPaddingRight(),this._android.getPaddingBottom());
         }
 
         if(this.checkPaddingTop){
-            this._android.setPadding(this._android.getPaddingLeft(),this.checkPaddingTop,this._android.getPaddingRight(),this._android.getPaddingBottom());
+            this._android.setPadding(this._android.getPaddingLeft(),parseInt(this.checkPaddingTop),this._android.getPaddingRight(),this._android.getPaddingBottom());
         }
 
         if(this.checkPaddingRight){
-            this._android.setPadding(this._android.getPaddingLeft(),this._android.getPaddingTop(),this.checkPaddingRight,this._android.getPaddingBottom());
+            this._android.setPadding(this._android.getPaddingLeft(),this._android.getPaddingTop(),parseInt(this.checkPaddingRight),this._android.getPaddingBottom());
         }
 
         if(this.checkPaddingBottom){
-            this._android.setPadding(this._android.getPaddingLeft(),this._android.getPaddingTop(),this._android.getPaddingRight(),this.checkPaddingBottom);
+            this._android.setPadding(this._android.getPaddingLeft(),this._android.getPaddingTop(),this._android.getPaddingRight(),parseInt(this.checkPaddingBottom));
         }
 
         if(this.checkPadding){
