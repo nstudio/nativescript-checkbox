@@ -12,7 +12,7 @@
                     <Label text="Functions" class="title" />
                     <StackLayout class="listitem">
                       <GridLayout columns="*, auto" class="demosection">
-                        <CheckBox:CheckBox id="toggleTest" col="0" text="toggle()" checked="false" style="margin-right: 10"  />
+                        <CheckBox:CheckBox checkPadding="36" checkStyle="checkbox_grey" id="toggleTest" col="0" text="toggle()" checked="false" style="margin-right: 10"  />
                         <Button col="1" text="GO" tap="onToggleTest" class="button" />  
                       </GridLayout>
                     </StackLayout>
