@@ -99,6 +99,23 @@ export class SomeComponent  {
 - **font-size** - checkbox is sized to text from here  : default 15
 - **border-width** - set the line width of the checkbox element: iOS only
 
+## Styling [Android]
+- **checkStyle** - set to the name of your drawable
+- **checkPadding** - set the padding of the checkbox
+
+Add the following to `app/App_Resources/Android/drawable/checkbox_grey.xml`
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_enabled="false" android:state_checked="true" android:drawable="@drawable/ic_checkbox_checked_incomplete" />
+    <item android:state_enabled="false" android:state_checked="false" android:drawable="@drawable/ic_checkbox_grey_incomplete" />
+    <item android:state_checked="true" android:drawable="@drawable/ic_checkbox_checked_grey"/>
+    <item android:state_checked="false" android:drawable="@drawable/ic_checkbox_grey" />
+</selector>
+```
+
+
 ## Demo Setup
 * npm install tns-platform-declarations
 * npm preparedemo
