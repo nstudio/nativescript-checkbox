@@ -1,19 +1,24 @@
-import { CheckBoxInterface } from "./";
-import { View } from "ui/core/view";
-import { Color } from "color";
-import { isAndroid, device } from "platform";
-import { Property, PropertyChangeData } from "ui/core/dependency-observable";
-import { PropertyMetadata } from "ui/core/proxy";
-import { Font } from "ui/styling/font";
+import {CheckBoxInterface} from "./";
+import {View} from "ui/core/view";
+import {Color} from "color";
+import {isAndroid, device} from "platform";
+import {Property, PropertyChangeData} from "ui/core/dependency-observable";
+import {PropertyMetadata} from "ui/core/proxy";
+import {Font} from "ui/styling/font";
 import enums = require("ui/enums");
 import style = require("ui/styling/style");
-
+import app = require("application");
 declare var android: any;
 
 export class CheckBox extends View implements CheckBoxInterface {
     private _android: any; /// android.widget.CheckBox
     private _fillColor: string;
-
+    private _checkStyle: string;
+    private _checkPadding: string;
+    private _checkPaddingLeft: string;
+    private _checkPaddingTop: string;
+    private _checkPaddingRight: string;
+    private _checkPaddingBottom: string;
     public static checkedProperty = new Property(
         "checked",
         "CheckBox",
@@ -38,6 +43,55 @@ export class CheckBox extends View implements CheckBoxInterface {
         return this._android;
     }
 
+    get checkStyle() {
+        return this._checkStyle;
+    }
+
+    set checkStyle(style) {
+        this._checkStyle = style;
+    }
+
+    set checkPadding(padding){
+        this._checkPadding = padding;
+    }
+
+    get checkPadding(){
+        return this._checkPadding;
+    }
+
+    set checkPaddingLeft(padding){
+        this._checkPaddingLeft = padding;
+    }
+
+    get checkPaddingLeft(){
+        return this._checkPaddingLeft;
+    }
+
+
+    set checkPaddingTop(padding){
+        this._checkPaddingTop = padding;
+    }
+
+    get checkPaddingTop(){
+        return this._checkPaddingTop;
+    }
+
+    set checkPaddingRight(padding){
+        this._checkPaddingRight = padding;
+    }
+
+    get checkPaddingRight(){
+        return this._checkPaddingRight;
+    }
+
+    set checkPaddingBottom(padding){
+        this._checkPaddingBottom = padding;
+    }
+
+    get checkPaddingBottom(){
+        return this._checkPaddingBottom;
+    }
+
     get checked(): boolean {
         return this._getValue(CheckBox.checkedProperty);
     }
@@ -49,6 +103,7 @@ export class CheckBox extends View implements CheckBoxInterface {
     get text(): string {
         return this._getValue(CheckBox.textProperty);
     }
+
     set text(value: string) {
         this._setValue(CheckBox.textProperty, value);
     }
@@ -78,11 +133,49 @@ export class CheckBox extends View implements CheckBoxInterface {
 
         this._android = new android.widget.CheckBox(this._context, null);
 
+        if(this.checkPaddingLeft){
+            this._android.setPadding(this.checkPaddingLeft,this._android.getPaddingTop(),this._android.getPaddingRight(),this._android.getPaddingBottom());
+        }
+
+        if(this.checkPaddingTop){
+            this._android.setPadding(this._android.getPaddingLeft(),this.checkPaddingTop,this._android.getPaddingRight(),this._android.getPaddingBottom());
+        }
+
+        if(this.checkPaddingRight){
+            this._android.setPadding(this._android.getPaddingLeft(),this._android.getPaddingTop(),this.checkPaddingRight,this._android.getPaddingBottom());
+        }
+
+        if(this.checkPaddingBottom){
+            this._android.setPadding(this._android.getPaddingLeft(),this._android.getPaddingTop(),this._android.getPaddingRight(),this.checkPaddingBottom);
+        }
+
+        if(this.checkPadding){
+           let pads =  this.checkPadding.toString().split(',');
+           switch(pads.length){
+               case 1:
+                   this._android.setPadding(parseInt(pads[0]),parseInt(pads[0]),parseInt(pads[0]),parseInt(pads[0]));
+                   break;
+               case 2:
+                   this._android.setPadding(parseInt(pads[0]),parseInt(pads[1]),parseInt(pads[0]),parseInt(pads[1]));
+                   break;
+               case 3:
+                   this._android.setPadding(parseInt(pads[0]),parseInt(pads[1]),parseInt(pads[2]),parseInt(pads[1]));
+                   break;
+               case 4:
+                   this._android.setPadding(parseInt(pads[0]),parseInt(pads[1]),parseInt(pads[2]),parseInt(pads[3]));
+                   break;
+           }
+        }
         if (this.text) {
             this._android.setText(this.text);
         }
         if (!this.style.fontSize) {
             this.style.fontSize = 15;
+        }
+
+        if (this._checkStyle) {
+            const drawable = app.android.context.getResources().getIdentifier(this._checkStyle, "drawable", app.android.context.getPackageName());
+            this._android.setButtonDrawable(drawable);
         }
 
 
@@ -142,7 +235,6 @@ function onTextPropertyChanged(data: PropertyChangeData) {
 (<PropertyMetadata>CheckBox.textProperty.metadata).onSetNativeValue = onTextPropertyChanged;
 
 
-
 export class CheckBoxStyler implements style.Styler {
     private static setColorLabelProperty(view: any, newValue: any) {
         var cb = <android.widget.CheckBox>view._nativeView;
@@ -187,6 +279,7 @@ export class CheckBoxStyler implements style.Styler {
             size: tv.getTextSize()
         };
     }
+
     private static resetColorProperty(view: View, nativeValue: number) {
         // Do nothing.
     }
