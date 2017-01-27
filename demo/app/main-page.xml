@@ -8,6 +8,10 @@
                 <TabViewItem.view>
                     <ScrollView>
                         <StackLayout id="wrapper">
+
+                            <CheckBox:CheckBox id="fontSizeTest" text="Font Size Test" tintColor="#fff000" checked="false" class="fontBig" />
+                            
+                            
                             <Label text="Functions" class="title" />
                             <StackLayout class="listitem">
                                 <GridLayout columns="*, auto" class="demosection">

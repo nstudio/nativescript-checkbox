@@ -1,8 +1,8 @@
-
+import { View } from "ui/core/view";
 /**
  * Represents a CheckBox component.
  */
-export declare class CheckBox {
+export declare class CheckBox extends View {
 
     /**
      * Gets the native [android widget](https://developer.android.com/reference/android/widget/CheckBox.html) that represents the user interface for this component. Valid only when running on Android OS.

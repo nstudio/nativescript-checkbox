@@ -17,3 +17,8 @@ ListView{
 .list-item{
     padding: 10 10;
 }
+
+
+.fontBig {
+    font-size: 40;
+}

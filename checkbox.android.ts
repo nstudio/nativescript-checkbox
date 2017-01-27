@@ -1,10 +1,10 @@
-import {CheckBoxInterface} from "./";
-import {View} from "ui/core/view";
-import {Color} from "color";
-import {isAndroid, device} from "platform";
-import {Property, PropertyChangeData} from "ui/core/dependency-observable";
-import {PropertyMetadata} from "ui/core/proxy";
-import {Font} from "ui/styling/font";
+import { CheckBoxInterface } from "./";
+import { View } from "ui/core/view";
+import { Color } from "color";
+import { isAndroid, device } from "platform";
+import { Property, PropertyChangeData } from "ui/core/dependency-observable";
+import { PropertyMetadata } from "ui/core/proxy";
+import { Font } from "ui/styling/font";
 import enums = require("ui/enums");
 import style = require("ui/styling/style");
 import app = require("application");
@@ -51,44 +51,44 @@ export class CheckBox extends View implements CheckBoxInterface {
         this._checkStyle = style;
     }
 
-    set checkPadding(padding){
+    set checkPadding(padding) {
         this._checkPadding = padding;
     }
 
-    get checkPadding(){
+    get checkPadding() {
         return this._checkPadding;
     }
 
-    set checkPaddingLeft(padding){
+    set checkPaddingLeft(padding) {
         this._checkPaddingLeft = padding;
     }
 
-    get checkPaddingLeft(){
+    get checkPaddingLeft() {
         return this._checkPaddingLeft;
     }
 
 
-    set checkPaddingTop(padding){
+    set checkPaddingTop(padding) {
         this._checkPaddingTop = padding;
     }
 
-    get checkPaddingTop(){
+    get checkPaddingTop() {
         return this._checkPaddingTop;
     }
 
-    set checkPaddingRight(padding){
+    set checkPaddingRight(padding) {
         this._checkPaddingRight = padding;
     }
 
-    get checkPaddingRight(){
+    get checkPaddingRight() {
         return this._checkPaddingRight;
     }
 
-    set checkPaddingBottom(padding){
+    set checkPaddingBottom(padding) {
         this._checkPaddingBottom = padding;
     }
 
-    get checkPaddingBottom(){
+    get checkPaddingBottom() {
         return this._checkPaddingBottom;
     }
 
@@ -133,44 +133,46 @@ export class CheckBox extends View implements CheckBoxInterface {
 
         this._android = new android.widget.CheckBox(this._context, null);
 
-        if(this.checkPaddingLeft){
-            this._android.setPadding(parseInt(this.checkPaddingLeft),this._android.getPaddingTop(),this._android.getPaddingRight(),this._android.getPaddingBottom());
+        if (this.checkPaddingLeft) {
+            this._android.setPadding(parseInt(this.checkPaddingLeft), this._android.getPaddingTop(), this._android.getPaddingRight(), this._android.getPaddingBottom());
         }
 
-        if(this.checkPaddingTop){
-            this._android.setPadding(this._android.getPaddingLeft(),parseInt(this.checkPaddingTop),this._android.getPaddingRight(),this._android.getPaddingBottom());
+        if (this.checkPaddingTop) {
+            this._android.setPadding(this._android.getPaddingLeft(), parseInt(this.checkPaddingTop), this._android.getPaddingRight(), this._android.getPaddingBottom());
         }
 
-        if(this.checkPaddingRight){
-            this._android.setPadding(this._android.getPaddingLeft(),this._android.getPaddingTop(),parseInt(this.checkPaddingRight),this._android.getPaddingBottom());
+        if (this.checkPaddingRight) {
+            this._android.setPadding(this._android.getPaddingLeft(), this._android.getPaddingTop(), parseInt(this.checkPaddingRight), this._android.getPaddingBottom());
         }
 
-        if(this.checkPaddingBottom){
-            this._android.setPadding(this._android.getPaddingLeft(),this._android.getPaddingTop(),this._android.getPaddingRight(),parseInt(this.checkPaddingBottom));
+        if (this.checkPaddingBottom) {
+            this._android.setPadding(this._android.getPaddingLeft(), this._android.getPaddingTop(), this._android.getPaddingRight(), parseInt(this.checkPaddingBottom));
         }
 
-        if(this.checkPadding){
-           let pads =  this.checkPadding.toString().split(',');
-           switch(pads.length){
-               case 1:
-                   this._android.setPadding(parseInt(pads[0]),parseInt(pads[0]),parseInt(pads[0]),parseInt(pads[0]));
-                   break;
-               case 2:
-                   this._android.setPadding(parseInt(pads[0]),parseInt(pads[1]),parseInt(pads[0]),parseInt(pads[1]));
-                   break;
-               case 3:
-                   this._android.setPadding(parseInt(pads[0]),parseInt(pads[1]),parseInt(pads[2]),parseInt(pads[1]));
-                   break;
-               case 4:
-                   this._android.setPadding(parseInt(pads[0]),parseInt(pads[1]),parseInt(pads[2]),parseInt(pads[3]));
-                   break;
-           }
+        if (this.checkPadding) {
+            let pads = this.checkPadding.toString().split(',');
+            switch (pads.length) {
+                case 1:
+                    this._android.setPadding(parseInt(pads[0]), parseInt(pads[0]), parseInt(pads[0]), parseInt(pads[0]));
+                    break;
+                case 2:
+                    this._android.setPadding(parseInt(pads[0]), parseInt(pads[1]), parseInt(pads[0]), parseInt(pads[1]));
+                    break;
+                case 3:
+                    this._android.setPadding(parseInt(pads[0]), parseInt(pads[1]), parseInt(pads[2]), parseInt(pads[1]));
+                    break;
+                case 4:
+                    this._android.setPadding(parseInt(pads[0]), parseInt(pads[1]), parseInt(pads[2]), parseInt(pads[3]));
+                    break;
+            }
         }
         if (this.text) {
             this._android.setText(this.text);
         }
-        if (!this.style.fontSize) {
-            this.style.fontSize = 15;
+
+        /// works with class styling - Brad
+        if (!this.fontSize) {
+            this.fontSize = 15;
         }
 
         if (this._checkStyle) {
