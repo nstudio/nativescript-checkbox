@@ -131,7 +131,8 @@ export class CheckBox extends View implements CheckBoxInterface {
 
     public _createUI() {
 
-        this._android = new android.widget.CheckBox(this._context, null);
+        // this._android = new android.widget.CheckBox(this._context, null);
+        this._android = new android.support.v7.widget.AppCompatCheckBox(this._context, null);
 
         if (this.checkPaddingLeft) {
             this._android.setPadding(parseInt(this.checkPaddingLeft), this._android.getPaddingTop(), this._android.getPaddingRight(), this._android.getPaddingBottom());
@@ -182,11 +183,9 @@ export class CheckBox extends View implements CheckBoxInterface {
 
 
         if (this._android) {
-            if (this.fillColor && device.sdkVersion >= "21") {
-                //Set bound colors
-                this._android.setButtonTintList(android.content.res.ColorStateList.valueOf(new Color(this._fillColor).android));
+            if (this.fillColor) {
+                android.support.v4.widget.CompoundButtonCompat.setButtonTintList(this._android, android.content.res.ColorStateList.valueOf(new Color(this._fillColor).android));
             }
-
         }
 
         var that = new WeakRef(this);
