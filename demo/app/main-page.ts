@@ -14,10 +14,10 @@ let page: Page;
 // Event handler for Page "loaded" event attached in main-page.xml
 export function pageLoaded(args: EventData) {
     // Get the event sender
-     page = <Page>args.object;
-     model = new HelloWorldModel();
-     page.bindingContext = model;
- 
+    page = <Page>args.object;
+    model = new HelloWorldModel();
+    page.bindingContext = model;
+
     //Not related to checkboxes
     if (isAndroid && device.sdkVersion >= "21") {
         let window = android.startActivity.getWindow();
@@ -25,24 +25,30 @@ export function pageLoaded(args: EventData) {
     }
 }
 
-export function onToggleTest(args){
+export function disabledTapTestCheck() {
+    let tapTestCheck = <CheckBox>page.getViewById("tapTestCheck");
+    tapTestCheck.isEnabled = !tapTestCheck.isEnabled;
+    console.log(tapTestCheck);
+}
+
+export function onToggleTest(args) {
     console.log("toggle tap")
     let toggleTest = <CheckBox>page.getViewById("toggleTest");
     toggleTest.toggle();
 }
 
-export function onTapTest(args){
+export function onTapTest(args) {
     console.log("tap event test");
     let box = <CheckBox>args.object;
     model.updateMessage(box.checked);
 }
 
-export function onRepeaterItemTap(args: any){
+export function onRepeaterItemTap(args: any) {
     var label = <Label>page.getViewById("modelDumpLabel");
     let data = new Array<DataItem>();
     console.log(model.data.length);
 
-    for(var i=0; i < model.data.length; i++){
+    for (var i = 0; i < model.data.length; i++) {
         data.push(model.data.getItem(i));
     }
 
