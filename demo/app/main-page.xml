@@ -9,7 +9,7 @@
                     <ScrollView>
                         <StackLayout id="wrapper">
 
-                            <CheckBox:CheckBox id="fontSizeTest" text="Font Size Test" tintColor="#fff000" checked="false" class="fontBig" />
+                            <CheckBox:CheckBox id="fontSizeTest" boxType="2" fillColor="#fff000" onCheckColor="green" text="Font Size Test" tint="red" tintColor="red" checked="false" class="fontBig" />
                             
                             
                             <Label text="Functions" class="title" />
