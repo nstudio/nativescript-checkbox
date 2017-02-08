@@ -1,69 +1,70 @@
 {
-	"name": "nativescript-checkbox",
-	"version": "1.2.5",
-	"description": "NativeScript plugin for checkbox widget.",
-	"main": "checkbox",
-	"nativescript": {
-		"platforms": {
-			"android": "2.4.0",
+  "name": "nativescript-checkbox",
+  "version": "1.2.5",
+  "description": "NativeScript plugin for checkbox widget.",
+  "main": "checkbox",
+  "nativescript": {
+    "platforms": {
+      "android": "2.4.0",
       "ios": "2.4.0"
-		}
-	},
-	"scripts": {
-		"build": "tsc",
-		"copy.ios": "cp -R checkbox.*.js demo/node_modules/nativescript-checkbox && cd demo && tns livesync ios --watch",
-		"copy.android": "cp -R checkbox.*.js demo/node_modules/nativescript-checkbox && cd demo && tns livesync android --watch",
-		"buildrun": "npm run build && cp -R checkbox.*.js demo/node_modules/nativescript-checkbox",
-    "demo.ios": "npm run preparedemo && cdcd demo && tns emulate ios",
-		"demo.android": "npm run preparedemo && cd demo && tns run android",
-		"debug.ios": "npm run preparedemo && cd demo && tns debug ios",
-		"debug.android": "npm run preparedemo && cd demo && tns debug android",
-		"preparedemo": "npm run build && cd demo && tns plugin remove nativescript-checkbox && tns plugin add .. && tns install",
-		"setup": "cd demo && npm install && cd .. && npm run build && cd demo && tns plugin add .. && cd .."
-	},
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/bradmartin/nativescript-checkbox.git"
-	},
-	"keywords": [
-		"NativeScript",
-		"JavaScript",
-		"TypeScript",
-		"Android",
-		"iOS",
-		"Material Design",
-		"CheckBox",
-		"bradmartin",
-		"thorum"
-	],
-	"author": {
-		"name": "Brad Martin",
-		"email": "bradwaynemartin@gmail.com"
-	},
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "copy.ios": "cp -R checkbox.*.js demo/node_modules/nativescript-checkbox && cd demo && tns livesync ios --watch",
+    "copy.android": "cp -R checkbox.*.js demo/node_modules/nativescript-checkbox && cd demo && tns livesync android --watch",
+    "buildrun": "npm run build && cp -R checkbox.*.js demo/node_modules/nativescript-checkbox",
+    "demo.ios": "npm run preparedemo && cd demo && tns emulate ios",
+    "demo.android": "npm run preparedemo && cd demo && tns run android",
+    "debug.ios": "npm run preparedemo && cd demo && tns debug ios",
+    "debug.android": "npm run preparedemo && cd demo && tns debug android",
+    "preparedemo": "npm run build && cd demo && tns plugin remove nativescript-checkbox && tns plugin add .. && tns install",
+    "setup": "cd demo && npm install && cd .. && npm run build && cd demo && tns plugin add .. && cd .."
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bradmartin/nativescript-checkbox.git"
+  },
+  "keywords": [
+    "NativeScript",
+    "JavaScript",
+    "TypeScript",
+    "Android",
+    "iOS",
+    "Material Design",
+    "CheckBox",
+    "bradmartin",
+    "thorum"
+  ],
+  "author": {
+    "name": "Brad Martin",
+    "email": "bradwaynemartin@gmail.com"
+  },
   "contributors": [
     {
       "name": "Nathan Walker",
       "email": "walkerrunpdx@gmail.com",
       "url": "https://github.com/NathanWalker"
     },
-		{
+    {
       "name": "Steve McNiven-Scott",
       "email": "steve@sitefinitysteve.com",
       "url": "https://github.com/sitefinitysteve"
-    },{
-			"name":"Osei Fortune",
-			"email": "fortune.osei@yahoo.com",
-			"url": "https://github.com/triniwiz"
-		}
+    },
+    {
+      "name": "Osei Fortune",
+      "email": "fortune.osei@yahoo.com",
+      "url": "https://github.com/triniwiz"
+    }
   ],
-	"bugs": {
-		"url": "https://github.com/bradmartin/nativescript-checkbox/issues"
-	},
-	"license":"MIT",
-	"homepage": "https://github.com/bradmartin/nativescript-checkbox",
-	"readmeFilename": "README.md",
-	"devDependencies": {
+  "bugs": {
+    "url": "https://github.com/bradmartin/nativescript-checkbox/issues"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/bradmartin/nativescript-checkbox",
+  "readmeFilename": "README.md",
+  "devDependencies": {
     "tns-platform-declarations": "^2.0.0",
-		"typescript": "^1.8.10"
-	}
+    "typescript": "^1.8.10"
+  }
 }
