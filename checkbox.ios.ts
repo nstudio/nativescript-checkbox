@@ -23,6 +23,7 @@ export class CheckBox extends Button implements CheckBoxInterface {
   private _hideBox: boolean;
   private _boxType: number;
   private _tint: string;
+  private _checkBoxBackgroundColor:string;
   private _onCheckColor: string;
   private _animationDuration: number;
   private _onAnimationType: number;
@@ -50,34 +51,33 @@ export class CheckBox extends Button implements CheckBoxInterface {
     this._setValue(CheckBox.checkedProperty, value);
   }
 
+  set checkBoxBackgroundColor(color:string){
+    (<any>this._iosCheckbox).backgroundColor = new Color(color).ios;
+    this._checkBoxBackgroundColor = color;
+  }
   set fillColor(color: string) {
     this._iosCheckbox.onFillColor = new Color(color).ios;
     this._fillColor = color;
   }
 
   set tintColor(color: string) {
-    this._tintColor = color;
     this._iosCheckbox.onTintColor = new Color(color).ios;
+    this._tintColor = color;
   }
 
   /* NATIVE PROPERTIES */
   set checkedAnimated(value: boolean) {
-    if (this._iosCheckbox)
-      this._iosCheckbox.setOnAnimated(value, true);
+    this._iosCheckbox.setOnAnimated(value, true);
   }
 
   set lineWidth(value: number) {
-    if (this._iosCheckbox)
-      this._iosCheckbox.lineWidth = value;
-    else
-      this._lineWidth = value;
+    this._iosCheckbox.lineWidth = value;
+    this._lineWidth = value;
   }
 
   set hideBox(value: boolean) {
-    if (this._iosCheckbox)
-      this._iosCheckbox.hideBox = value;
-    else
-      this._hideBox = value;
+    this._iosCheckbox.hideBox = value;
+    this._hideBox = value;
   }
 
   set boxType(value: number) {
@@ -92,24 +92,18 @@ export class CheckBox extends Button implements CheckBoxInterface {
   }
 
   set tint(color: string) {
-    if (this._iosCheckbox)
-      this._iosCheckbox.tintColor = new Color(color).ios;
-    else
-      this._tint = color;
+    (<any>this._iosCheckbox).tintColor = new Color(color).ios;
+    this._tint = color;
   }
 
   set onCheckColor(color: string) {
-    if (this._iosCheckbox)
-      this._iosCheckbox.onCheckColor = new Color(color).ios;
-    else
-      this._onCheckColor = color;
+    this._iosCheckbox.onCheckColor = new Color(color).ios;
+    this._onCheckColor = color;
   }
 
   set animationDuration(value: number) {
-    if (this._iosCheckbox)
-      this._iosCheckbox.animationDuration = value;
-    else
-      this._animationDuration = value;
+    this._iosCheckbox.animationDuration = value;
+    this._animationDuration = value;
   }
 
   set onAnimationType(value: number) {
@@ -120,10 +114,8 @@ export class CheckBox extends Button implements CheckBoxInterface {
   }
 
   set offAnimationType(value: number) {
-    if (this._iosCheckbox)
-      this._iosCheckbox.offAnimationType = this.getAnimationType(value);
-    else
-      this._offAnimationType = value;
+    this._iosCheckbox.offAnimationType = this.getAnimationType(value);
+    this._offAnimationType = value;
   }
 
   get nativeiOSCheckBox() {
@@ -180,6 +172,9 @@ export class CheckBox extends Button implements CheckBoxInterface {
     }
     if (typeof this._onCheckColor !== 'undefined') {
       this.onCheckColor = this._onCheckColor;
+    }
+    if (typeof this._checkBoxBackgroundColor !== 'undefined') {
+      this.checkBoxBackgroundColor = this._checkBoxBackgroundColor;
     }
     if (typeof this._fillColor !== 'undefined') {
       this.fillColor = this._fillColor;
