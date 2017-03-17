@@ -19,7 +19,7 @@ export class CheckBox extends View implements CheckBoxInterface {
     private _checkPaddingTop: string;
     private _checkPaddingRight: string;
     private _checkPaddingBottom: string;
-    public static changeEvent = "chekedChanged";
+    public static changeEvent = "checkedChanged";
     public static checkedProperty = new Property(
         "checked",
         "CheckBox",
