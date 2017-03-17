@@ -23,7 +23,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/bradmartin/nativescript-checkbox.git"
+    "url": "https://github.com/cagatayoncul/nativescript-checkbox.git"
   },
   "keywords": [
     "NativeScript",
@@ -58,10 +58,10 @@
     }
   ],
   "bugs": {
-    "url": "https://github.com/bradmartin/nativescript-checkbox/issues"
+    "url": "https://github.com/cagatayoncul/nativescript-checkbox/issues"
   },
   "license": "MIT",
-  "homepage": "https://github.com/bradmartin/nativescript-checkbox",
+  "homepage": "https://github.com/cagatayoncul/nativescript-checkbox",
   "readmeFilename": "README.md",
   "devDependencies": {
     "tns-platform-declarations": "^2.0.0",
