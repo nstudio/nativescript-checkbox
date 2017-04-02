@@ -9,6 +9,7 @@ import { Color } from "color";
 import { Label } from "ui/label";
 import { Button } from "ui/button";
 import { StackLayout } from "ui/layouts/stack-layout";
+import { Observable } from "data/observable";
 
 
 declare var CGRectMake: any, CGPointMake: any;
@@ -23,7 +24,7 @@ export class CheckBox extends Button implements CheckBoxInterface {
   private _hideBox: boolean;
   private _boxType: number;
   private _tint: string;
-  private _checkBoxBackgroundColor:string;
+  private _checkBoxBackgroundColor: string;
   private _onCheckColor: string;
   private _animationDuration: number;
   private _onAnimationType: number;
@@ -51,7 +52,7 @@ export class CheckBox extends Button implements CheckBoxInterface {
     this._setValue(CheckBox.checkedProperty, value);
   }
 
-  set checkBoxBackgroundColor(color:string){
+  set checkBoxBackgroundColor(color: string) {
     (<any>this._iosCheckbox).backgroundColor = new Color(color).ios;
     this._checkBoxBackgroundColor = color;
   }
@@ -223,6 +224,14 @@ export class CheckBox extends Button implements CheckBoxInterface {
   public _onCheckedPropertyChanged(data: PropertyChangeData) {
     if (this._iosCheckbox) {
       this._iosCheckbox.setOnAnimated(data.newValue, true);
+      let _old = data.oldValue;
+      let _new = data.newValue;
+      let obj = new Observable({
+        view: this,
+        oldValue: _old,
+        newValue: _new
+      });
+      this.notify({ eventName: "checkedChanged", object: obj });
     }
   }
 }
@@ -258,12 +267,6 @@ class BEMCheckBoxDelegateImpl extends NSObject implements BEMCheckBoxDelegate {
   public didTapCheckBox(checkBox: BEMCheckBox): void {
     let owner = this._owner.get();
     if (owner) {
-      var eventData = {
-        eventName: "tap",
-        object: owner
-      };
-
-      owner.notify(eventData);
       owner._onPropertyChangedFromNative(CheckBox.checkedProperty, checkBox.on);
     }
   }
