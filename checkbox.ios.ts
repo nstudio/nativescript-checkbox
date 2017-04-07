@@ -196,6 +196,7 @@ export class CheckBox extends Button implements CheckBoxInterface {
 
   public onUnloaded() {
     this._iosCheckbox.delegate = null;
+    this.removeEventListener("tap");
     super.onUnloaded();
   }
 
