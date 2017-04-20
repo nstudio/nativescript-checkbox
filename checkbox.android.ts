@@ -19,6 +19,7 @@ export class CheckBox extends View implements CheckBoxInterface {
     private _checkPaddingTop: string;
     private _checkPaddingRight: string;
     private _checkPaddingBottom: string;
+    public static changeEvent = "chekedChanged";
     public static checkedProperty = new Property(
         "checked",
         "CheckBox",
@@ -198,6 +199,7 @@ export class CheckBox extends View implements CheckBoxInterface {
             onCheckedChanged: function (sender, isChecked) {
                 if (this.owner) {
                     this.owner._onPropertyChangedFromNative(CheckBox.checkedProperty, isChecked);
+                    this.owner._emit(CheckBox.changeEvent);
                 }
             }
         }));

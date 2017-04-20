@@ -23,6 +23,11 @@ export declare class CheckBox extends View {
      * Change the checked state of the view to the inverse of its current state.
      */
     toggle(): void;
+    
+    /**
+     * String value used when hooking to the checked value change event.
+     */
+    public static changeEvent: string;
 
 }
 
