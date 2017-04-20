@@ -3,14 +3,15 @@
 import { CheckBoxInterface } from "./";
 import { View } from "ui/core/view";
 import { ContentView } from "ui/content-view";
-import { Property, PropertyChangeData } from "ui/core/dependency-observable";
+import { Property, PropertyChangeData, PropertyMetadataSettings } from "ui/core/dependency-observable";
 import { PropertyMetadata } from "ui/core/proxy";
 import { Color } from "color";
 import { Label } from "ui/label";
 import { Button } from "ui/button";
 import { StackLayout } from "ui/layouts/stack-layout";
 import { Observable } from "data/observable";
-
+import style = require("ui/styling/style");
+import styleProperty = require("ui/styling/style-property");
 
 declare var CGRectMake: any, CGPointMake: any;
 
@@ -36,8 +37,6 @@ export class CheckBox extends Button implements CheckBoxInterface {
     // just create with any width/height as XML view width/height is undefined at this point
     // we modify width/height later below in onLoaded
     this._onCheckColor = "#ffffff";
-    this._fillColor = "#0075ff";
-    this._tintColor = "#0075ff";
     this._onAnimationType = 2;
     this._offAnimationType = 2;
     this._iosCheckbox = <BEMCheckBox>BEMCheckBox.alloc().initWithFrame(CGRectMake(0, 0, 21, 21));
@@ -133,15 +132,10 @@ export class CheckBox extends Button implements CheckBoxInterface {
   public onLoaded() {
     super.onLoaded();
 
-    var fontSize;
-
-    if (!this.style.fontSize) {
-      fontSize = 15;
-    } else {
-      fontSize = this.style.fontSize;
-    }
     this._iosCheckbox.delegate = this._delegate;
-    // //Positioning
+    
+    // Positioning
+    let fontSize = this.style.fontSize || 15;
     this._iosCheckbox.frame = CGRectMake(0, 0, fontSize, fontSize);
     this._iosCheckbox.center = CGPointMake(this._iosCheckbox.center.x, (fontSize / 2) + 3);
 
@@ -152,6 +146,9 @@ export class CheckBox extends Button implements CheckBoxInterface {
 
     this._iosCheckbox.on = this.checked;
 
+    if (this.style.tintColor) {
+      this.tintColor = this.style.tintColor.hex;
+    }
 
     //Allow label click to change the textbox
     this.addEventListener("tap", function (args) {
@@ -246,6 +243,46 @@ function onCheckedPropertyChanged(data: PropertyChangeData) {
 // register the setNativeValue callbacks
 (<PropertyMetadata>CheckBox.checkedProperty.metadata).onSetNativeValue = onCheckedPropertyChanged;
 
+const fillColorProperty = new styleProperty.Property(
+    "fillColor",
+    "fill-color",
+    new PropertyMetadata(
+        undefined,
+        PropertyMetadataSettings.Inheritable,
+        undefined,
+        Color.isValid,
+        Color.equals
+    ),
+    undefined
+);
+
+class CheckBoxStyler implements style.Styler {
+    private static setFillColorProperty(view: View, newValue: string) {
+        view.fillColor = newValue;
+    }
+
+    private static resetFillColorProperty(view: View, nativeValue: any) {
+
+    }
+
+    private static getFillColorProperty(view: View): string {
+        return view._fillColor;
+    }
+
+    public static registerHandlers() {
+        style.registerHandler(
+          fillColorProperty,
+          new style.StylePropertyChangedHandler(
+            CheckBoxStyler.setFillColorProperty,
+            CheckBoxStyler.resetFillColorProperty,
+            CheckBoxStyler.getFillColorProperty
+          ),
+          "CheckBox"
+        );
+    }
+}
+
+CheckBoxStyler.registerHandlers();
 
 class BEMCheckBoxDelegateImpl extends NSObject implements BEMCheckBoxDelegate {
   public static ObjCProtocols = [BEMCheckBoxDelegate];
