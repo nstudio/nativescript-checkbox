@@ -21,7 +21,11 @@ Android Sample |  iOS Sample
 ## Installation
 From your command prompt/terminal go to your app's root folder and execute:
 
+#### NS 3.0+
 `tns plugin add nativescript-checkbox`
+
+#### NS < 3.0
+`tns plugin add nativescript-checkbox@1.2.8`
 
 ## Usage
 
