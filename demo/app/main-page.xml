@@ -8,10 +8,7 @@
                 <TabViewItem.view>
                     <ScrollView>
                         <StackLayout id="wrapper">
-
                             <CheckBox:CheckBox id="fontSizeTest" boxType="2" fillColor="#fff000" onCheckColor="green" text="Font Size Test" tint="red" tintColor="red" checked="false" class="fontBig" />
-                            
-                            
                             <Label text="Functions" class="title" />
                             <StackLayout class="listitem">
                                 <GridLayout columns="*, auto" class="demosection">
@@ -22,7 +19,7 @@
                             <Label text="Events" class="title" />
                             <StackLayout class="listitem">
                                 <Button text="Disable Checkbox" tap="disabledTapTestCheck" />
-                                <CheckBox:CheckBox id="tapTestCheck" text="tap test" tintColor="#fff000" checked="false" tap="onTapTest" />
+                                <CheckBox:CheckBox id="tapTestCheck" text="tap test" tintColor="#fff000" tap="onTapTest" />
                                 <Label text="{{ eventLabel }}" textWrap="true" class="message" />
                             </StackLayout>
                             <Label text="Bound to Repeater" class="title" />

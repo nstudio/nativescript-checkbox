@@ -1,72 +1,140 @@
 /// <reference path="BEMCheckBox.d.ts" /> Needed for autocompletion and compilation.
 
-import { CheckBoxInterface } from "./";
-import { View } from "ui/core/view";
-import { ContentView } from "ui/content-view";
-import { Property, PropertyChangeData } from "ui/core/dependency-observable";
-import { PropertyMetadata } from "ui/core/proxy";
-import { Color } from "color";
-import { Label } from "ui/label";
-import { Button } from "ui/button";
-import { StackLayout } from "ui/layouts/stack-layout";
-import { Observable } from "data/observable";
+import {CheckBoxInterface} from ".";
+import {
+  Property,
+  CssProperty,
+  Style,
+  booleanConverter,
+} from "tns-core-modules/ui/core/view";
+import {Color} from "tns-core-modules/color";
+import {Button} from "tns-core-modules/ui/button";
 
+declare const CGRectMake: any, CGPointMake: any;
+const checkBoxBackgroundColorProperty = new CssProperty<Style, string>({
+  name: 'checkBoxBackgroundColor',
+  cssName: 'checkbox-background-color',
+  valueConverter: v => {
+    return String(v)
+  }
+});
+const onCheckColorProperty = new CssProperty<Style, string>({
+  name: 'onCheckColor',
+  cssName: 'on-check-color',
+  defaultValue: '#ffffff',
+  valueConverter: v => {
+    return String(v)
+  }
+});
+const tintColorProperty = new CssProperty<Style, string>({
+  name: 'tintColor',
+  cssName: 'tint-color',
+  defaultValue: '#0075ff',
+  valueConverter: v => {
+    return String(v)
+  }
+});
+const onTintColorProperty = new CssProperty<Style, string>({
+  name: 'onTintColor',
+  cssName: 'on-tint-color',
+  valueConverter: v => {
+    return String(v)
+  }
+});
+const fillColorProperty = new CssProperty<Style, string>({
+  name: 'fillColor',
+  cssName: 'fill-color',
+  valueConverter: v => {
+    return String(v)
+  }
+});
 
-declare var CGRectMake: any, CGPointMake: any;
-
-export class CheckBox extends Button implements CheckBoxInterface {
-  public static checkedProperty = new Property("checked", "CheckBox", new PropertyMetadata(false));
+const checkedProperty = new Property<CheckBox, boolean>({
+  name: 'checked',
+  defaultValue: false,
+  valueConverter: booleanConverter,
+  valueChanged: onCheckedPropertyChanged
+});
+export class CheckBox extends Button implements CheckBoxInterface  {
   private _iosCheckbox: BEMCheckBox;
   private _delegate: BEMCheckBoxDelegateImpl;
-  private _fillColor: string = "#0075ff";
-  private _tintColor: string = "#0075ff";
   private _lineWidth: number = 1;
   private _hideBox: boolean;
   private _boxType: number;
   private _tint: string;
-  private _checkBoxBackgroundColor: string;
-  private _onCheckColor: string;
   private _animationDuration: number;
   private _onAnimationType: number;
   private _offAnimationType: number;
-
+  public checked:boolean;
   constructor() {
     super();
-
     // just create with any width/height as XML view width/height is undefined at this point
     // we modify width/height later below in onLoaded
-    this._onCheckColor = "#ffffff";
-    this._fillColor = "#0075ff";
-    this._tintColor = "#0075ff";
-    this._onAnimationType = 2;
-    this._offAnimationType = 2;
     this._iosCheckbox = <BEMCheckBox>BEMCheckBox.alloc().initWithFrame(CGRectMake(0, 0, 21, 21));
-    this._delegate = BEMCheckBoxDelegateImpl.initWithOwner(new WeakRef(this));
   }
 
-  get checked(): boolean {
-    return this._getValue(CheckBox.checkedProperty);
-  }
 
-  set checked(value: boolean) {
-    this._setValue(CheckBox.checkedProperty, value);
-  }
+  get fillColor(): string {
+    return (<any>this.style).fillColor;
+  };
 
-  set checkBoxBackgroundColor(color: string) {
-    (<any>this._iosCheckbox).backgroundColor = new Color(color).ios;
-    this._checkBoxBackgroundColor = color;
-  }
   set fillColor(color: string) {
+    (<any>this.style).fillColor = color;
     this._iosCheckbox.onFillColor = new Color(color).ios;
-    this._fillColor = color;
-  }
+  };
 
-  set tintColor(color: string) {
+  get onFillColor():string {
+    return (<any>this.style).fillColor;
+  };
+
+  set onFillColor(color:string) {
+    (<any>this.style).fillColor = color;
+    this._iosCheckbox.onFillColor = new Color(color).ios;
+  };
+
+  get tintColor():string {
+    return (<any>this.style).tintColor;
+  };
+
+  set tintColor(color:string) {
+    (<any>this.style).tintColor = color;
+    (<any>this._iosCheckbox).tintColor = new Color(color).ios;
+  };
+
+  set onTintColor(color:string) {
+    (<any>this.style).onTintColor = color;
     this._iosCheckbox.onTintColor = new Color(color).ios;
-    this._tintColor = color;
+  };
+
+  get onTintColor():string {
+    return (<any>this.style).onTintColor;
+  };
+
+  get checkBoxBackgroundColor():any {
+    return (<any>this.style).checkBoxBackgroundColor;
+  };
+  set checkBoxBackgroundColor(color:any) {
+    (<any>this._iosCheckbox).backgroundColor = new Color(color).ios;
+    (<any>this.style).checkBoxBackgroundColor = color;
+  };
+
+  get onCheckColor():string{
+    return (<any>this.style).onCheckColor;
+  }
+  set onCheckColor(color:string){
+    (<any>this.style).onCheckColor = color;
+    this._iosCheckbox.onCheckColor = new Color(color).ios;
   }
 
-  /* NATIVE PROPERTIES */
+  [checkedProperty.getDefault](): boolean {
+    return false;
+  }
+
+  [checkedProperty.setNative](value: boolean) {
+    this._iosCheckbox.setOnAnimated(value, true);
+  }
+
+
   set checkedAnimated(value: boolean) {
     this._iosCheckbox.setOnAnimated(value, true);
   }
@@ -92,15 +160,6 @@ export class CheckBox extends Button implements CheckBoxInterface {
       this._boxType = value;
   }
 
-  set tint(color: string) {
-    (<any>this._iosCheckbox).tintColor = new Color(color).ios;
-    this._tint = color;
-  }
-
-  set onCheckColor(color: string) {
-    this._iosCheckbox.onCheckColor = new Color(color).ios;
-    this._onCheckColor = color;
-  }
 
   set animationDuration(value: number) {
     this._iosCheckbox.animationDuration = value;
@@ -127,12 +186,20 @@ export class CheckBox extends Button implements CheckBoxInterface {
     this._iosCheckbox.reload();
   }
 
-  /* END NATIVE PROPERTIES */
+
+  public initNativeView() {
 
 
-  public onLoaded() {
-    super.onLoaded();
+    //Allow label click to change the textbox
+    this.addEventListener("tap", (args) => {
+      const checkbox = <CheckBox>args.object;
+      checkbox.checked = !checkbox.checked;
+    });
 
+    this._onAnimationType = 2;
+    this._offAnimationType = 2;
+
+    this._delegate = BEMCheckBoxDelegateImpl.initWithOwner(new WeakRef(this));
     var fontSize;
 
     if (!this.style.fontSize) {
@@ -140,24 +207,16 @@ export class CheckBox extends Button implements CheckBoxInterface {
     } else {
       fontSize = this.style.fontSize;
     }
+
     this._iosCheckbox.delegate = this._delegate;
     // //Positioning
     this._iosCheckbox.frame = CGRectMake(0, 0, fontSize, fontSize);
     this._iosCheckbox.center = CGPointMake(this._iosCheckbox.center.x, (fontSize / 2) + 3);
-
     this.style.paddingLeft = fontSize + (fontSize > 20 ? 10 : 5);
     this.style.textAlignment = "left";
 
-    this.ios.addSubview(this._iosCheckbox);
+    this.nativeView.addSubview(this._iosCheckbox);
 
-    this._iosCheckbox.on = this.checked;
-
-
-    //Allow label click to change the textbox
-    this.addEventListener("tap", function (args) {
-      var checkbox = <CheckBox>args.object;
-      checkbox.checked = !checkbox.checked;
-    });
 
     if (typeof this._lineWidth !== 'undefined') {
       this.lineWidth = this._lineWidth;
@@ -168,21 +227,7 @@ export class CheckBox extends Button implements CheckBoxInterface {
     if (typeof this._boxType !== 'undefined') {
       this.boxType = this._boxType;
     }
-    if (typeof this._tint !== 'undefined') {
-      this.tint = this._tint;
-    }
-    if (typeof this._onCheckColor !== 'undefined') {
-      this.onCheckColor = this._onCheckColor;
-    }
-    if (typeof this._checkBoxBackgroundColor !== 'undefined') {
-      this.checkBoxBackgroundColor = this._checkBoxBackgroundColor;
-    }
-    if (typeof this._fillColor !== 'undefined') {
-      this.fillColor = this._fillColor;
-    }
-    if (typeof this._tintColor !== 'undefined') {
-      this.tintColor = this._tintColor;
-    }
+
     if (typeof this._animationDuration !== 'undefined') {
       this.animationDuration = this._animationDuration;
     }
@@ -194,10 +239,9 @@ export class CheckBox extends Button implements CheckBoxInterface {
     }
   }
 
-  public onUnloaded() {
+  public disposeNativeView() {
     this._iosCheckbox.delegate = null;
     this.removeEventListener("tap");
-    super.onUnloaded();
   }
 
 
@@ -222,30 +266,13 @@ export class CheckBox extends Button implements CheckBoxInterface {
     }
   }
 
-  public _onCheckedPropertyChanged(data: PropertyChangeData) {
-    if (this._iosCheckbox) {
-      this._iosCheckbox.setOnAnimated(data.newValue, true);
-      let _old = data.oldValue;
-      let _new = data.newValue;
-      let obj = new Observable({
-        view: this,
-        oldValue: _old,
-        newValue: _new
-      });
-      this.notify({ eventName: "checkedChanged", object: obj });
+  _onCheckedPropertyChanged(checkbox: CheckBox, oldValue, newValue) {
+    if (!this.nativeView) {
+      return
     }
+    checkedProperty.nativeValueChange(this, newValue);
   }
 }
-
-function onCheckedPropertyChanged(data: PropertyChangeData) {
-  var checkbox = <CheckBox>data.object;
-  checkbox._onCheckedPropertyChanged(data);
-}
-
-
-// register the setNativeValue callbacks
-(<PropertyMetadata>CheckBox.checkedProperty.metadata).onSetNativeValue = onCheckedPropertyChanged;
-
 
 class BEMCheckBoxDelegateImpl extends NSObject implements BEMCheckBoxDelegate {
   public static ObjCProtocols = [BEMCheckBoxDelegate];
@@ -268,7 +295,19 @@ class BEMCheckBoxDelegateImpl extends NSObject implements BEMCheckBoxDelegate {
   public didTapCheckBox(checkBox: BEMCheckBox): void {
     let owner = this._owner.get();
     if (owner) {
-      owner._onPropertyChangedFromNative(CheckBox.checkedProperty, checkBox.on);
+      checkedProperty.nativeValueChange(owner, checkBox.on);
     }
   }
 }
+
+
+function onCheckedPropertyChanged(checkbox: CheckBox, oldValue, newValue) {
+  checkbox._onCheckedPropertyChanged(checkbox, oldValue, newValue);
+}
+
+checkedProperty.register(CheckBox);
+fillColorProperty.register(Style);
+onTintColorProperty.register(Style);
+onCheckColorProperty.register(Style);
+checkBoxBackgroundColorProperty.register(Style);
+tintColorProperty.register(Style);

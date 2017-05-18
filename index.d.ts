@@ -1,4 +1,5 @@
-import { View } from "ui/core/view";
+
+import { View } from "tns-core-modules/ui/core/view";
 /**
  * Represents a CheckBox component.
  */
@@ -10,8 +11,8 @@ export declare class CheckBox extends View {
     android: any /* android.widget.CheckBox */;
 
     /**
-    * Gets the ios Label with the checkbox as a subview
-    */
+     * Gets the ios Label with the checkbox as a subview
+     */
     ios: any /* Label */;
 
     /**
@@ -29,7 +30,5 @@ export declare class CheckBox extends View {
 export interface CheckBoxInterface {
     text?: string;
     checked: boolean;
-    fillColor: string;
-    tintColor: string;
     toggle(): void;
 }

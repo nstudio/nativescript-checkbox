@@ -1,12 +1,12 @@
-import { EventData } from 'data/observable';
-import { Page } from 'ui/page';
-import { isAndroid, device } from "platform";
-import { Color } from "color";
-import { android } from "application";
+import { EventData } from 'tns-core-modules/data/observable';
+import { Page } from 'tns-core-modules/ui/page';
+import { isAndroid, device, isIOS } from "tns-core-modules/platform";
+import { Color } from "tns-core-modules/color";
+import { android } from "tns-core-modules/application";
 import { HelloWorldModel } from './main-view-model';
 import { DataItem } from './main-view-model';
 import { CheckBox } from 'nativescript-checkbox';
-import { Label } from 'ui/label';
+import { Label } from 'tns-core-modules/ui/label';
 
 let model: HelloWorldModel;
 let page: Page;
@@ -32,7 +32,7 @@ export function disabledTapTestCheck() {
 }
 
 export function onToggleTest(args) {
-    console.log("toggle tap")
+    console.log("toggle tap");
     let toggleTest = <CheckBox>page.getViewById("toggleTest");
     toggleTest.toggle();
 }
@@ -46,7 +46,6 @@ export function onTapTest(args) {
 export function onRepeaterItemTap(args: any) {
     var label = <Label>page.getViewById("modelDumpLabel");
     let data = new Array<DataItem>();
-    console.log(model.data.length);
 
     for (var i = 0; i < model.data.length; i++) {
         data.push(model.data.getItem(i));
