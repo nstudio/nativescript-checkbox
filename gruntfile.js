@@ -3,6 +3,7 @@ module.exports = function (grunt) {
         typeScriptDeclarations: [
             "**/*.d.ts",
             "!references.d.ts",
+            "!BEMCheckBox.d.ts",
             "!node_modules/**/*.*",
             "!demo/**/*.*",
             "!demo-ng/**/*.*",
