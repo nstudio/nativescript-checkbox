@@ -62,10 +62,15 @@ public getCheckProp() {
 ### Angular Usage Sample:
 
 ```typescript
-import { CheckBox } from 'nativescript-checkbox';
-import { registerElement } from "nativescript-angular/element-registry";
-registerElement("CheckBox", () => require("nativescript-checkbox").CheckBox);
+import { TNSCheckBoxModule } from 'nativescript-checkbox/angular';
 
+@NgModule({
+    imports: [TNSCheckBoxModule],
+    // etc.
+})
+export class YourModule {}
+
+// component:
 export class SomeComponent  {
     @ViewChild("CB1") FirstCheckBox: ElementRef;
     constructor() {}
