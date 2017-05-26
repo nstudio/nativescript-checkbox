@@ -1,6 +1,6 @@
 {
   "name": "nativescript-checkbox",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "NativeScript plugin for checkbox widget.",
   "main": "checkbox",
   "typings": "index.d.ts",
@@ -73,6 +73,11 @@
     "rxjs":"~5.0.1",
     "zone.js": "~0.8.9",
     "nativescript-angular": "~3.0.0",
+
+    "grunt": "1.0.1",
+    "grunt-contrib-copy": "1.0.0",
+    "grunt-contrib-clean": "1.0.0",
+    "grunt-exec": "2.0.0",
 
     "tns-core-modules": "^3.0.0",
     "tns-platform-declarations": "^3.0.0",

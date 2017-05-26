@@ -3,6 +3,7 @@
 *.log
 *.d.ts
 !index.d.ts
+!gruntfile.js
 demo/lib
 demo/app/*.js
 demo/*.d.ts
@@ -19,3 +20,5 @@ node_modules
 .vscode/
 .idea/
 *.DS_Store
+bin
+!webpack.*.js

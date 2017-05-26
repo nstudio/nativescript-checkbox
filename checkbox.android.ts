@@ -27,7 +27,7 @@ export const textProperty = new Property<CheckBox, string>({
 export const fillColorProperty = new CssProperty<Style, string>({
     name: 'fillColor',
     cssName: 'fill-color',
-    valueConverter: v => {
+    valueConverter: (v) => {
         return String(v)
     }
 });
@@ -36,7 +36,7 @@ export const tintColorProperty = new CssProperty<Style, string>({
     name: 'tintColor',
     cssName: 'tint-color',
     defaultValue: '#0075ff',
-    valueConverter: v => {
+    valueConverter: (v) => {
         return String(v)
     }
 });
@@ -124,11 +124,12 @@ export class CheckBox extends View implements CheckBoxInterface {
     }
     set fillColor(color:string){
         (<any>this.style).fillColor = color;
-        if (this._android && device.sdkVersion >= "21")
+        if (this._android && device.sdkVersion >= "21") {
             this._android.setButtonTintList(android.content.res.ColorStateList.valueOf(new Color(color).android));
+        }
     }
 
-    //There is no difference between tint and fill on the android widget
+    // There is no difference between tint and fill on the android widget
     get tintColor(): string {
         return (<any>this.style).fillColor;
     }

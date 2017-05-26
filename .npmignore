@@ -4,10 +4,12 @@ screens/
 app/
 hooks/
 .vscode/
+gruntfile.js
 *.png
 *.log
 *.ts
 !index.d.ts
 !BEMCheckBox.d.ts
 tsconfig.json
+tsconfig.aot.json
 README.md
