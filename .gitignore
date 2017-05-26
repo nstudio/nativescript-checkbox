@@ -9,6 +9,12 @@ demo/*.d.ts
 demo/platforms
 demo/node_modules
 demo/.vscode
+demo-ng/app/*.js
+demo-ng/*.d.ts
+demo-ng/platforms
+demo-ng/node_modules
+demo/.vscode
+demo-ng/.vscode
 node_modules
 .vscode/
 .idea/

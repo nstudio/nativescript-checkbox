@@ -1,8 +1,9 @@
 {
   "name": "nativescript-checkbox",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "NativeScript plugin for checkbox widget.",
   "main": "checkbox",
+  "typings": "index.d.ts",
   "nativescript": {
     "platforms": {
       "android": "3.0.0",
@@ -27,14 +28,11 @@
   },
   "keywords": [
     "NativeScript",
-    "JavaScript",
     "TypeScript",
     "Android",
     "iOS",
     "Material Design",
-    "CheckBox",
-    "bradmartin",
-    "thorum"
+    "CheckBox"
   ],
   "author": {
     "name": "Brad Martin",
@@ -64,6 +62,18 @@
   "homepage": "https://github.com/bradmartin/nativescript-checkbox",
   "readmeFilename": "README.md",
   "devDependencies": {
+    "@angular/common": "~4.0.3",
+    "@angular/compiler": "~4.0.3",
+    "@angular/compiler-cli": "~4.0.3",
+    "@angular/core": "~4.0.3",
+    "@angular/forms": "~4.0.3",
+    "@angular/http": "~4.0.3",
+    "@angular/platform-browser": "~4.0.3",
+    "@angular/router": "~4.0.3",
+    "rxjs":"~5.0.1",
+    "zone.js": "~0.8.9",
+    "nativescript-angular": "~3.0.0",
+
     "tns-core-modules": "^3.0.0",
     "tns-platform-declarations": "^3.0.0",
     "typescript": "^2.2.0"
