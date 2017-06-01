@@ -1,5 +1,3 @@
-/// <reference path="BEMCheckBox.d.ts" /> Needed for autocompletion and compilation.
-
 import { CheckBoxInterface } from "./index";
 import {
     Property,

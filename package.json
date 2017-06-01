@@ -19,7 +19,7 @@
     "demo.android": "npm run preparedemo && cd demo && tns run android",
     "debug.ios": "npm run preparedemo && cd demo && tns debug ios",
     "debug.android": "npm run preparedemo && cd demo && tns debug android",
-    "preparedemo": "npm run build && cd demo && tns plugin remove nativescript-checkbox && tns plugin add .. && tns install",
+    "preparedemo": "cd demo && tns plugin remove nativescript-checkbox && tns plugin add .. && tns install",
     "setup": "cd demo && npm install && cd .. && npm run build && cd demo && tns plugin add .. && cd .."
   },
   "repository": {
