@@ -1,14 +1,11 @@
 module.exports = function (grunt) {
     var localConfig = {
         typeScriptDeclarations: [
-            "**/*.d.ts",
-            "!node_modules/**/*.*",
-            "!demo/**/*.*",
-            "!demo-ng/**/*.*",
-            "!bin/**/*.*"
+            "index.d.ts",
+            "BEMCheckBox.d.ts"
         ],
         outDir: "bin/dist/"
-    }
+    };
 
     grunt.initConfig({
         clean: {
