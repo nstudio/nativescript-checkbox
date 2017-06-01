@@ -1,6 +1,6 @@
 {
   "name": "nativescript-checkbox",
-  "version": "2.1.3",
+  "version": "2.1.4",
   "description": "NativeScript plugin for checkbox widget.",
   "main": "checkbox",
   "typings": "index.d.ts",
@@ -15,11 +15,14 @@
     "copy.ios": "cp -R checkbox.*.js demo/node_modules/nativescript-checkbox && cd demo && tns livesync ios --watch",
     "copy.android": "cp -R checkbox.*.js demo/node_modules/nativescript-checkbox && cd demo && tns livesync android --watch",
     "buildrun": "npm run build && cp -R checkbox.*.js demo/node_modules/nativescript-checkbox",
-    "demo.ios": "npm run preparedemo && cd demo && tns emulate ios",
-    "demo.android": "npm run preparedemo && cd demo && tns run android",
+    "demo.ios": "npm run preparedemo && cd demo && tns run ios --emulator",
+    "demo.ng.ios": "npm run preparedemong && cd demo-ng && tns run ios --emulator",
+    "demo.android": "npm run preparedemo && cd demo && tns run android --emulator",
+    "demo.ng.android": "npm run preparedemong && cd demo-ng && tns run android --emulator",
     "debug.ios": "npm run preparedemo && cd demo && tns debug ios",
     "debug.android": "npm run preparedemo && cd demo && tns debug android",
     "preparedemo": "npm run build && cd demo && tns plugin remove nativescript-checkbox && tns plugin add .. && tns install",
+    "preparedemong": "npm run build && cd demo-ng && tns plugin remove nativescript-checkbox && tns plugin add .. && tns install",
     "setup": "cd demo && npm install && cd .. && npm run build && cd demo && tns plugin add .. && cd .."
   },
   "repository": {
