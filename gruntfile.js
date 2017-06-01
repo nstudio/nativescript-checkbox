@@ -1,16 +1,11 @@
 module.exports = function (grunt) {
     var localConfig = {
         typeScriptDeclarations: [
-            "**/*.d.ts",
-            "!references.d.ts",
-            "!BEMCheckBox.d.ts",
-            "!node_modules/**/*.*",
-            "!demo/**/*.*",
-            "!demo-ng/**/*.*",
-            "!bin/**/*.*"
+            "index.d.ts",
+            "BEMCheckBox.d.ts"
         ],
         outDir: "bin/dist/"
-    }
+    };
 
     grunt.initConfig({
         clean: {
@@ -31,6 +26,15 @@ module.exports = function (grunt) {
                         var contentAsObject = JSON.parse(content);
                         contentAsObject.devDependencies = undefined;
                         return JSON.stringify(contentAsObject, null, "\t");
+                    }
+                }
+            },
+            podfile: {
+                src: "platforms/ios/Podfile",
+                dest: localConfig.outDir,
+                options: {
+                    process: function (content, srcPath) {
+                        return content.substring(content.indexOf("\n") + 1)
                     }
                 }
             },

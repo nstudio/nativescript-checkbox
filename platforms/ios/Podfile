@@ -1,1 +1,1 @@
-pod 'BEMCheckBox'
+pod 'BEMCheckBox', '~> 1.4.1'

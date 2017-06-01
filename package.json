@@ -6,8 +6,8 @@
   "typings": "index.d.ts",
   "nativescript": {
     "platforms": {
-      "android": "3.0.0",
-      "ios": "3.0.0"
+      "android": "3.0.1",
+      "ios": "3.0.1"
     }
   },
   "scripts": {
@@ -70,7 +70,7 @@
     "@angular/http": "~4.0.3",
     "@angular/platform-browser": "~4.0.3",
     "@angular/router": "~4.0.3",
-    "rxjs":"~5.0.1",
+    "rxjs": "~5.0.1",
     "zone.js": "~0.8.9",
     "nativescript-angular": "~3.0.0",
 

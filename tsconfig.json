@@ -19,10 +19,11 @@
             ]
         }
     },
-    "exclude": [
-        "node_modules", 
-        "demo", 
-        "demo-ng", 
-        "bin"
+    "include": [
+        "index.d.ts",
+        "BEMCheckBox.d.ts",
+        "checkbox.android.ts",
+        "checkbox.ios.ts",
+        "angular/index.ts"
     ]
 }
