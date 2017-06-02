@@ -31,12 +31,7 @@ module.exports = function (grunt) {
             },
             podfile: {
                 src: "platforms/ios/Podfile",
-                dest: localConfig.outDir,
-                options: {
-                    process: function (content, srcPath) {
-                        return content.substring(content.indexOf("\n") + 1)
-                    }
-                }
+                dest: localConfig.outDir
             },
             readme: {
                 src: "README.md",
