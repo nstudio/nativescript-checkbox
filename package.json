@@ -12,8 +12,8 @@
   },
   "scripts": {
     "build": "tsc",
-    "copy.ios": "cp -R checkbox.*.js demo/node_modules/nativescript-checkbox && cd demo && tns livesync ios --watch",
-    "copy.android": "cp -R checkbox.*.js demo/node_modules/nativescript-checkbox && cd demo && tns livesync android --watch",
+    "copy.ios": "cp -R checkbox.*.js demo/node_modules/nativescript-checkbox && cd demo && tns run ios --syncAllFiles",
+    "copy.android": "cp -R checkbox.*.js demo/node_modules/nativescript-checkbox && cd demo && tns run android --syncAllFiles",
     "buildrun": "npm run build && cp -R checkbox.*.js demo/node_modules/nativescript-checkbox",
     "demo.ios": "npm run preparedemo && cd demo && tns run ios --emulator",
     "demo.ng.ios": "npm run preparedemong && cd demo-ng && tns run ios --emulator",
