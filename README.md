@@ -126,8 +126,8 @@ Add the following to `app/App_Resources/Android/drawable/checkbox_grey.xml`
 
 
 ## Demo Setup
-* npm install tns-platform-declarations
-* npm preparedemo
+* npm i
+* npm run preparedemo
 * npm run demo.ios
 
 
