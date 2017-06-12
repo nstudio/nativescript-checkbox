@@ -88,7 +88,7 @@ export class SomeComponent  {
 <StackLayout>
     <CheckBox #CB1 text="CheckBox Label" checked="false"></CheckBox>
     <Button (tap)="toggleCheck()" text="Toggle it!"></Button>
-    <Button (tap)="getCheckProp()" text="Check Property"></
+    <Button (tap)="getCheckProp()" text="Check Property"></Button>
 </StackLayout>
 ```
 
