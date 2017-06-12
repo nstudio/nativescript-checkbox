@@ -124,6 +124,12 @@ Add the following to `app/App_Resources/Android/drawable/checkbox_grey.xml`
 </selector>
 ```
 
+## Radiobuttons, anyone?
+Want to use radiobutton behavior for your checkboxes (only one option possible within a group)?
+
+Check out the second tab in the [Angular demo](demo-ng/), here's a screenshot:
+
+<img src="./screens/radiobuttons.png" width="225px"/>
 
 ## Demo Setup
 * npm i
