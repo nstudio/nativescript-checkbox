@@ -1,6 +1,6 @@
 {
   "name": "nativescript-checkbox",
-  "version": "2.1.6",
+  "version": "2.1.7",
   "description": "NativeScript plugin for checkbox widget.",
   "main": "checkbox",
   "typings": "index.d.ts",
@@ -24,7 +24,7 @@
     "debug.android": "npm run preparedemo && cd demo && tns debug android",
     "preparedemo": "npm run build && cd demo && tns plugin remove nativescript-checkbox && tns plugin add .. && tns install",
     "preparedemong": "npm run build && cd demo-ng && tns plugin remove nativescript-checkbox && tns plugin add .. && tns install",
-    "setup": "cd demo && npm install && cd .. && npm run build && cd demo && tns plugin add .. && cd .."
+    "nuke": "rm -rf node_modules && cd demo && rm -rf node_modules platforms hooks && cd ../demo-ng && rm -rf node_modules platforms hooks && cd .."
   },
   "lint-staged": {
     "*.ts": [
@@ -77,14 +77,14 @@
   "homepage": "https://github.com/bradmartin/nativescript-checkbox",
   "readmeFilename": "README.md",
   "devDependencies": {
-    "@angular/common": "~4.0.3",
-    "@angular/compiler": "~4.0.3",
-    "@angular/compiler-cli": "~4.0.3",
-    "@angular/core": "~4.0.3",
-    "@angular/forms": "~4.0.3",
-    "@angular/http": "~4.0.3",
-    "@angular/platform-browser": "~4.0.3",
-    "@angular/router": "~4.0.3",
+    "@angular/common": "~4.1.3",
+    "@angular/compiler": "~4.1.3",
+    "@angular/compiler-cli": "~4.1.3",
+    "@angular/core": "~4.1.3",
+    "@angular/forms": "~4.1.3",
+    "@angular/http": "~4.1.3",
+    "@angular/platform-browser": "~4.1.3",
+    "@angular/router": "~4.1.3",
     "grunt": "^1.0.1",
     "grunt-contrib-clean": "^1.0.0",
     "grunt-contrib-copy": "^1.0.0",
@@ -94,12 +94,12 @@
     "nativescript-angular": "~3.0.0",
     "prettier": "^1.4.4",
     "rxjs": "~5.0.1",
-    "tns-core-modules": "^3.0.0",
-    "tns-platform-declarations": "^3.0.0",
-    "typescript": "^2.3.4",
+    "tns-core-modules": "~3.0.0",
+    "tns-platform-declarations": "~3.0.0",
+    "typescript": "~2.3.4",
     "zone.js": "~0.8.9"
   },
   "peerDependencies": {
-    "tns-core-modules": "^3.0.0"
+    "tns-core-modules": "~3.0.0"
   }
 }
