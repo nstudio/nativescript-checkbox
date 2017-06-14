@@ -9,7 +9,7 @@
     }
   },
   "dependencies": {
-    "nativescript-checkbox": "file:///Users/nathan/Documents/github/bradmartin/nativescript-checkbox",
+    "nativescript-checkbox": "file:..",
     "tns-core-modules": "^3.0.0"
   },
   "devDependencies": {

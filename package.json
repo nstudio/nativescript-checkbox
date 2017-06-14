@@ -1,6 +1,6 @@
 {
   "name": "nativescript-checkbox",
-  "version": "2.1.5",
+  "version": "2.1.6",
   "description": "NativeScript plugin for checkbox widget.",
   "main": "checkbox",
   "typings": "index.d.ts",
@@ -85,10 +85,10 @@
     "@angular/http": "~4.0.3",
     "@angular/platform-browser": "~4.0.3",
     "@angular/router": "~4.0.3",
-    "grunt": "1.0.1",
-    "grunt-contrib-clean": "1.0.0",
-    "grunt-contrib-copy": "1.0.0",
-    "grunt-exec": "2.0.0",
+    "grunt": "^1.0.1",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-exec": "^2.0.0",
     "husky": "^0.13.4",
     "lint-staged": "^3.6.1",
     "nativescript-angular": "~3.0.0",
@@ -96,7 +96,7 @@
     "rxjs": "~5.0.1",
     "tns-core-modules": "^3.0.0",
     "tns-platform-declarations": "^3.0.0",
-    "typescript": "^2.2.0",
+    "typescript": "^2.3.4",
     "zone.js": "~0.8.9"
   },
   "peerDependencies": {
