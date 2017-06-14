@@ -11,6 +11,7 @@
     }
   },
   "scripts": {
+    "precommit": "lint-staged",
     "build": "tsc",
     "copy.ios": "cp -R checkbox.*.js demo/node_modules/nativescript-checkbox && cd demo && tns run ios --syncAllFiles",
     "copy.android": "cp -R checkbox.*.js demo/node_modules/nativescript-checkbox && cd demo && tns run android --syncAllFiles",
@@ -24,6 +25,12 @@
     "preparedemo": "npm run build && cd demo && tns plugin remove nativescript-checkbox && tns plugin add .. && tns install",
     "preparedemong": "npm run build && cd demo-ng && tns plugin remove nativescript-checkbox && tns plugin add .. && tns install",
     "setup": "cd demo && npm install && cd .. && npm run build && cd demo && tns plugin add .. && cd .."
+  },
+  "lint-staged": {
+    "*.ts": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "repository": {
     "type": "git",

@@ -1,8 +1,14 @@
-import { Color } from 'tns-core-modules/color'
-import { device } from "tns-core-modules/platform"
-import app = require("tns-core-modules/application")
+import { Color } from "tns-core-modules/color";
+import { device } from "tns-core-modules/platform";
+import app = require("tns-core-modules/application");
 import { CheckBoxInterface } from ".";
-import {  View,  Property,  CssProperty,  Style,  booleanConverter} from "tns-core-modules/ui/core/view"
+import {
+  View,
+  Property,
+  CssProperty,
+  Style,
+  booleanConverter
+} from "tns-core-modules/ui/core/view";
 declare const android: any;
 
 export const checkedProperty = new Property<CheckBox, boolean>({
@@ -10,13 +16,13 @@ export const checkedProperty = new Property<CheckBox, boolean>({
   defaultValue: false,
   valueConverter: booleanConverter,
   valueChanged: onCheckedPropertyChanged
-})
+});
 
 export const textProperty = new Property<CheckBox, string>({
   name: "text",
   defaultValue: "",
   valueChanged: onTextPropertyChanged
-})
+});
 
 export const fillColorProperty = new CssProperty<Style, string>({
   name: "fillColor",
@@ -24,19 +30,19 @@ export const fillColorProperty = new CssProperty<Style, string>({
   valueConverter: v => {
     return String(v);
   }
-})
+});
 
 export const tintColorProperty = new CssProperty<Style, string>({
   name: "tintColor",
   cssName: "tint-color",
   defaultValue: "#0075ff",
   valueConverter: v => {
-    return String(v)
+    return String(v);
   }
-})
+});
 
 export class CheckBox extends View implements CheckBoxInterface {
-  private _android: any /// android.widget.CheckBox
+  private _android: any; /// android.widget.CheckBox
   private _checkStyle: string;
   private _checkPadding: string;
   private _checkPaddingLeft: string;

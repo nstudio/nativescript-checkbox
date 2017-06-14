@@ -1,7 +1,12 @@
-import { CheckBoxInterface } from "./index"
-import {  Property,  CssProperty,  Style,  booleanConverter} from "tns-core-modules/ui/core/view"
-import { Color } from "tns-core-modules/color"
-import { Button } from "tns-core-modules/ui/button"
+import { CheckBoxInterface } from "./index";
+import {
+  Property,
+  CssProperty,
+  Style,
+  booleanConverter
+} from "tns-core-modules/ui/core/view";
+import { Color } from "tns-core-modules/color";
+import { Button } from "tns-core-modules/ui/button";
 
 declare const CGRectMake: any, CGPointMake: any;
 const checkBoxBackgroundColorProperty = new CssProperty<Style, string>({
@@ -16,48 +21,48 @@ const onCheckColorProperty = new CssProperty<Style, string>({
   cssName: "on-check-color",
   defaultValue: "#ffffff",
   valueConverter: v => {
-    return String(v)
+    return String(v);
   }
-})
+});
 
 const tintColorProperty = new CssProperty<Style, string>({
   name: "tintColor",
   cssName: "tint-color",
   //   defaultValue: "#0075ff",
   valueConverter: v => {
-    return String(v)
+    return String(v);
   }
-})
+});
 
 const onTintColorProperty = new CssProperty<Style, string>({
   name: "onTintColor",
   cssName: "on-tint-color",
   valueConverter: v => {
-    return String(v)
+    return String(v);
   }
-})
+});
 
 const fillColorProperty = new CssProperty<Style, string>({
   name: "fillColor",
   cssName: "fill-color",
   valueConverter: v => {
-    return String(v)
+    return String(v);
   }
-})
+});
 
 const checkedProperty = new Property<CheckBox, boolean>({
   name: "checked",
   defaultValue: false,
   valueConverter: booleanConverter,
   valueChanged: onCheckedPropertyChanged
-})
+});
 
 export class CheckBox extends Button implements CheckBoxInterface {
-  _onCheckColor: string
-  _checkBoxBackgroundColor: any
-  _onTintColor: string
-  _tintColor: string
-  _onFillColor: string
+  _onCheckColor: string;
+  _checkBoxBackgroundColor: any;
+  _onTintColor: string;
+  _tintColor: string;
+  _onFillColor: string;
   _fillColor: string;
   private _iosCheckbox: BEMCheckBox;
   private _delegate: BEMCheckBoxDelegateImpl;
