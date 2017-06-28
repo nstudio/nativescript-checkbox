@@ -1,6 +1,6 @@
 {
   "name": "nativescript-checkbox",
-  "version": "2.1.7",
+  "version": "2.1.8",
   "description": "NativeScript plugin for checkbox widget.",
   "main": "checkbox",
   "typings": "index.d.ts",
@@ -100,6 +100,6 @@
     "zone.js": "~0.8.9"
   },
   "peerDependencies": {
-    "tns-core-modules": "~3.0.0"
+    "tns-core-modules": "^3.0.0"
   }
 }
