@@ -7,7 +7,7 @@
     <StackLayout *tabItem="{title: 'Checkboxes'}">
         <StackLayout class="page">
             <StackLayout orientation="horizontal" class="p-10">
-                <CheckBox #modelCheck [(ngModel)]="checkTest" class="checkbox"></CheckBox>
+                <CheckBox #modelCheck [(ngModel)]="checkTest" class="checkbox" (checkedChange)="checkedChange(modelCheck)"></CheckBox>
                 <Label text="Test NgModel" (tap)="modelCheck.toggle()"></Label>
             </StackLayout>
             <StackLayout class="form-group" [formGroup]="formGroup" orientation="horizontal" class="p-10">

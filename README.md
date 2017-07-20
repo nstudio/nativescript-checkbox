@@ -98,6 +98,10 @@ export class SomeComponent  {
 - **text** - text to use with the checkbox
 - **fillColor** - Color of the checkbox element
 
+## Events
+
+- **checkedChange** - Use a reference to the CheckBox component to grab it's `checked` property when this event fires to see the new value.
+
 ## API
 
 - **toggle()** - Change the checked state of the view to the inverse of its current state.
