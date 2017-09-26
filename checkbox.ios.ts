@@ -57,6 +57,13 @@ const checkedProperty = new Property<CheckBox, boolean>({
   valueChanged: onCheckedPropertyChanged
 });
 
+const boxTypeProperty = new Property<CheckBox, number>({
+  name: "boxType",
+  valueConverter: v => {
+    return parseInt(v, 10);
+  }
+});
+
 export class CheckBox extends Button implements CheckBoxInterface {
   _onCheckColor: string;
   _checkBoxBackgroundColor: any;
@@ -74,7 +81,7 @@ export class CheckBox extends Button implements CheckBoxInterface {
   private _onAnimationType: number;
   private _offAnimationType: number;
   public checked: boolean;
-
+  public boxType: number;
   constructor() {
     super();
     // just create with any width/height as XML view width/height is undefined at this point
@@ -114,6 +121,18 @@ export class CheckBox extends Button implements CheckBoxInterface {
     this._iosCheckbox.onCheckColor = new Color(color).ios;
   }
 
+  [boxTypeProperty.getDefault](): number {
+    return 1;
+  }
+
+  [boxTypeProperty.setNative](value: number) {
+    let type = BEMBoxType.Circle;
+    if (value === 2) {
+      type = BEMBoxType.Square;
+    }
+    this._iosCheckbox.boxType = type;
+  }
+
   [checkedProperty.getDefault](): boolean {
     return false;
   }
@@ -134,15 +153,6 @@ export class CheckBox extends Button implements CheckBoxInterface {
   set hideBox(value: boolean) {
     this._iosCheckbox.hideBox = value;
     this._hideBox = value;
-  }
-
-  set boxType(value: number) {
-    let type = BEMBoxType.Circle;
-    if (value === 2) {
-      type = BEMBoxType.Square;
-    }
-    if (this._iosCheckbox) this._iosCheckbox.boxType = type;
-    else this._boxType = value;
   }
 
   set animationDuration(value: number) {
@@ -306,7 +316,7 @@ class BEMCheckBoxDelegateImpl extends NSObject implements BEMCheckBoxDelegate {
 function onCheckedPropertyChanged(checkbox: CheckBox, oldValue, newValue) {
   checkbox._onCheckedPropertyChanged(checkbox, oldValue, newValue);
 }
-
+boxTypeProperty.register(CheckBox);
 checkedProperty.register(CheckBox);
 fillColorProperty.register(Style);
 onTintColorProperty.register(Style);
