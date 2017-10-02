@@ -9,7 +9,7 @@ import {
   Style,
   booleanConverter
 } from "tns-core-modules/ui/core/view";
-declare const android: any;
+declare const android: any, java: any;
 
 export const checkedProperty = new Property<CheckBox, boolean>({
   name: "checked",
@@ -115,7 +115,7 @@ export class CheckBox extends View implements CheckBoxInterface {
     return "";
   }
   [textProperty.setNative](value: string) {
-    this.nativeView.setText(value);
+    this.nativeView.setText(java.lang.String.valueOf(value));
   }
 
   get fillColor(): string {
