@@ -41,8 +41,14 @@ export const tintColorProperty = new CssProperty<Style, string>({
   }
 });
 
+export const enum BoxType {
+  Circle = 1,
+  Square = 2
+}
+
 export class CheckBox extends View implements CheckBoxInterface {
   private _android: any; /// android.widget.CheckBox
+  private _boxType: number;
   private _checkStyle: string;
   private _checkPadding: string;
   private _checkPaddingLeft: string;
@@ -56,6 +62,14 @@ export class CheckBox extends View implements CheckBoxInterface {
 
   get android() {
     return this._android;
+  }
+
+  set boxType(value: number) {
+    this._boxType = value;
+  }
+
+  get boxType() {
+    return this._boxType;
   }
 
   get checkStyle() {
@@ -140,10 +154,11 @@ export class CheckBox extends View implements CheckBoxInterface {
   }
 
   public createNativeView() {
-    this._android = new android.support.v7.widget.AppCompatCheckBox(
-      this._context,
-      null
-    );
+    this._android = new android.support.v7.widget[
+      this.boxType == BoxType.Circle
+        ? "AppCompatRadioButton"
+        : "AppCompatCheckBox"
+    ](this._context, null);
     if (this.checkPaddingLeft) {
       this._android.setPadding(
         parseInt(this.checkPaddingLeft),
