@@ -88,7 +88,7 @@ export class SomeComponent  {
 <StackLayout>
     <CheckBox #CB1 text="CheckBox Label" checked="false"></CheckBox>
     <Button (tap)="toggleCheck()" text="Toggle it!"></Button>
-    <Button (tap)="getCheckProp()" text="Check Property"></
+    <Button (tap)="getCheckProp()" text="Check Property"></Button>
 </StackLayout>
 ```
 
@@ -97,6 +97,10 @@ export class SomeComponent  {
 - **checked** - boolean
 - **text** - text to use with the checkbox
 - **fillColor** - Color of the checkbox element
+
+## Events
+
+- **checkedChange** - Use a reference to the CheckBox component to grab it's `checked` property when this event fires to see the new value.
 
 ## API
 
@@ -124,6 +128,12 @@ Add the following to `app/App_Resources/Android/drawable/checkbox_grey.xml`
 </selector>
 ```
 
+## Radiobuttons, anyone?
+Want to use radiobutton behavior for your checkboxes (only one option possible within a group)?
+
+Check out the second tab in the [Angular demo](demo-ng/), here's a screenshot:
+
+<img src="./screens/radiobuttons.png" width="225px"/>
 
 ## Demo Setup
 * npm i

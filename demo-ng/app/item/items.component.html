@@ -1,22 +1,44 @@
 <ActionBar title="My App" class="action-bar">
 </ActionBar>
-<StackLayout class="page">
-    <StackLayout orientation="horizontal" class="p-10">
-        <CheckBox #modelCheck [(ngModel)]="checkTest" class="checkbox"></CheckBox>
-        <Label text="Test NgModel" (tap)="modelCheck.toggle()"></Label>
+
+<TabView>
+
+    <!-- Tab1: Checkboxes  -->
+    <StackLayout *tabItem="{title: 'Checkboxes'}">
+        <StackLayout class="page">
+            <StackLayout orientation="horizontal" class="p-10">
+                <CheckBox #modelCheck [(ngModel)]="checkTest" class="checkbox" boxType="2" (checkedChange)="checkedChange(modelCheck)"></CheckBox>
+                <Label text="Test NgModel" (tap)="modelCheck.toggle()"></Label>
+            </StackLayout>
+            <StackLayout class="form-group" [formGroup]="formGroup" orientation="horizontal" class="p-10">
+                <CheckBox #reactiveCheck class="checkbox" formControlName="testCheck" boxType="2" class="checkbox"></CheckBox>
+                <Label text="Test Reactive FormGroup" (tap)="reactiveCheck.toggle()"></Label>
+            </StackLayout>
+
+            <StackLayout class="p-10">
+                <Button text="Submit Values" (tap)="submit()" class="btn btn-primary"></Button>
+            </StackLayout>
+
+            <ListView [items]="items" class="list-group">
+                <ng-template let-item="item">
+                    <Label [nsRouterLink]="['/item', item.id]" [text]="item.name"
+                           class="list-group-item"></Label>
+                </ng-template>
+            </ListView>
+        </StackLayout>
     </StackLayout>
-    <StackLayout class="form-group" [formGroup]="formGroup" orientation="horizontal" class="p-10">
-        <CheckBox #reactiveCheck class="checkbox" formControlName="testCheck"  class="checkbox"></CheckBox>
-        <Label text="Test Reactive FormGroup" (tap)="reactiveCheck.toggle()"></Label>
-        
+
+    <!-- Tab2: Radiobuttons  -->
+    <StackLayout *tabItem="{title: 'Radiobuttons'}">
+        <Label class="p-10" text="Tap either the buttons or the labels. You can even unselect the radiobutton selection." textWrap="true"></Label>
+        <StackLayout class="p-10" *ngFor="let option of radioOptions">
+            <StackLayout orientation="horizontal" verticalAlignment="center">
+                <CheckBox #elem [checked]="option.selected" (checkedChange)="elem.checked !== option.selected && changeCheckedRadio(option)" class="checkbox"></CheckBox>
+                <StackLayout verticalAlignment="center">
+                    <Label [text]="option.text" textWrap="true" (tap)="changeCheckedRadio(option)"></Label>
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
     </StackLayout>
-    <StackLayout class="p-10">
-        <Button text="Submit Values" (tap)="submit()" class="btn btn-primary"></Button>
-    </StackLayout>
-    <ListView [items]="items" class="list-group">
-        <ng-template let-item="item">
-            <Label [nsRouterLink]="['/item', item.id]" [text]="item.name"
-                class="list-group-item"></Label>
-        </ng-template>
-    </ListView>
-</StackLayout>
+
+</TabView>

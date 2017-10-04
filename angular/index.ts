@@ -24,10 +24,10 @@ export type CheckableView = {checked: boolean} & View;
  *  ```
  */
 @Directive({
-    selector:  "CheckBox[ngModel], CheckBox[formControlName], checkBox[ngModel], checkBox[formControlName], check-box[ngModel], check-box[formControlName]",
+    selector:  "CheckBox[ngModel], CheckBox[formControlName], CheckBox[formControl], checkBox[ngModel], checkBox[formControlName], checkBox[formControl], check-box[ngModel], check-box[formControlName], check-box[formControl]",
     providers: [CHECKED_VALUE_ACCESSOR]
 })
-export class CheckedValueAccessor extends BaseValueAccessor<CheckableView> { 
+export class CheckedValueAccessor extends BaseValueAccessor<CheckableView> {
 
     constructor(@Inject(ElementRef) elementRef: ElementRef) {
         super(elementRef.nativeElement);
