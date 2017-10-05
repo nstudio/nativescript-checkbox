@@ -8,11 +8,11 @@
                 <TabViewItem.view>
                     <ScrollView>
                         <StackLayout id="wrapper">
-                            <CheckBox:CheckBox id="fontSizeTest" boxType="2" fillColor="#fff000" onCheckColor="green" text="Font Size Test" tint="red" tintColor="red" checked="false" class="fontBig" />
+                            <CheckBox:CheckBox boxType="circle" id="fontSizeTest" fillColor="#fff000" onCheckColor="green" text="Font Size Circle Test" tint="red" tintColor="red" checked="false" class="fontBig" />
                             <Label text="Functions" class="title" />
                             <StackLayout class="listitem">
                                 <GridLayout columns="*, auto" class="demosection">
-                                    <CheckBox:CheckBox checkPadding="36" checkStyle="checkbox_grey" id="toggleTest" col="0" text="toggle()" checked="false" style="margin-right: 10" />
+                                    <CheckBox:CheckBox boxType="square" checkPadding="36" checkStyle="checkbox_grey" id="toggleTest" col="0" text="toggle()" checked="false" style="margin-right: 10" />
                                     <Button col="1" text="GO" tap="onToggleTest" class="button" />
                                 </GridLayout>
                             </StackLayout>

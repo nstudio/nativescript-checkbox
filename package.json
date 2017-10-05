@@ -1,6 +1,6 @@
 {
   "name": "nativescript-checkbox",
-  "version": "2.1.15",
+  "version": "3.0.0",
   "description": "NativeScript plugin for checkbox widget.",
   "main": "checkbox",
   "typings": "index.d.ts",

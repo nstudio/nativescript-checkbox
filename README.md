@@ -97,6 +97,7 @@ export class SomeComponent  {
 - **checked** - boolean
 - **text** - text to use with the checkbox
 - **fillColor** - Color of the checkbox element
+- **boxType** - Either 'square' (default) or 'circle'. It's recommended to use 'circle' for radiobuttons. Note that plugin version 3.0.0 switched the default for iOS to 'square' for alignment with Android.
 
 ## Events
 
@@ -130,8 +131,7 @@ Add the following to `app/App_Resources/Android/drawable/checkbox_grey.xml`
 
 ## Radiobuttons, anyone?
 Want to use radiobutton behavior for your checkboxes (only one option possible within a group)?
-
-Check out the second tab in the [Angular demo](demo-ng/), here's a screenshot:
+Set `boxType="circle"` and check out the second tab in the [Angular demo](demo-ng/), here's a screenshot:
 
 <img src="./screens/radiobuttons.png" width="225px"/>
 
