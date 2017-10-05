@@ -97,7 +97,7 @@ export class SomeComponent  {
 - **checked** - boolean
 - **text** - text to use with the checkbox
 - **fillColor** - Color of the checkbox element
-- **boxType** - Either 'square' (default) or 'circle'. It's recommended to use 'circle' for radiobuttons. Note that plugin version 3.0.0 switched the default for iOS to 'square' for alignment with Android.
+- **boxType** - Either 'square' (default) or 'circle'. It's recommended to use 'circle' for radiobuttons. Note that plugin version 3.0.0 switched the default for iOS to 'square' for alignment with Android. Still want `circle` on iOS and `square` on Android? Just make the `boxType` value conditional.
 
 ## Events
 
