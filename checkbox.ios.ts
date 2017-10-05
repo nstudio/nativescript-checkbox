@@ -1,4 +1,5 @@
 import { CheckBoxInterface } from "./index";
+import { BoxType } from "./checkbox-common";
 import {
   Property,
   CssProperty,
@@ -57,10 +58,12 @@ const checkedProperty = new Property<CheckBox, boolean>({
   valueChanged: onCheckedPropertyChanged
 });
 
-const boxTypeProperty = new Property<CheckBox, number>({
+const boxTypeProperty = new Property<CheckBox, BEMBoxType>({
   name: "boxType",
   valueConverter: v => {
-    return parseInt(v, 10);
+    return BoxType[v] === BoxType.circle
+      ? BEMBoxType.Circle
+      : BEMBoxType.Square;
   }
 });
 
@@ -121,16 +124,10 @@ export class CheckBox extends Button implements CheckBoxInterface {
     this._iosCheckbox.onCheckColor = new Color(color).ios;
   }
 
-  [boxTypeProperty.getDefault](): number {
-    return 1;
-  }
-
-  [boxTypeProperty.setNative](value: number) {
-    let type = BEMBoxType.Circle;
-    if (value === 2) {
-      type = BEMBoxType.Square;
+  [boxTypeProperty.setNative](value: any) {
+    if (this._iosCheckbox) {
+      this._iosCheckbox.boxType = value;
     }
-    this._iosCheckbox.boxType = type;
   }
 
   [checkedProperty.getDefault](): boolean {
@@ -236,9 +233,8 @@ export class CheckBox extends Button implements CheckBoxInterface {
     if (typeof this._hideBox !== "undefined") {
       this.hideBox = this._hideBox;
     }
-    if (typeof this._boxType !== "undefined") {
-      this.boxType = this._boxType;
-    }
+
+    this.boxType = this.boxType === 0 ? BEMBoxType.Circle : BEMBoxType.Square;
 
     if (typeof this._animationDuration !== "undefined") {
       this.animationDuration = this._animationDuration;

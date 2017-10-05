@@ -1,7 +1,6 @@
 import { Color } from "tns-core-modules/color";
 import { device } from "tns-core-modules/platform";
 import app = require("tns-core-modules/application");
-import { CheckBoxInterface } from ".";
 import {
   View,
   Property,
@@ -9,6 +8,9 @@ import {
   Style,
   booleanConverter
 } from "tns-core-modules/ui/core/view";
+import { CheckBoxInterface } from ".";
+import { BoxType } from "./checkbox-common";
+
 declare const android: any, java: any;
 
 export const checkedProperty = new Property<CheckBox, boolean>({
@@ -41,14 +43,9 @@ export const tintColorProperty = new CssProperty<Style, string>({
   }
 });
 
-export const enum BoxType {
-  Circle = 1,
-  Square = 2
-}
-
 export class CheckBox extends View implements CheckBoxInterface {
   private _android: any; /// android.widget.CheckBox
-  private _boxType: number;
+  private _boxType: string;
   private _checkStyle: string;
   private _checkPadding: string;
   private _checkPaddingLeft: string;
@@ -64,7 +61,7 @@ export class CheckBox extends View implements CheckBoxInterface {
     return this._android;
   }
 
-  set boxType(value: number) {
+  set boxType(value: string) {
     this._boxType = value;
   }
 
@@ -155,7 +152,7 @@ export class CheckBox extends View implements CheckBoxInterface {
 
   public createNativeView() {
     this._android = new android.support.v7.widget[
-      this.boxType == BoxType.Circle
+      BoxType[this.boxType] === BoxType.circle
         ? "AppCompatRadioButton"
         : "AppCompatCheckBox"
     ](this._context, null);
