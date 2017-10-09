@@ -3,6 +3,7 @@ demo-ng/
 screens/
 app/
 hooks/
+.idea/
 .vscode/
 gruntfile.js
 *.png
