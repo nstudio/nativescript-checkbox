@@ -95,12 +95,12 @@
     "nativescript-angular": "~4.4.0",
     "prettier": "^1.4.4",
     "rxjs": "~5.0.1",
-    "tns-core-modules": "^3.3.0-2017-10-11-1",
+    "tns-core-modules": "next",
     "tns-platform-declarations": "~3.0.0",
     "typescript": "~2.3.4",
     "zone.js": "~0.8.9"
   },
   "peerDependencies": {
-    "tns-core-modules": "^3.3.0-2017-10-11-1"
+    "tns-core-modules": "^3.1.0 || >3.3.0-"
   }
 }
