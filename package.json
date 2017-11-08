@@ -1,6 +1,6 @@
 {
   "name": "nativescript-checkbox",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "NativeScript plugin for checkbox widget.",
   "main": "checkbox",
   "typings": "index.d.ts",
@@ -14,24 +14,30 @@
     "publish": "grunt publish",
     "precommit": "lint-staged",
     "build": "tsc",
-    "copy.ios": "cp -R checkbox.*.js demo/node_modules/nativescript-checkbox && cd demo && tns run ios --syncAllFiles",
-    "copy.android": "cp -R checkbox.*.js demo/node_modules/nativescript-checkbox && cd demo && tns run android --syncAllFiles",
-    "buildrun": "npm run build && cp -R checkbox.*.js demo/node_modules/nativescript-checkbox",
+    "copy.ios":
+      "cp -R checkbox.*.js demo/node_modules/nativescript-checkbox && cd demo && tns run ios --syncAllFiles",
+    "copy.android":
+      "cp -R checkbox.*.js demo/node_modules/nativescript-checkbox && cd demo && tns run android --syncAllFiles",
+    "buildrun":
+      "npm run build && cp -R checkbox.*.js demo/node_modules/nativescript-checkbox",
     "demo.ios": "npm run preparedemo && cd demo && tns run ios --emulator",
-    "demo.ng.ios": "npm run preparedemong && cd demo-ng && tns run ios --emulator",
-    "demo.android": "npm run preparedemo && cd demo && tns run android --emulator",
-    "demo.ng.android": "npm run preparedemong && cd demo-ng && tns run android --emulator",
+    "demo.ng.ios":
+      "npm run preparedemong && cd demo-ng && tns run ios --emulator",
+    "demo.android":
+      "npm run preparedemo && cd demo && tns run android --emulator",
+    "demo.ng.android":
+      "npm run preparedemong && cd demo-ng && tns run android --emulator",
     "debug.ios": "npm run preparedemo && cd demo && tns debug ios",
     "debug.android": "npm run preparedemo && cd demo && tns debug android",
-    "preparedemo": "npm run build && cd demo && tns plugin remove nativescript-checkbox && tns plugin add .. && tns install",
-    "preparedemong": "npm run build && cd demo-ng && tns plugin remove nativescript-checkbox && tns plugin add .. && tns install",
-    "nuke": "rm -rf node_modules && cd demo && rm -rf node_modules platforms hooks && cd ../demo-ng && rm -rf node_modules platforms hooks && cd .."
+    "preparedemo":
+      "npm run build && cd demo && tns plugin remove nativescript-checkbox && tns plugin add .. && tns install",
+    "preparedemong":
+      "npm run build && cd demo-ng && tns plugin remove nativescript-checkbox && tns plugin add .. && tns install",
+    "nuke":
+      "rm -rf node_modules && cd demo && rm -rf node_modules platforms hooks && cd ../demo-ng && rm -rf node_modules platforms hooks && cd .."
   },
   "lint-staged": {
-    "*.ts": [
-      "prettier --write",
-      "git add"
-    ]
+    "*.ts": ["prettier --write", "git add"]
   },
   "repository": {
     "type": "git",
@@ -69,6 +75,28 @@
       "name": "Eddy Verbruggen",
       "email": "eddyverbruggen@gmail.com",
       "url": "https://github.com/EddyVerbruggen"
+    },
+    {
+      "name": "Jeremiah Ogbomo",
+      "email": "jeremiahogbomo@gmail.com",
+      "url": "https://github.com/jogboms"
+    },
+    {
+      "name": "Manojkumar Murugesan",
+      "url": "https://github.com/manojdcoder"
+    },
+    {
+      "name": "",
+      "url": "https://github.com/jeremy-sweazy-cwt"
+    },
+    {
+      "name": "Schmidely Stéphane",
+      "email": "schmidely.stephane@outlook.com",
+      "url": "https://github.com/stephlm2dev"
+    },
+    {
+      "name": "August Heegaard",
+      "url": "https://github.com/agisboye"
     }
   ],
   "bugs": {
