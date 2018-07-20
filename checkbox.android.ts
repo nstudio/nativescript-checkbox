@@ -134,10 +134,33 @@ export class CheckBox extends View implements CheckBoxInterface {
   }
   set fillColor(color: string) {
     (<any>this.style).fillColor = color;
-    if (this._android && device.sdkVersion >= "21") {
-      this._android.setButtonTintList(
-        android.content.res.ColorStateList.valueOf(new Color(color).android)
-      );
+    if (this._android) {
+      let colorDef = new Color(color).android;
+      if (device.sdkVersion == "21") {
+        this._android.setButtonTintList(
+          android.content.res.ColorStateList.valueOf(colorDef)
+        );
+      } else if (device.sdkVersion > "21") {
+        let Arr: any = Array;
+        let stateArray = Arr.create("[I", 2);
+        stateArray[0] = Arr.create("int", 1);
+        stateArray[1] = Arr.create("int", 1);
+        stateArray[0][0] = -android.R.attr.state_checked;
+        stateArray[1][0] = android.R.attr.state_checked;
+        let colorArray = Arr.create("int", 2);
+        colorArray[0] = android.graphics.Color.GRAY;
+        colorArray[1] = colorDef;
+        let colorStateList = new android.content.res.ColorStateList(
+          stateArray,
+          colorArray
+        );
+        this._android.setButtonTintList(colorStateList);
+      } else {
+        android.support.v4.widget.CompoundButtonCompat.setButtonTintList(
+          this._android,
+          android.content.res.ColorStateList.valueOf(colorDef)
+        );
+      }
     }
   }
 
