@@ -3,7 +3,10 @@
 *.log
 *.d.ts
 !index.d.ts
-!gruntfile.js
+!src/gruntfile.js
+!src/BEMCheckBox.d.ts
+!src/*.d.ts
+
 demo/lib
 demo/app/*.js
 demo/*.d.ts
@@ -16,9 +19,9 @@ demo-ng/platforms
 demo-ng/node_modules
 demo-ng/.vscode
 node_modules
+hooks
 .vscode/
 .idea/
 *.DS_Store
 bin
 !webpack.*.js
-!BEMCheckBox.d.ts
