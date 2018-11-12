@@ -4,35 +4,40 @@
 [![npm](https://img.shields.io/npm/dt/nativescript-checkbox.svg?label=npm%20downloads)](https://www.npmjs.com/package/nativescript-checkbox)
 
 # NativeScript CheckBox :white_check_mark:
+
 A NativeScript plugin for the native checkbox widget.
 
-#### Platform controls used: 
-Android |   iOS
----------- | -------
-[Android CheckBox](https://developer.android.com/reference/android/widget/CheckBox.html) | [BEMCheckBox](http://cocoapods.org/pods/BEMCheckBox) 
+#### Platform controls used:
 
+| Android                                                                                  | iOS                                                  |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------- |
+| [Android CheckBox](https://developer.android.com/reference/android/widget/CheckBox.html) | [BEMCheckBox](http://cocoapods.org/pods/BEMCheckBox) |
 
 ## Sample Usage
 
-Android Sample |  iOS Sample
--------- | ---------
-![Sample1](./screens/checkbox.gif) | ![Sample2](./screens/iosCheckbox.gif)
+| Android Sample                     | iOS Sample                            |
+| ---------------------------------- | ------------------------------------- |
+| ![Sample1](./screens/checkbox.gif) | ![Sample2](./screens/iosCheckbox.gif) |
 
 ## Installation
+
 From your command prompt/terminal go to your app's root folder and execute:
 
 #### NS 3.0+
+
 `tns plugin add nativescript-checkbox`
 
 #### NS < 3.0
+
 `tns plugin add nativescript-checkbox@1.2.8`
 
 ## Usage
 
 ###
+
 ```XML
-<Page 
-  xmlns="http://schemas.nativescript.org/tns.xsd" 
+<Page
+  xmlns="http://schemas.nativescript.org/tns.xsd"
   xmlns:CheckBox="nativescript-checkbox" loaded="pageLoaded">
   <ActionBar title="Native Checkbox" />
   <StackLayout>
@@ -42,7 +47,8 @@ From your command prompt/terminal go to your app's root folder and execute:
 </Page>
 ```
 
-### 
+###
+
 ```TS
 import { CheckBox } from 'nativescript-checkbox';
 import { topmost } from 'ui/frame';
@@ -65,30 +71,32 @@ public getCheckProp() {
 import { TNSCheckBoxModule } from 'nativescript-checkbox/angular';
 
 @NgModule({
-    imports: [TNSCheckBoxModule],
-    // etc.
+	imports: [TNSCheckBoxModule]
+	// etc.
 })
 export class YourModule {}
 
 // component:
-export class SomeComponent  {
-    @ViewChild("CB1") FirstCheckBox: ElementRef;
-    constructor() {}
-    public toggleCheck() {
-        this.FirstCheckBox.nativeElement.toggle();
-    }
+export class SomeComponent {
+	@ViewChild('CB1') FirstCheckBox: ElementRef;
+	constructor() {}
+	public toggleCheck() {
+		this.FirstCheckBox.nativeElement.toggle();
+	}
 
-    public getCheckProp() {
-        console.log('checked prop value = ' + this.FirstCheckBox.nativeElement.checked);
-    }
+	public getCheckProp() {
+		console.log(
+			'checked prop value = ' + this.FirstCheckBox.nativeElement.checked
+		);
+	}
 }
 ```
 
 ```html
 <StackLayout>
-    <CheckBox #CB1 text="CheckBox Label" checked="false"></CheckBox>
-    <Button (tap)="toggleCheck()" text="Toggle it!"></Button>
-    <Button (tap)="getCheckProp()" text="Check Property"></Button>
+	<CheckBox #CB1 text="CheckBox Label" checked="false"></CheckBox>
+	<button (tap)="toggleCheck()" text="Toggle it!"></button>
+	<button (tap)="getCheckProp()" text="Check Property"></button>
 </StackLayout>
 ```
 
@@ -97,12 +105,16 @@ export class SomeComponent  {
 In your `main.js` (The file where the root Vue instance is created) register the element
 
 ```js
-Vue.registerElement('CheckBox', () => require('nativescript-checkbox').CheckBox, {
-  model: {
-    prop: 'checked',
-    event: 'checkedChange'
-  }
-})
+Vue.registerElement(
+	'CheckBox',
+	() => require('nativescript-checkbox').CheckBox,
+	{
+		model: {
+			prop: 'checked',
+			event: 'checkedChange'
+		}
+	}
+);
 ```
 
 And in your template, use it
@@ -129,14 +141,16 @@ And in your template, use it
 ## Css Styling
 
 - **color** - set the text label color
-- **font-size** - checkbox is sized to text from here  : default 15
+- **font-size** - checkbox is sized to text from here : default 15
 - **border-width** - set the line width of the checkbox element: iOS only
 
 ## Styling [Android]
+
 - **checkStyle** - set to the name of your drawable
 - **checkPadding** - set the padding of the checkbox
 
 Add the following to `app/App_Resources/Android/drawable/checkbox_grey.xml`
+
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 
@@ -149,22 +163,24 @@ Add the following to `app/App_Resources/Android/drawable/checkbox_grey.xml`
 ```
 
 ## Radiobuttons, anyone?
+
 Want to use radiobutton behavior for your checkboxes (only one option possible within a group)?
 Set `boxType="circle"` and check out the second tab in the [Angular demo](demo-ng/), here's a screenshot:
 
 <img src="./screens/radiobuttons.png" width="225px"/>
 
 ## Demo Setup
-* npm i
-* npm run preparedemo
-* npm run demo.ios
 
+- npm i
+- npm run preparedemo
+- npm run demo.ios
 
 #### Contributors
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 
-| [<img src="https://avatars0.githubusercontent.com/u/6006148?v=3" width="100px;"/><br /><sub>Brad Martin</sub>](https://bradmartin.net/) | [<img src="https://avatars2.githubusercontent.com/u/1542376?v=3" width="100px;"/><br /><sub>Steve McNiven-Scott</sub>](https://github.com/sitefinitysteve)  |  [<img src="https://avatars3.githubusercontent.com/u/6695919?v=3" width="100px;"/><br /><sub>Osei Fortune</sub>](https://github.com/triniwiz)   | [<img src="https://avatars2.githubusercontent.com/u/457187?v=3" width="100px;"/><br /><sub>Nathan Walker</sub>](https://github.com/NathanWalker)   | 
-|---|---|---|---|---|
+| [<img src="https://avatars0.githubusercontent.com/u/6006148?v=3" width="100px;"/><br /><sub>Brad Martin</sub>](https://bradmartin.net/) | [<img src="https://avatars2.githubusercontent.com/u/1542376?v=3" width="100px;"/><br /><sub>Steve McNiven-Scott</sub>](https://github.com/sitefinitysteve) | [<img src="https://avatars3.githubusercontent.com/u/6695919?v=3" width="100px;"/><br /><sub>Osei Fortune</sub>](https://github.com/triniwiz) | [<img src="https://avatars2.githubusercontent.com/u/457187?v=3" width="100px;"/><br /><sub>Nathan Walker</sub>](https://github.com/NathanWalker) |
+| --------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
