@@ -105,23 +105,20 @@ export class SomeComponent {
 In your `main.js` (The file where the root Vue instance is created) register the element
 
 ```js
-Vue.registerElement(
-	'CheckBox',
-	() => require('nativescript-checkbox').CheckBox,
-	{
-		model: {
-			prop: 'checked',
-			event: 'checkedChange'
-		}
+Vue.registerElement('CheckBox', () => require('nativescript-checkbox').CheckBox, {
+	model: {
+		prop: 'checked',
+		event: 'checkedChange'
 	}
-);
+});
 ```
 
-And in your template, use it
+And in your template, use it as:
 
 ```html
-<CheckBox v-model="myCheckedProp" fillColor="red" text="Check me!" />
+<check-box :checked="isChecked" @checkedChange="isChecked = $event.value">
 ```
+Use `checked` instead of `v-model`. [See #99](https://github.com/nstudio/nativescript-checkbox/issues/99).
 
 ## Properties
 
