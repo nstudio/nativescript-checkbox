@@ -116,7 +116,7 @@ Vue.registerElement('CheckBox', () => require('nativescript-checkbox').CheckBox,
 And in your template, use it as:
 
 ```html
-<check-box :checked="isChecked" @checkedChange="isChecked = $event.value">
+<check-box :checked="isChecked" @checkedChange="isChecked = $event.value" />
 ```
 Use `checked` instead of `v-model`. [See #99](https://github.com/nstudio/nativescript-checkbox/issues/99).
 
