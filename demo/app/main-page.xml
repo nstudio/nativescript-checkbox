@@ -12,7 +12,7 @@
                 <TabViewItem.view>
                     <ScrollView>
                         <StackLayout id="wrapper">
-                            <CheckBox:CheckBox boxType="circle" id="fontSizeTest" fillColor="#fff000" onCheckColor="green" text="Font Size Circle Test" tint="red" tintColor="red" checked="false" class="fontBig" />
+                            <CheckBox:CheckBox boxType="circle" id="fontSizeTest" fillColor="#fff000" color="white" onCheckColor="green" text="Font Size Circle Test" tint="red" tintColor="red" checked="false" class="fontBig" />
 
                             <Label text="" class="hr-light m-t-10 m-b-10" textWrap="true" />
 
