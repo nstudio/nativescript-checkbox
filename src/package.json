@@ -11,9 +11,9 @@
     }
   },
   "scripts": {
-    "publish": "grunt publish",
     "prepublish": "npm run build && npm run build.ng.module",
     "build": "tsc -skipLibCheck",
+    "build.native": "node scripts/build-native.js",
     "build.ng.module": "node ./node_modules/.bin/ngc --project tsconfig.aot.json --outDir ./",
     "setup": "npm i && tsc",
     "demo.ios": "cd ../demo && tns run ios",

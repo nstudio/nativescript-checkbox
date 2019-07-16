@@ -2,6 +2,7 @@
 *.js.map
 *.log
 *.d.ts
+*.tgz
 !index.d.ts
 !src/gruntfile.js
 !src/BEMCheckBox.d.ts
