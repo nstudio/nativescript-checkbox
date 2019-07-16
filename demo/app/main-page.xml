@@ -1,27 +1,47 @@
-<Page 
-    xmlns="http://schemas.nativescript.org/tns.xsd" 
-    xmlns:CheckBox="nativescript-checkbox" loaded="pageLoaded">
-    <ActionBar title="Native Checkbox" />
-    <TabView id="tabViewContainer" selectedColor="#fff" tabsBackgroundColor="#336699">
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" 
+    xmlns:CheckBox="@nstudio/nativescript-checkbox" navigatedTo="onNavigatedTo">
+    <ActionBar title="Checkbox Demo" icon="">
+        <ActionBar.actionItems>
+            <ActionItem icon="res://nstudio" tap="{{ nStudioIconTap }}" ios.position="right" />
+        </ActionBar.actionItems>
+    </ActionBar>
+
+    <TabView id="tabViewContainer" selectedColor="#fff" tabBackgroundColor="black" tabTextColor="white" selectedTabTextColor="#fff000" androidTabsPosition="bottom" tabTextFontSize="14" iosIconRenderingMode="alwaysOriginal">
         <TabView.items>
             <TabViewItem title="General" class="tab-item">
                 <TabViewItem.view>
                     <ScrollView>
                         <StackLayout id="wrapper">
                             <CheckBox:CheckBox boxType="circle" id="fontSizeTest" fillColor="#fff000" onCheckColor="green" text="Font Size Circle Test" tint="red" tintColor="red" checked="false" class="fontBig" />
+
+                            <Label text="" class="hr-light m-t-10 m-b-10" textWrap="true" />
+
                             <Label text="Functions" class="title" />
+                            // Custom CheckBox on Android
                             <StackLayout class="listitem">
-                                <GridLayout columns="*, auto" class="demosection">
-                                    <CheckBox:CheckBox boxType="square" checkPadding="36" checkStyle="checkbox_grey" id="toggleTest" col="0" text="toggle()" checked="false" style="margin-right: 10" />
-                                    <Button col="1" text="GO" tap="onToggleTest" class="button" />
+                                <android>
+                                    <Label text="The following checkbox uses a custom xml for Android in app_resources/drawable-nodpi. The images haven't been sized correctly, so the demo is a bit ugly, but you can see the effect possible with a `checkStyle` on Android." textWrap="true" />
+                                </android>
+                                <GridLayout rows="*, *" columns="*, *" class="demosection">
+                                    <CheckBox:CheckBox row="0" col="0" colSpan="2" boxType="square" checkPadding="36" checkStyle="custom_checkbox" id="toggleTest" text="toggle()" checked="false" />
+                                    <Button row="1" col="0" text="Toggle" tap="onToggleTest" class="btn btn-primary" />
+                                    <Button row="1" col="1" text="Disable/Enable" tap="onCustomCheckStateChange" class="btn btn-primary" />
                                 </GridLayout>
                             </StackLayout>
+
+                            <Label text="" class="hr-light m-t-10 m-b-10" textWrap="true" />
+
+                            // Events
                             <Label text="Events" class="title" />
                             <StackLayout class="listitem">
-                                <Button text="Disable Checkbox" tap="disabledTapTestCheck" />
-                                <CheckBox:CheckBox id="tapTestCheck" text="tap test" tintColor="#fff000" tap="onTapTest" />
+                                <Button text="Disable Checkbox" tap="disabledTapTestCheck" class="btn btn-primary" />
+                                <CheckBox:CheckBox id="tapTestCheck" text="tap test" checked="false" tintColor="#fff000" tap="onTapTest" />
                                 <Label text="{{ eventLabel }}" textWrap="true" class="message" />
                             </StackLayout>
+
+                            <Label text="" class="hr-light m-t-10 m-b-10" textWrap="true" />
+
+                            // Repeater Example
                             <Label text="Bound to Repeater" class="title" />
                             <StackLayout class="demosection">
                                 <Repeater items="{{ data }}">

@@ -1,38 +1,38 @@
 import {
-	Directive,
-	ElementRef,
-	HostListener,
-	Inject,
-	NgModule,
-	forwardRef
+  Directive,
+  ElementRef,
+  forwardRef,
+  HostListener,
+  Inject,
+  NgModule
 } from '@angular/core';
 import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { registerElement } from 'nativescript-angular/element-registry';
 import { BaseValueAccessor } from 'nativescript-angular/forms/value-accessors/base-value-accessor';
-import { View } from 'tns-core-modules/ui/core/view';
 import { isBlank } from 'nativescript-angular/lang-facade';
+import { View } from 'tns-core-modules/ui/core/view';
 
 function convertToInt(value): number {
-	let normalizedValue;
-	if (isBlank(value)) {
-		normalizedValue = 0;
-	} else {
-		if (typeof value === 'number') {
-			normalizedValue = value;
-		} else {
-			let parsedValue = parseInt(value.toString(), 10);
-			normalizedValue = isNaN(parsedValue) ? 0 : parsedValue;
-		}
-	}
-	return Math.round(normalizedValue);
+  let normalizedValue;
+  if (isBlank(value)) {
+    normalizedValue = 0;
+  } else {
+    if (typeof value === 'number') {
+      normalizedValue = value;
+    } else {
+      let parsedValue = parseInt(value.toString(), 10);
+      normalizedValue = isNaN(parsedValue) ? 0 : parsedValue;
+    }
+  }
+  return Math.round(normalizedValue);
 }
 
 registerElement('CheckBox', () => require('../checkbox').CheckBox);
 
 const CHECKED_VALUE_ACCESSOR = {
-	provide: NG_VALUE_ACCESSOR,
-	useExisting: forwardRef(() => CheckedValueAccessor),
-	multi: true
+  provide: NG_VALUE_ACCESSOR,
+  useExisting: forwardRef(() => CheckedValueAccessor),
+  multi: true
 };
 
 export type CheckableView = { checked: boolean } & View;
@@ -47,35 +47,35 @@ export type CheckableView = { checked: boolean } & View;
  *  ```
  */
 @Directive({
-	selector:
-		'CheckBox[ngModel], CheckBox[formControlName], CheckBox[formControl], checkBox[ngModel], checkBox[formControlName], checkBox[formControl], check-box[ngModel], check-box[formControlName], check-box[formControl]',
-	providers: [CHECKED_VALUE_ACCESSOR]
+  selector:
+    'CheckBox[ngModel], CheckBox[formControlName], CheckBox[formControl], checkBox[ngModel], checkBox[formControlName], checkBox[formControl], check-box[ngModel], check-box[formControlName], check-box[formControl]',
+  providers: [CHECKED_VALUE_ACCESSOR]
 })
 export class CheckedValueAccessor extends BaseValueAccessor<CheckableView> {
-	constructor(@Inject(ElementRef) elementRef: ElementRef) {
-		super(elementRef.nativeElement);
-	}
+  constructor(@Inject(ElementRef) elementRef: ElementRef) {
+    super(elementRef.nativeElement);
+  }
 
-	@HostListener('checkedChange', ['$event'])
-	public checkedChangeListener(event: any) {
-		this.onChange(event.value);
-	}
+  @HostListener('checkedChange', ['$event'])
+  public checkedChangeListener(event: any) {
+    this.onChange(event.value);
+  }
 
-	public onTouched = () => {};
+  public onTouched = () => {};
 
-	public writeValue(value: any): void {
-		this.view.checked = value;
-	}
+  public writeValue(value: any): void {
+    this.view.checked = value;
+  }
 
-	public registerOnTouched(fn: () => void): void {
-		this.onTouched = fn;
-	}
+  public registerOnTouched(fn: () => void): void {
+    this.onTouched = fn;
+  }
 }
 
 @NgModule({
-	declarations: [CheckedValueAccessor],
-	providers: [],
-	imports: [FormsModule],
-	exports: [FormsModule, CheckedValueAccessor]
+  declarations: [CheckedValueAccessor],
+  providers: [],
+  imports: [FormsModule],
+  exports: [FormsModule, CheckedValueAccessor]
 })
 export class TNSCheckBoxModule {}
