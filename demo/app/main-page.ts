@@ -20,7 +20,7 @@ export function onNavigatedTo(args: EventData) {
   // Not related to checkboxes
   if (isAndroid && device.sdkVersion >= '21') {
     const window = android.startActivity.getWindow();
-    window.setStatusBarColor(new Color('#363b58').android);
+    window.setStatusBarColor(new Color('#3f3f3f').android);
   }
 }
 

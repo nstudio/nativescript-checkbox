@@ -1,7 +1,13 @@
 import * as app from 'tns-core-modules/application';
 import { Color } from 'tns-core-modules/color';
 import { device } from 'tns-core-modules/platform';
-import { booleanConverter, CssProperty, Property, Style, View } from 'tns-core-modules/ui/core/view';
+import {
+  booleanConverter,
+  CssProperty,
+  Property,
+  Style,
+  View
+} from 'tns-core-modules/ui/core/view';
 import { BoxType } from './checkbox-common';
 
 declare const global: any;
@@ -52,6 +58,21 @@ export const tintColorProperty = new CssProperty<Style, string>({
     return String(v);
   }
 });
+
+export const fontSizeProperty = new CssProperty<Style, number>({
+  name: 'fontSize',
+  cssName: 'font-size',
+  defaultValue: 14,
+  valueConverter: v => {
+    const x = parseFloat(v);
+    if (x < 0) {
+      throw new Error(`font-size accepts values greater than 0. Value: ${v}`);
+    }
+
+    return x;
+  }
+});
+fontSizeProperty.register(Style);
 
 export class CheckBox extends View {
   public checked: boolean;
@@ -139,6 +160,13 @@ export class CheckBox extends View {
   }
   public [textProperty.setNative](value: string) {
     this.nativeView.setText(java.lang.String.valueOf(value));
+  }
+
+  public [fontSizeProperty.getDefault](): number {
+    return 14;
+  }
+  public [fontSizeProperty.setNative](value: number) {
+    this.nativeView.setTextSize(value);
   }
 
   get fillColor(): string {
@@ -252,7 +280,7 @@ export class CheckBox extends View {
     }
 
     if (!this.style.fontSize) {
-      this.style.fontSize = 15;
+      this.style.fontSize = 14;
     }
 
     this._android.setTextSize(this.style.fontSize);
