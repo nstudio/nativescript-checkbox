@@ -5,6 +5,7 @@
 *.tgz
 !index.d.ts
 !src/*.d.ts
+!**/*/references.d.ts
 src/angular/index.d.ts
 src/angular/index.metadata.json
 
