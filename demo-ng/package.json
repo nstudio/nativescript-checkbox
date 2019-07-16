@@ -3,6 +3,9 @@
     "id": "org.nativescript.demong",
     "tns-ios": {
       "version": "6.0.1"
+    },
+    "tns-android": {
+      "version": "6.0.0"
     }
   },
   "dependencies": {
@@ -31,6 +34,7 @@
     "typescript": "3.4.5",
     "nativescript-dev-webpack": "1.0.0",
     "@angular/compiler-cli": "8.0.0",
-    "@ngtools/webpack": "8.0.0"
+    "@ngtools/webpack": "8.0.0",
+    "tns-platform-declarations": "~6.0.0"
   }
 }

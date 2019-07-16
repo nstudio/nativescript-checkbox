@@ -4,9 +4,10 @@
 *.d.ts
 *.tgz
 !index.d.ts
-!src/gruntfile.js
-!src/BEMCheckBox.d.ts
 !src/*.d.ts
+!**/*/references.d.ts
+src/angular/index.d.ts
+src/angular/index.metadata.json
 
 demo/lib
 demo/app/*.js
