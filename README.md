@@ -23,13 +23,13 @@ A NativeScript plugin for the native checkbox widget.
 
 From your command prompt/terminal go to your app's root folder and execute:
 
-#### NS 3.0+
+#### NS 6.0.0+
+
+`tns plugin add @nstudio/nativescript-checkbox`
+
+#### NS 5.4.3-
 
 `tns plugin add nativescript-checkbox`
-
-#### NS < 3.0
-
-`tns plugin add nativescript-checkbox@1.2.8`
 
 ## Usage
 
@@ -38,7 +38,7 @@ From your command prompt/terminal go to your app's root folder and execute:
 ```XML
 <Page
   xmlns="http://schemas.nativescript.org/tns.xsd"
-  xmlns:CheckBox="nativescript-checkbox" loaded="pageLoaded">
+  xmlns:CheckBox="@nstudio/nativescript-checkbox" loaded="pageLoaded">
   <ActionBar title="Native Checkbox" />
   <StackLayout>
     <CheckBox:CheckBox checked="{{ checkProp }}" text="{{ myCheckText }}" fillColor="{{ myCheckColor }}" id="myCheckbox" />
@@ -49,17 +49,18 @@ From your command prompt/terminal go to your app's root folder and execute:
 
 ###
 
-```TS
-import { CheckBox } from 'nativescript-checkbox';
-import { topmost } from 'ui/frame';
+```typescript
+
+import { CheckBox } from '@nstudio/nativescript-checkbox';
+import { topmost } from 'tns-core-modules/ui/frame';
 
 public toggleCheck() {
-  let checkBox = topmost().getViewById('yourCheckBoxId');
+  const checkBox = topmost().getViewById('yourCheckBoxId');
   checkBox.toggle();
 }
 
 public getCheckProp() {
-  let checkBox = topmost().getViewById('yourCheckBoxId');
+  const checkBox = topmost().getViewById('yourCheckBoxId');
   console.log('checked prop value = ' + checkBox.checked);
 }
 
@@ -68,35 +69,35 @@ public getCheckProp() {
 ### Angular Usage Sample:
 
 ```typescript
-import { TNSCheckBoxModule } from 'nativescript-checkbox/angular';
+import { TNSCheckBoxModule } from '@nstudio/nativescript-checkbox/angular';
 
 @NgModule({
-	imports: [TNSCheckBoxModule]
-	// etc.
+  imports: [TNSCheckBoxModule]
+  // etc.
 })
 export class YourModule {}
 
 // component:
 export class SomeComponent {
-	@ViewChild('CB1') FirstCheckBox: ElementRef;
-	constructor() {}
-	public toggleCheck() {
-		this.FirstCheckBox.nativeElement.toggle();
-	}
+  @ViewChild('CB1') FirstCheckBox: ElementRef;
+  constructor() {}
+  public toggleCheck() {
+    this.FirstCheckBox.nativeElement.toggle();
+  }
 
-	public getCheckProp() {
-		console.log(
-			'checked prop value = ' + this.FirstCheckBox.nativeElement.checked
-		);
-	}
+  public getCheckProp() {
+    console.log(
+      'checked prop value = ' + this.FirstCheckBox.nativeElement.checked
+    );
+  }
 }
 ```
 
 ```html
 <StackLayout>
-	<CheckBox #CB1 text="CheckBox Label" checked="false"></CheckBox>
-	<button (tap)="toggleCheck()" text="Toggle it!"></button>
-	<button (tap)="getCheckProp()" text="Check Property"></button>
+  <CheckBox #CB1 text="CheckBox Label" checked="false"></CheckBox>
+  <button (tap)="toggleCheck()" text="Toggle it!"></button>
+  <button (tap)="getCheckProp()" text="Check Property"></button>
 </StackLayout>
 ```
 
@@ -105,12 +106,16 @@ export class SomeComponent {
 In your `main.js` (The file where the root Vue instance is created) register the element
 
 ```js
-Vue.registerElement('CheckBox', () => require('nativescript-checkbox').CheckBox, {
-	model: {
-		prop: 'checked',
-		event: 'checkedChange'
-	}
-});
+Vue.registerElement(
+  'CheckBox',
+  () => require('@nstudio/nativescript-checkbox').CheckBox,
+  {
+    model: {
+      prop: 'checked',
+      event: 'checkedChange'
+    }
+  }
+);
 ```
 
 And in your template, use it as:
@@ -118,6 +123,7 @@ And in your template, use it as:
 ```html
 <check-box :checked="isChecked" @checkedChange="isChecked = $event.value" />
 ```
+
 Use `checked` instead of `v-model`. [See #99](https://github.com/nstudio/nativescript-checkbox/issues/99).
 
 ## Properties
@@ -166,11 +172,14 @@ Set `boxType="circle"` and check out the second tab in the [Angular demo](demo-n
 
 <img src="./screens/radiobuttons.png" width="225px"/>
 
-## Demo Setup
+## Running Demo Apps
 
-- npm i
-- npm run preparedemo
-- npm run demo.ios
+1. Execute from root: `cd src && npm run setup`
+2. For iOS Demo: `npm run demo.ios`
+
+- npm run demo.ng.ios
+- npm run demo.android (for android)
+- npm run demo.ng.android (for angular android)
 
 #### Contributors
 

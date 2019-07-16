@@ -1,40 +1,36 @@
 {
-  "description": "NativeScript Application",
-  "license": "SEE LICENSE IN <your-license-filename>",
-  "readme": "NativeScript Application",
-  "repository": "<fill-your-repository-here>",
   "nativescript": {
     "id": "org.nativescript.demong",
     "tns-ios": {
-      "version": "3.0.1"
-    },
-    "tns-android": {
-      "version": "3.2.0"
+      "version": "6.0.1"
     }
   },
   "dependencies": {
-    "@angular/animations": "~4.4.1",
-    "@angular/common": "~4.4.1",
-    "@angular/compiler": "~4.4.1",
-    "@angular/core": "~4.4.1",
-    "@angular/forms": "~4.4.1",
-    "@angular/http": "~4.4.1",
-    "@angular/platform-browser": "~4.4.1",
-    "@angular/router": "~4.4.1",
-    "nativescript-angular": "~4.4.0",
-    "nativescript-checkbox": "../",
-    "nativescript-theme-core": "~1.0.2",
-    "reflect-metadata": "~0.1.8",
-    "rxjs": "~5.3.0",
-    "tns-core-modules": "~3.0.0",
-    "zone.js": "~0.8.2"
+    "@angular/animations": "~8.0.1",
+    "@angular/common": "~8.0.1",
+    "@angular/compiler": "~8.0.1",
+    "@angular/core": "~8.0.1",
+    "@angular/forms": "~8.0.1",
+    "@angular/http": "~7.2.15",
+    "@angular/platform-browser": "~8.0.1",
+    "@angular/platform-browser-dynamic": "~8.0.1",
+    "@angular/router": "~8.0.1",
+    "@nstudio/nativescript-checkbox": "file:../src",
+    "nativescript-angular": "~8.0.1",
+    "nativescript-theme-core": "~1.0.6",
+    "reflect-metadata": "~0.1.12",
+    "rxjs": "~6.5.2",
+    "tns-core-modules": "~6.0.1",
+    "zone.js": "~0.9.1"
   },
   "devDependencies": {
     "babel-traverse": "6.26.0",
     "babel-types": "6.26.0",
     "babylon": "6.18.0",
     "lazy": "1.0.11",
-    "nativescript-dev-typescript": "~0.4.0",
-    "typescript": "~2.2.1"
+    "typescript": "3.4.5",
+    "nativescript-dev-webpack": "1.0.0",
+    "@angular/compiler-cli": "8.0.0",
+    "@ngtools/webpack": "8.0.0"
   }
 }

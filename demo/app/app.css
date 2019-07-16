@@ -1,75 +1,71 @@
-﻿Page {
-    background-color: #282e48;
-    color: #FFF;
-    
+﻿@import '~nativescript-theme-core/css/core.light.css';
+
+Page {
+  background-color: #282e48;
+  color: #fff;
 }
 
-
 ActionBar {
-    background-color: #363b58;
-    color: #fff;
+  background-color: #363b58;
+  color: #fff;
 }
 
 .tab-item {
-    color: #fff;
-    background-color: #fff000;
+  color: #fff;
+  background-color: #fff000;
 }
 
-
-#wrapper{
-    padding: 10;
-    width: 100%;
+#wrapper {
+  padding: 10;
+  width: 100%;
 }
 
 .title {
-    font-size: 12;
-    horizontal-align: left;
-    color: #83889e;
-    margin-bottom: 10;
+  font-size: 12;
+  horizontal-align: left;
+  color: #83889e;
+  margin-bottom: 10;
 }
 
-Label {
-    vertical-align: center
+label {
+  vertical-align: center;
 }
 
 .button {
-    vertical-align: center;
-    horizontal-align: right;
-    background-color: #5fbce6;
-    color: #FFF;
-    border-radius: 4;
-    font-size: 10;
-    padding: 5 9;
-
+  vertical-align: center;
+  horizontal-align: right;
+  background-color: #5fbce6;
+  color: #fff;
+  border-radius: 4;
+  font-size: 10;
+  padding: 5 9;
 }
 
 .message {
-    font-size: 14;
-    color: #83889e;
-    horizontal-align: left;
-    margin-top: 5;
+  font-size: 14;
+  color: #83889e;
+  horizontal-align: left;
+  margin-top: 5;
 }
 
-CheckBox{
-    vertical-align: center;
-    color: white;
-    font-size: 20;
+CheckBox {
+  vertical-align: center;
+  color: white;
+  font-size: 20;
 }
 
-.demosection{
-    margin-bottom: 50;
-    horizontal-align: left;
+.demosection {
+  margin-bottom: 50;
+  horizontal-align: left;
 }
 
-.listitem{
-    vertical-align: center;
-    horizontal-align: left;
-    margin-bottom: 10;
-    width: 100%;
-    background-color: transparent;
+.listitem {
+  vertical-align: center;
+  horizontal-align: left;
+  margin-bottom: 10;
+  width: 100%;
+  background-color: transparent;
 }
 
-.title{
-
+.title {
 }
-
