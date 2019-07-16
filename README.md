@@ -1,7 +1,7 @@
 # NativeScript-CheckBox
 
-[![npm](https://img.shields.io/npm/v/nativescript-checkbox.svg)](https://www.npmjs.com/package/nativescript-checkbox)
-[![npm](https://img.shields.io/npm/dt/nativescript-checkbox.svg?label=npm%20downloads)](https://www.npmjs.com/package/nativescript-checkbox)
+[![npm](https://img.shields.io/npm/v/@nstudio/nativescript-checkbox.svg)](https://www.npmjs.com/package/@nstudio/nativescript-checkbox)
+[![npm](https://img.shields.io/npm/dt/@nstudio/nativescript-checkbox.svg?label=npm%20downloads)](https://www.npmjs.com/package/@nstudio/nativescript-checkbox)
 
 # NativeScript CheckBox :white_check_mark:
 
@@ -23,13 +23,7 @@ A NativeScript plugin for the native checkbox widget.
 
 From your command prompt/terminal go to your app's root folder and execute:
 
-#### NS 6.0.0+
-
 `tns plugin add @nstudio/nativescript-checkbox`
-
-#### NS 5.4.3-
-
-`tns plugin add nativescript-checkbox`
 
 ## Usage
 
