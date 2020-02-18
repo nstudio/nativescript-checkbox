@@ -30,3 +30,4 @@ src/angular/index.metadata.json
 !index.d.ts
 !src/*.d.ts
 !references.d.ts
+!src/typings/*
