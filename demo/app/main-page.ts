@@ -1,10 +1,10 @@
+import { android } from '@nativescript/core/application';
+import { Color } from '@nativescript/core/color';
+import { EventData } from '@nativescript/core/data/observable';
+import { device, isAndroid } from '@nativescript/core/platform';
+import { Label } from '@nativescript/core/ui/label';
+import { Page } from '@nativescript/core/ui/page';
 import { CheckBox } from '@nstudio/nativescript-checkbox';
-import { android } from 'tns-core-modules/application';
-import { Color } from 'tns-core-modules/color';
-import { EventData } from 'tns-core-modules/data/observable';
-import { device, isAndroid } from 'tns-core-modules/platform';
-import { Label } from 'tns-core-modules/ui/label';
-import { Page } from 'tns-core-modules/ui/page';
 import { DataItem, HelloWorldModel } from './main-view-model';
 
 let page: Page;

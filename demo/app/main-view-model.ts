@@ -1,7 +1,7 @@
-import { Observable } from 'tns-core-modules/data/observable';
-import { ObservableArray } from 'tns-core-modules/data/observable-array';
-import { confirm } from 'tns-core-modules/ui/dialogs';
-import { openUrl } from 'tns-core-modules/utils/utils';
+import { Observable } from '@nativescript/core/data/observable';
+import { ObservableArray } from '@nativescript/core/data/observable-array';
+import { confirm } from '@nativescript/core/ui/dialogs';
+import { openUrl } from '@nativescript/core/utils/utils';
 
 export class HelloWorldModel extends Observable {
   public data: ObservableArray<DataItem>;
@@ -21,7 +21,7 @@ export class HelloWorldModel extends Observable {
     this.data.push(new DataItem('Ron Burgundy', true, '#eb5481'));
 
     this.uberData = new ObservableArray<DataItem>();
-    //Copy\paste ...hacky I know, dont have time to make this elegant atm :)
+    // Copy\paste ...hacky I know, dont have time to make this elegant atm :)
     this.uberData.push(new DataItem('Brad Martin', false, '#eab557'));
     this.uberData.push(new DataItem('Nathan Walker', true, '#57bbed'));
     this.uberData.push(new DataItem('Steve McNiven-Scott', false, '#7559e7'));
@@ -110,7 +110,7 @@ export class HelloWorldModel extends Observable {
     console.log('changed');
   }
 
-  nStudioIconTap() {
+  public nStudioIconTap() {
     confirm({
       message:
         'nStudio, LLC. specializes in custom software applications ranging from mobile, web, desktop, server and more. Would you like to visit nstudio.io?',

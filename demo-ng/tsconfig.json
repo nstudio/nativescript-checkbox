@@ -19,7 +19,7 @@
     "../src/typings/BEMCheckBox.d.ts",
     "../src/checkbox.ios.ts",
     "../src/checkbox-common.ts",
-    "../src/checkbox.android.ts"
+    // "../src/checkbox.android.ts"
   ],
   "exclude": ["node_modules", "platforms", "**/*.aot.ts"]
 }
