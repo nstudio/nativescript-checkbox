@@ -6,20 +6,24 @@
     "emitDecoratorMetadata": true,
     "noEmitHelpers": true,
     "noEmitOnError": true,
-    "lib": ["es6", "dom", "es2015.iterable"],
+    "lib": ["es2017", "dom", "es6"],
     "baseUrl": ".",
     "paths": {
       "*": ["./node_modules/tns-core-modules/*", "./node_modules/*"],
       "@nstudio/nativescript-checkbox": ["../src"]
     }
   },
-  "files": ["../src/angular/index.ts", "./app/main.ts"],
+  "files": [
+    "./app/main.ts",
+    // OR this could be (depending on your projects setup [Use one or the other]):
+    "./src/main.ts"
+  ],
   "include": [
     "./references.d.ts",
     "../src/typings/BEMCheckBox.d.ts",
     "../src/checkbox.ios.ts",
-    "../src/checkbox-common.ts",
+    "../src/checkbox-common.ts"
     // "../src/checkbox.android.ts"
   ],
-  "exclude": ["node_modules", "platforms", "**/*.aot.ts"]
+  "exclude": ["node_modules", "platforms", "**/*.aot", "e2e"]
 }

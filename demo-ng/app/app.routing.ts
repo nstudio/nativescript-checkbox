@@ -7,11 +7,11 @@ import { ItemsComponent } from './item/items.component';
 const routes: Routes = [
   { path: '', redirectTo: '/items', pathMatch: 'full' },
   { path: 'items', component: ItemsComponent },
-  { path: 'item/:id', component: ItemDetailComponent }
+  { path: 'item/:id', component: ItemDetailComponent },
 ];
 
 @NgModule({
   imports: [NativeScriptRouterModule.forRoot(routes)],
-  exports: [NativeScriptRouterModule]
+  exports: [NativeScriptRouterModule],
 })
 export class AppRoutingModule {}
