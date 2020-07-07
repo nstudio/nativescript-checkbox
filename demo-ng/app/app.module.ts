@@ -1,7 +1,7 @@
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NativeScriptModule } from '@nativescript/angular/nativescript.module';
 import { TNSCheckBoxModule } from '@nstudio/nativescript-checkbox/angular';
-import { NativeScriptModule } from 'nativescript-angular/nativescript.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing';
 import { ItemDetailComponent } from './item/item-detail.component';

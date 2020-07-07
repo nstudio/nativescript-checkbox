@@ -1,6 +1,6 @@
 import { ElementRef } from '@angular/core';
-import { BaseValueAccessor } from 'nativescript-angular/forms/value-accessors/base-value-accessor';
-import { View } from 'tns-core-modules/ui/core/view';
+import { BaseValueAccessor } from '@nativescript/angular/forms/value-accessors/base-value-accessor';
+import { View } from '@nativescript/core/ui/core/view';
 export declare type CheckableView = {
     checked: boolean;
 } & View;
