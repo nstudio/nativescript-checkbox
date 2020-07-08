@@ -14,16 +14,14 @@
     }
   },
   "files": [
-    "./app/main.ts",
-    // OR this could be (depending on your projects setup [Use one or the other]):
-    "./src/main.ts"
+    "./app/main.ts"
   ],
   "include": [
     "./references.d.ts",
     "../src/typings/BEMCheckBox.d.ts",
     "../src/checkbox.ios.ts",
-    "../src/checkbox-common.ts"
-    // "../src/checkbox.android.ts"
+    "../src/checkbox-common.ts",
+    "../src/checkbox.android.ts"
   ],
   "exclude": ["node_modules", "platforms", "**/*.aot", "e2e"]
 }

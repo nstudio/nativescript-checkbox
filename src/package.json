@@ -1,7 +1,7 @@
 {
   "name": "@nstudio/nativescript-checkbox",
-  "version": "1.0.0",
-  "description": "NativeScript plugin for checkbox widget.",
+  "version": "2.0.0",
+  "description": "NativeScript plugin for checkbox.",
   "main": "checkbox",
   "typings": "index.d.ts",
   "nativescript": {
@@ -13,16 +13,16 @@
   "scripts": {
     "build": "npm i && tsc",
     "prepublishOnly": "npm run build && npm run build.ng.module",
-    "build.ng.module": "node ./node_modules/.bin/ngc --project tsconfig.aot.json --outDir ./",
+    "build.ng.module": "npm run build && node ./node_modules/.bin/ngc --project tsconfig.aot.json --outDir ./",
     "tslint": "cd .. && tslint \"**/*.ts\" --config tslint.json --exclude \"**/node_modules/**\" --exclude \"*demo*/platforms/**\" --exclude \"**/typings/**\"",
     "ci.tslint": "npm i && tslint '**/*.ts' --config '../tslint.json' --exclude '**/node_modules/**' --exclude \"**/typings/**\"",
-    "demo.ios": "npm run setup && cd ../demo && tns run ios --no-hmr",
-    "demo.android": "npm run setup && cd ../demo && tns run android --no-hmr",
-    "demo.ng.ios": "cd ../demo-ng && tns run ios --no-hmr --env.aot",
-    "demo.ng.android": "cd ../demo-ng && tns run android --no-hmr --env.aot",
-    "setup": "npm i && tsc",
+    "demo.ios": "npm run build && cd ../demo && tns run ios --no-hmr",
+    "demo.android": "npm run build && cd ../demo && tns run android --no-hmr",
+    "demo.ng.ios": "npm run build.ng.module && cd ../demo-ng && tns run ios --no-hmr --env.aot",
+    "demo.ng.android": "npm run build.ng.module && cd ../demo-ng && tns run android --no-hmr --env.aot",
     "generate.typings.ios": "cd ../demo && TNS_DEBUG_METADATA_PATH=\"$(pwd)/metadata\" tns build ios && TNS_TYPESCRIPT_DECLARATIONS_PATH=\"$(pwd)/typings\" tns build ios && echo 'Now look for your library typings in demo/typings!'",
-    "make-changelog": "cd ../ && github_changelog_generator -u nstudio -p nativescript-videoplayer"
+    "make-changelog": "cd ../ && github_changelog_generator -u nstudio -p nativescript-checkbox",
+    "clean.all": "cd ../demo && rimraf hooks node_modules platforms && cd ../demo-ng && rimraf hooks node_modules platforms && cd ../src && rimraf hooks node_modules"
   },
   "lint-staged": {
     "**/*.{js, css, ts, json, scss, html, xml, md}": [
@@ -77,5 +77,8 @@
     "typescript": "~3.9.2",
     "zone.js": "~0.9.1",
     "prompt": "^1.0.0"
+  },
+  "dependencies": {
+    "ng": "0.0.0"
   }
 }

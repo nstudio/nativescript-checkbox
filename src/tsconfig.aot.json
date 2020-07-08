@@ -20,6 +20,6 @@
   },
   "files": ["angular/index.ts"],
   "angularCompilerOptions": {
-    "skipTemplateCodegen": true
+    "skipTemplateCodegen": true,
   }
 }

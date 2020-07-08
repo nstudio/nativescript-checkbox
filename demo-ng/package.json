@@ -21,6 +21,7 @@
     "@angular/router": "~9.1.0",
     "@nativescript/angular": "^9.0.0",
     "@nativescript/core": "^6.5.8",
+    "@nstudio/nativescript-checkbox": "file:../src",
     "nativescript-theme-core": "~1.0.6",
     "reflect-metadata": "~0.1.12",
     "rxjs": "~6.5.2",
