@@ -1,70 +1,69 @@
-import { Color } from 'tns-core-modules/color';
-import { Button } from 'tns-core-modules/ui/button';
+import { Color, Button } from '@nativescript/core';
+import { booleanConverter } from '@nativescript/core/ui/core/view-base';
 import {
-  booleanConverter,
   CssProperty,
   Property,
-  Style
-} from 'tns-core-modules/ui/core/view';
+  Style,
+} from '@nativescript/core/ui/core/properties';
 import { BoxType } from './checkbox-common';
 import { CheckBoxInterface } from './index';
 
 const checkBoxBackgroundColorProperty = new CssProperty<Style, string>({
   name: 'checkBoxBackgroundColor',
   cssName: 'checkbox-background-color',
-  valueConverter: v => {
+  valueConverter: (v) => {
     return String(v);
-  }
+  },
 });
 
 const onCheckColorProperty = new CssProperty<Style, string>({
   name: 'onCheckColor',
   cssName: 'on-check-color',
   defaultValue: '#ffffff',
-  valueConverter: v => {
+  valueConverter: (v) => {
     return String(v);
-  }
+  },
 });
 
 const tintColorProperty = new CssProperty<Style, string>({
   name: 'tintColor',
   cssName: 'tint-color',
   //   defaultValue: "#0075ff",
-  valueConverter: v => {
+  valueConverter: (v) => {
     return String(v);
-  }
+  },
 });
 
 const onTintColorProperty = new CssProperty<Style, string>({
   name: 'onTintColor',
   cssName: 'on-tint-color',
-  valueConverter: v => {
+  valueConverter: (v) => {
     return String(v);
-  }
+  },
 });
 
 const fillColorProperty = new CssProperty<Style, string>({
   name: 'fillColor',
   cssName: 'fill-color',
-  valueConverter: v => {
+  valueConverter: (v) => {
     return String(v);
-  }
+  },
 });
 
 const checkedProperty = new Property<CheckBox, boolean>({
   name: 'checked',
   defaultValue: false,
   valueConverter: booleanConverter,
-  valueChanged: onCheckedPropertyChanged
+  valueChanged: onCheckedPropertyChanged,
 });
 
 const boxTypeProperty = new Property<CheckBox, BEMBoxType>({
   name: 'boxType',
-  valueConverter: v => {
+  valueConverter: (v) => {
     return BoxType[v] === BoxType.circle
       ? BEMBoxType.Circle
       : BEMBoxType.Square;
-  }
+  },
 });
 
 export class CheckBox extends Button implements CheckBoxInterface {
@@ -179,7 +178,7 @@ export class CheckBox extends Button implements CheckBoxInterface {
 
   public initNativeView() {
     // allow label click to change the textbox
-    this.addEventListener('tap', args => {
+    this.addEventListener('tap', (args) => {
       const checkbox = args.object as CheckBox;
       checkbox.checked = !checkbox.checked;
     });

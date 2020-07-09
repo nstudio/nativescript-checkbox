@@ -17,12 +17,13 @@
     "noImplicitReturns": true,
     "noImplicitUseStrict": false,
     "noFallthroughCasesInSwitch": true,
-    "lib": ["es6", "dom"],
-    "baseUrl": ".",
-    "paths": {
-      "*": ["./node_modules/tns-core-modules/*", "./node_modules/*"]
-    }
+    "lib": [
+      "es2017",
+      "dom",
+      "es6"
+    ],
+    "baseUrl": "."
   },
-  "exclude": ["node_modules", "platforms"],
+  "exclude": ["node_modules", "platforms", "typings/BEMCheckBox.d.ts"],
   "compileOnSave": false
 }

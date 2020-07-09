@@ -7,20 +7,19 @@ import {
   NgModule
 } from '@angular/core';
 import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { registerElement } from 'nativescript-angular/element-registry';
-import { BaseValueAccessor } from 'nativescript-angular/forms/value-accessors/base-value-accessor';
-import { isBlank } from 'nativescript-angular/lang-facade';
-import { View } from 'tns-core-modules/ui/core/view';
+import { registerElement } from '@nativescript/angular';
+import { BaseValueAccessor } from '@nativescript/angular/forms/value-accessors';
+import { View } from '@nativescript/core';
 
 function convertToInt(value): number {
   let normalizedValue;
-  if (isBlank(value)) {
+  if (value === undefined || value === null) {
     normalizedValue = 0;
   } else {
     if (typeof value === 'number') {
       normalizedValue = value;
     } else {
-      let parsedValue = parseInt(value.toString(), 10);
+      const parsedValue = parseInt(value.toString(), 10);
       normalizedValue = isNaN(parsedValue) ? 0 : parsedValue;
     }
   }
@@ -32,7 +31,7 @@ registerElement('CheckBox', () => require('../checkbox').CheckBox);
 const CHECKED_VALUE_ACCESSOR = {
   provide: NG_VALUE_ACCESSOR,
   useExisting: forwardRef(() => CheckedValueAccessor),
-  multi: true
+  multi: true,
 };
 
 export type CheckableView = { checked: boolean } & View;
@@ -49,7 +48,7 @@ export type CheckableView = { checked: boolean } & View;
 @Directive({
   selector:
     'CheckBox[ngModel], CheckBox[formControlName], CheckBox[formControl], checkBox[ngModel], checkBox[formControlName], checkBox[formControl], check-box[ngModel], check-box[formControlName], check-box[formControl]',
-  providers: [CHECKED_VALUE_ACCESSOR]
+  providers: [CHECKED_VALUE_ACCESSOR],
 })
 export class CheckedValueAccessor extends BaseValueAccessor<CheckableView> {
   constructor(@Inject(ElementRef) elementRef: ElementRef) {
@@ -76,6 +75,6 @@ export class CheckedValueAccessor extends BaseValueAccessor<CheckableView> {
   declarations: [CheckedValueAccessor],
   providers: [],
   imports: [FormsModule],
-  exports: [FormsModule, CheckedValueAccessor]
+  exports: [FormsModule, CheckedValueAccessor],
 })
 export class TNSCheckBoxModule {}

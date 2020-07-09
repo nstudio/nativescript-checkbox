@@ -5,6 +5,7 @@ hooks
 .idea/
 *.DS_Store
 bin
+package-lock.json
 
 *.js
 *.js.map
@@ -31,3 +32,4 @@ src/angular/index.metadata.json
 !src/*.d.ts
 !references.d.ts
 !src/typings/*
+!demo-ng/ngcc.config.js

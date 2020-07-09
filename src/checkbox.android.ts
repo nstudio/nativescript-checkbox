@@ -1,13 +1,10 @@
-import * as app from 'tns-core-modules/application';
-import { Color } from 'tns-core-modules/color';
-import { device } from 'tns-core-modules/platform';
+import { Application, Device, Color, View } from '@nativescript/core';
+import { booleanConverter } from '@nativescript/core/ui/core/view-base';
 import {
-  booleanConverter,
   CssProperty,
   Property,
   Style,
-  View
-} from 'tns-core-modules/ui/core/view';
+} from '@nativescript/core/ui/core/properties';
 import { BoxType } from './checkbox-common';
 
 declare const global: any;
@@ -33,44 +30,44 @@ export const checkedProperty = new Property<CheckBox, boolean>({
   name: 'checked',
   defaultValue: false,
   valueConverter: booleanConverter,
-  valueChanged: onCheckedPropertyChanged
+  valueChanged: onCheckedPropertyChanged,
 });
 
 export const textProperty = new Property<CheckBox, string>({
   name: 'text',
   defaultValue: '',
-  valueChanged: onTextPropertyChanged
+  valueChanged: onTextPropertyChanged,
 });
 
 export const fillColorProperty = new CssProperty<Style, string>({
   name: 'fillColor',
   cssName: 'fill-color',
-  valueConverter: v => {
+  valueConverter: (v) => {
     return String(v);
-  }
+  },
 });
 
 export const tintColorProperty = new CssProperty<Style, string>({
   name: 'tintColor',
   cssName: 'tint-color',
   defaultValue: '#0075ff',
-  valueConverter: v => {
+  valueConverter: (v) => {
     return String(v);
-  }
+  },
 });
 
 export const fontSizeProperty = new CssProperty<Style, number>({
   name: 'fontSize',
   cssName: 'font-size',
   defaultValue: 14,
-  valueConverter: v => {
+  valueConverter: (v) => {
     const x = parseFloat(v);
     if (x < 0) {
       throw new Error(`font-size accepts values greater than 0. Value: ${v}`);
     }
 
     return x;
-  }
+  },
 });
 fontSizeProperty.register(Style);
 
@@ -174,7 +171,7 @@ export class CheckBox extends View {
   }
   set fillColor(color: string) {
     (this.style as any).fillColor = color;
-    if (this._android && device.sdkVersion >= '21') {
+    if (this._android && Device.sdkVersion >= '21') {
       // setButtonTintList is method on `android.widgeth.CompondButton`
       // here: https://developer.android.com/reference/android/widget/CompoundButton.html#setButtonTintList(android.content.res.ColorStateList)
       (this._android as any).setButtonTintList(
@@ -285,18 +282,18 @@ export class CheckBox extends View {
 
     this._android.setTextSize(this.style.fontSize);
 
-    const typeface = this.style.fontInternal.getAndroidTypeface();
+    const typeface = this.style.fontInternal?.getAndroidTypeface();
     if (typeface) {
       this._android.setTypeface(typeface);
     }
 
     if (this._checkStyle) {
-      const drawable = app.android.context
+      const drawable = Application.android.context
         .getResources()
         .getIdentifier(
           this._checkStyle,
           'drawable',
-          app.android.context.getPackageName()
+          Application.android.context.getPackageName()
         );
       this._android.setButtonDrawable(drawable);
     }
@@ -323,7 +320,7 @@ export class CheckBox extends View {
           if (that.get()) {
             checkedProperty.nativeValueChange(that.get(), isChecked);
           }
-        }
+        },
       })
     );
   }

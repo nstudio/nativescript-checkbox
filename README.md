@@ -166,21 +166,10 @@ Set `boxType="circle"` and check out the second tab in the [Angular demo](demo-n
 
 <img src="./screens/radiobuttons.png" width="225px"/>
 
-## Running Demo Apps
+## Contributing & Running Demo Apps
 
-1. Execute from root: `cd src && npm run setup`
-2. For iOS Demo: `npm run demo.ios`
-
-- npm run demo.ng.ios
-- npm run demo.android (for android)
-- npm run demo.ng.android (for angular android)
-
-#### Contributors
-
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-
-| [<img src="https://avatars0.githubusercontent.com/u/6006148?v=3" width="100px;"/><br /><sub>Brad Martin</sub>](https://bradmartin.net/) | [<img src="https://avatars2.githubusercontent.com/u/1542376?v=3" width="100px;"/><br /><sub>Steve McNiven-Scott</sub>](https://github.com/sitefinitysteve) | [<img src="https://avatars3.githubusercontent.com/u/6695919?v=3" width="100px;"/><br /><sub>Osei Fortune</sub>](https://github.com/triniwiz) | [<img src="https://avatars2.githubusercontent.com/u/457187?v=3" width="100px;"/><br /><sub>Nathan Walker</sub>](https://github.com/NathanWalker) |
-| --------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-
-
-<!-- ALL-CONTRIBUTORS-LIST:END -->
+- Execute from root:
+  - For android: `npm run demo.android`
+  - For iOS: `npm run demo.ios`
+  - `npm run demo.ng.android` (for angular android)
+  - `npm run demo.ng.ios` (for angular ios)
