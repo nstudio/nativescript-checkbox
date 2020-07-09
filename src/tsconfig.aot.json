@@ -7,7 +7,7 @@
     "declaration": true,
     "experimentalDecorators": true,
     "target": "es5",
-    "module": "commonjs",
+    "module": "esnext",
     "outDir": "bin/dist",
     "lib": ["es6", "dom", "es2015.iterable"],
     "rootDir": ".",
@@ -20,6 +20,10 @@
   },
   "files": ["angular/index.ts"],
   "angularCompilerOptions": {
+    "genDir": ".",
+    "skipMetadataEmit": false,
     "skipTemplateCodegen": true,
-  }
+    "strictMetadataEmit": true,
+    "enableIvy": false
+  },
 }

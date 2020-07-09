@@ -1,11 +1,10 @@
-import { Color } from '@nativescript/core/color';
-import { Button } from '@nativescript/core/ui/button';
+import { Color, Button } from '@nativescript/core';
+import { booleanConverter } from '@nativescript/core/ui/core/view-base';
 import {
-  booleanConverter,
   CssProperty,
   Property,
-  Style
-} from '@nativescript/core/ui/core/view';
+  Style,
+} from '@nativescript/core/ui/core/properties';
 import { BoxType } from './checkbox-common';
 import { CheckBoxInterface } from './index';
 

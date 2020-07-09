@@ -7,14 +7,13 @@ import {
   NgModule
 } from '@angular/core';
 import { FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { registerElement } from '@nativescript/angular/element-registry';
-import { BaseValueAccessor } from '@nativescript/angular/forms/value-accessors/base-value-accessor';
-import { isBlank } from '@nativescript/angular/lang-facade';
-import { View } from '@nativescript/core/ui/core/view';
+import { registerElement } from '@nativescript/angular';
+import { BaseValueAccessor } from '@nativescript/angular/forms/value-accessors';
+import { View } from '@nativescript/core';
 
 function convertToInt(value): number {
   let normalizedValue;
-  if (isBlank(value)) {
+  if (value === undefined || value === null) {
     normalizedValue = 0;
   } else {
     if (typeof value === 'number') {

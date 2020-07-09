@@ -1,4 +1,4 @@
-import { View } from '@nativescript/core/ui/core/view';
+import { View } from '@nativescript/core';
 
 /**
  * Represents a CheckBox component.

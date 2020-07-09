@@ -5,6 +5,7 @@ hooks
 .idea/
 *.DS_Store
 bin
+package-lock.json
 
 *.js
 *.js.map
