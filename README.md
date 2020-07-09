@@ -1,11 +1,33 @@
-# NativeScript-CheckBox
+<a align="center" href="https://www.npmjs.com/package/@nstudio/nativescript-checkbox">
+    <h3 align="center">NativeScript Checkbox</h3>
+</a>
+<h4 align="center">A NativeScript plugin to provide a checkbox widget, radio buttons are also possible.</h4>
 
-[![npm](https://img.shields.io/npm/v/@nstudio/nativescript-checkbox.svg)](https://www.npmjs.com/package/@nstudio/nativescript-checkbox)
-[![npm](https://img.shields.io/npm/dt/@nstudio/nativescript-checkbox.svg?label=npm%20downloads)](https://www.npmjs.com/package/@nstudio/nativescript-checkbox)
+<p align="center">
+    <a href="https://www.npmjs.com/package/@nstudio/nativescript-checkbox">
+        <img src="https://github.com/nstudio/nativescript-checkbox/workflows/Build%20CI/badge.svg" alt="Action Build">
+    </a>
+    <a href="https://www.npmjs.com/package/nativescript-checkbox">
+        <img src="https://img.shields.io/npm/dt/nativescript-checkbox.svg?label=npm%20downloads" alt="npm">
+    </a>
+    <a href="https://github.com/bradmartin/nativescript-checkbox/stargazers">
+        <img src="https://img.shields.io/github/stars/bradmartin/nativescript-checkbox.svg" alt="stars">
+    </a>
+    <br />
+    <a href="http://nstudio.io">
+      <img src="./screens/nstudio-banner.png" alt="nStudio banner">
+    </a>
+    <h5 align="center">Do you need assistance on your project or plugin? Contact the nStudio team anytime at <a href="mailto:team@nstudio.io">team@nstudio.io</a> to get up to speed with the best practices in mobile and web app development.
+    </h5>
+</p>
 
-# NativeScript CheckBox :white_check_mark:
+---
 
-A NativeScript plugin for the native checkbox widget.
+### Installation
+
+From your command prompt/terminal go to your app's root folder and execute:
+
+`tns plugin add @nstudio/nativescript-checkbox`
 
 #### Platform controls used:
 
@@ -18,12 +40,6 @@ A NativeScript plugin for the native checkbox widget.
 | Android Sample                     | iOS Sample                            |
 | ---------------------------------- | ------------------------------------- |
 | ![Sample1](./screens/checkbox.gif) | ![Sample2](./screens/iosCheckbox.gif) |
-
-## Installation
-
-From your command prompt/terminal go to your app's root folder and execute:
-
-`tns plugin add @nstudio/nativescript-checkbox`
 
 ## Usage
 
@@ -46,7 +62,7 @@ From your command prompt/terminal go to your app's root folder and execute:
 ```typescript
 
 import { CheckBox } from '@nstudio/nativescript-checkbox';
-import { topmost } from 'tns-core-modules/ui/frame';
+import { topmost } from '@nativescript/core/ui/frame';
 
 public toggleCheck() {
   const checkBox = topmost().getViewById('yourCheckBoxId');
@@ -66,7 +82,7 @@ public getCheckProp() {
 import { TNSCheckBoxModule } from '@nstudio/nativescript-checkbox/angular';
 
 @NgModule({
-  imports: [TNSCheckBoxModule]
+  imports: [TNSCheckBoxModule],
   // etc.
 })
 export class YourModule {}
@@ -106,8 +122,8 @@ Vue.registerElement(
   {
     model: {
       prop: 'checked',
-      event: 'checkedChange'
-    }
+      event: 'checkedChange',
+    },
   }
 );
 ```
