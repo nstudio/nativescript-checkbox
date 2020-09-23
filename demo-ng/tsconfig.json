@@ -1,13 +1,19 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
-    "target": "es5",
+    "module": "esnext",
+    "target": "es2017",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "noEmitHelpers": true,
     "noEmitOnError": true,
-    "lib": ["es2017", "dom", "es6"],
-    "baseUrl": "."
+    "lib": [
+      "es2017",
+      "dom",
+      "es6"
+    ],
+    "baseUrl": ".",
+    "moduleResolution": "node",
+    "removeComments": false
   },
   "files": [
     "./app/main.ts"
@@ -15,5 +21,9 @@
   "include": [
     "./references.d.ts"
   ],
-  "exclude": ["node_modules", "platforms", "e2e"]
+  "exclude": [
+    "node_modules",
+    "platforms",
+    "e2e"
+  ]
 }

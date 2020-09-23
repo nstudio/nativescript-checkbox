@@ -1,7 +1,9 @@
-import { Observable } from '@nativescript/core/data/observable';
-import { ObservableArray } from '@nativescript/core/data/observable-array';
-import { confirm } from '@nativescript/core/ui/dialogs';
-import { openUrl } from '@nativescript/core/utils/utils';
+import {
+  confirm,
+  Observable,
+  ObservableArray,
+  Utils,
+} from '@nativescript/core';
 
 export class HelloWorldModel extends Observable {
   public data: ObservableArray<DataItem>;
@@ -118,7 +120,7 @@ export class HelloWorldModel extends Observable {
       cancelButtonText: 'Close'
     }).then(result => {
       if (result) {
-        openUrl('https://nstudio.io');
+        Utils.openUrl('https://nstudio.io');
       }
     });
   }

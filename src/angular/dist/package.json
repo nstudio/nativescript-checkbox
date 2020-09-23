@@ -1,0 +1,14 @@
+{
+  "name": "nativescript-checkbox-angular",
+  "main": "bundles/nativescript-checkbox-angular.umd.js",
+  "module": "fesm2015/nativescript-checkbox-angular.js",
+  "es2015": "fesm2015/nativescript-checkbox-angular.js",
+  "esm2015": "esm2015/nativescript-checkbox-angular.js",
+  "fesm2015": "fesm2015/nativescript-checkbox-angular.js",
+  "typings": "nativescript-checkbox-angular.d.ts",
+  "metadata": "nativescript-checkbox-angular.metadata.json",
+  "sideEffects": false,
+  "dependencies": {
+    "tslib": "^2.0.0"
+  }
+}

@@ -6,21 +6,21 @@
   "typings": "index.d.ts",
   "nativescript": {
     "platforms": {
-      "android": "6.0.0",
-      "ios": "6.0.0"
+      "android": "7.0.0",
+      "ios": "7.0.0"
     }
   },
   "scripts": {
     "clean": "npx rimraf node_modules package-lock.json && npm i",
     "build": "npm i && tsc",
     "prepublishOnly": "npm run build && npm run build.ng.module",
-    "build.ng.module": "npm run build && node ./node_modules/.bin/ngc --project tsconfig.aot.json --outDir ./ && npm pack && npx cpy-cli '*.tgz' '../dist' --rename=nstudio-nativescript-checkbox.tgz",
+    "build.ng.module": "npm run build && ng-packagr -p angular/package.json",
     "tslint": "cd .. && tslint \"**/*.ts\" --config tslint.json --exclude \"**/node_modules/**\" --exclude \"*demo*/platforms/**\" --exclude \"**/typings/**\"",
     "ci.tslint": "npm i && tslint '**/*.ts' --config '../tslint.json' --exclude '**/node_modules/**' --exclude \"**/typings/**\"",
-    "demo.ios": "npm run build && cd ../demo && tns run ios --no-hmr",
-    "demo.android": "npm run build && cd ../demo && tns run android --no-hmr",
-    "demo.ng.ios": "npm run build.ng.module && cd ../demo-ng && tns run ios --no-hmr --env.aot",
-    "demo.ng.android": "npm run build.ng.module && cd ../demo-ng && tns run android --no-hmr --env.aot",
+    "demo.ios": "npm run build && cd ../demo && ns run ios --no-hmr",
+    "demo.android": "npm run build && cd ../demo && ns run android --no-hmr",
+    "demo.ng.ios": "npm run build.ng.module && cd ../demo-ng && ns run ios --no-hmr --env.aot",
+    "demo.ng.android": "npm run build.ng.module && cd ../demo-ng && ns run android --no-hmr --env.aot",
     "generate.typings.ios": "cd ../demo && TNS_DEBUG_METADATA_PATH=\"$(pwd)/metadata\" tns build ios && TNS_TYPESCRIPT_DECLARATIONS_PATH=\"$(pwd)/typings\" tns build ios && echo 'Now look for your library typings in demo/typings!'",
     "make-changelog": "cd ../ && github_changelog_generator -u nstudio -p nativescript-checkbox",
     "clean.all": "cd ../demo && rimraf hooks node_modules platforms && cd ../demo-ng && rimraf hooks node_modules platforms && cd ../src && rimraf hooks node_modules"
@@ -61,27 +61,28 @@
   "homepage": "https://github.com/nstudio/nativescript-checkbox",
   "readmeFilename": "README.md",
   "devDependencies": {
-    "@angular/animations": "~9.1.0",
-    "@angular/common": "~9.1.0",
-    "@angular/compiler": "~9.1.0",
-    "@angular/compiler-cli": "~9.1.0",
-    "@angular/core": "~9.1.0",
-    "@angular/forms": "~9.1.0",
-    "@angular/platform-browser": "~9.1.0",
-    "@angular/platform-browser-dynamic": "~9.1.0",
-    "@angular/router": "~9.1.0",
-    "@nativescript/angular": "^9.0.0",
-    "@nativescript/core": "^6.5.8",
-    "rxjs": "~6.6.0",
+    "@angular/animations": "~10.0.0",
+    "@angular/common": "~10.0.0",
+    "@angular/compiler": "~10.0.0",
+    "@angular/compiler-cli": "~10.0.0",
+    "@angular/core": "~10.0.0",
+    "@angular/forms": "~10.0.0",
+    "@angular/platform-browser": "~10.0.0",
+    "@angular/platform-browser-dynamic": "~10.0.0",
+    "@angular/router": "~10.0.0",
+    "@nativescript/angular": "~10.0.0",
+    "@nativescript/core": "~7.0.0",
+    "@nativescript/types": "~7.0.0",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.11",
+    "ng-packagr": "~10.1.0",
     "prettier": "^2.0.5",
-    "tns-platform-declarations": "^6.5.8",
+    "prompt": "^1.0.0",
     "rimraf": "^2.6.3",
+    "rxjs": "~6.6.0",
     "tslint": "~6.0.0",
-    "typescript": "~3.8.3",
-    "zone.js": "~0.9.1",
-    "prompt": "^1.0.0"
+    "typescript": "~3.9.7",
+    "zone.js": "0.11.1"
   },
   "dependencies": {
     "ng": "0.0.0"

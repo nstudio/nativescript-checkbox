@@ -1,32 +1,26 @@
 {
-  "nativescript": {
-    "id": "org.nativescript.demo",
-    "tns-android": {
-      "version": "6.5.1"
-    },
-    "tns-ios": {
-      "version": "6.5.1"
-    }
-  },
   "dependencies": {
+    "@nativescript/core": "7.0.0",
+    "@nativescript/webpack": "3.0.0",
+    "@nstudio/nativescript-checkbox": "file:../src",
     "nativescript-theme-core": "~1.0.4",
-    "nativescript-unit-test-runner": "0.7.0",
-    "@nativescript/core": "^6.5.8",
-    "@nstudio/nativescript-checkbox": "file:../src"
+    "nativescript-unit-test-runner": "0.7.0"
   },
   "devDependencies": {
+    "@nativescript/android": "7.0.0",
+    "@nativescript/ios": "7.0.0",
+    "@nativescript/types": "7.0.0",
     "jasmine-core": "^2.5.2",
-    "karma": "4.1.0",
     "karma-jasmine": "2.0.1",
     "karma-nativescript-launcher": "^0.4.0",
-    "nativescript-dev-webpack": "~1.5.1",
-    "tns-platform-declarations": "^6.5.1",
     "karma-webpack": "3.0.5",
+    "karma": "4.1.0",
     "tslint": "^6.0.0",
     "typescript": "^3.8.3"
   },
   "scripts": {
     "build.plugin": "cd ../src && npm run build",
     "ci.tslint": "npm i && tslint --config '../tslint.json' 'app/**/*.ts' --exclude '**/node_modules/**' --exclude '**/platforms/**'"
-  }
+  },
+  "main": "app.js"
 }
