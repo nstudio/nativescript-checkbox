@@ -1,9 +1,12 @@
-import { android } from '@nativescript/core/application';
-import { Color } from '@nativescript/core/color';
-import { EventData } from '@nativescript/core/data/observable';
-import { device, isAndroid } from '@nativescript/core/platform';
-import { Label } from '@nativescript/core/ui/label';
-import { Page } from '@nativescript/core/ui/page';
+import {
+  Application,
+  Color,
+  Device,
+  EventData,
+  isAndroid,
+  Label,
+  Page,
+} from '@nativescript/core';
 import { CheckBox } from '@nstudio/nativescript-checkbox';
 import { DataItem, HelloWorldModel } from './main-view-model';
 
@@ -18,8 +21,8 @@ export function onNavigatedTo(args: EventData) {
   page.bindingContext = model;
 
   // Not related to checkboxes
-  if (isAndroid && device.sdkVersion >= '21') {
-    const window = android.startActivity.getWindow();
+  if (isAndroid && Device.sdkVersion >= '21') {
+    const window = Application.android.startActivity.getWindow();
     window.setStatusBarColor(new Color('#3f3f3f').android);
   }
 }
