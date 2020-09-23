@@ -4,7 +4,7 @@ import {
   Color,
   CssProperty,
   Property,
-  Style,
+  Style
 } from '@nativescript/core';
 import { BoxType } from './checkbox-common';
 import { CheckBoxInterface } from './index';
@@ -12,70 +12,70 @@ import { CheckBoxInterface } from './index';
 const checkBoxBackgroundColorProperty = new CssProperty<Style, string>({
   name: 'checkBoxBackgroundColor',
   cssName: 'checkbox-background-color',
-  valueConverter: (v) => {
+  valueConverter: v => {
     return String(v);
-  },
+  }
 });
 
 const onCheckColorProperty = new CssProperty<Style, string>({
   name: 'onCheckColor',
   cssName: 'on-check-color',
   defaultValue: '#ffffff',
-  valueConverter: (v) => {
+  valueConverter: v => {
     return String(v);
-  },
+  }
 });
 
 const tintColorProperty = new CssProperty<Style, string>({
   name: 'tintColor',
   cssName: 'tint-color',
   //   defaultValue: "#0075ff",
-  valueConverter: (v) => {
+  valueConverter: v => {
     return String(v);
-  },
+  }
 });
 
 const onTintColorProperty = new CssProperty<Style, string>({
   name: 'onTintColor',
   cssName: 'on-tint-color',
-  valueConverter: (v) => {
+  valueConverter: v => {
     return String(v);
-  },
+  }
 });
 
 const fillColorProperty = new CssProperty<Style, string>({
   name: 'fillColor',
   cssName: 'fill-color',
-  valueConverter: (v) => {
+  valueConverter: v => {
     return String(v);
-  },
+  }
 });
 
 const checkedProperty = new Property<CheckBox, boolean>({
   name: 'checked',
   defaultValue: false,
   valueConverter: booleanConverter,
-  valueChanged: onCheckedPropertyChanged,
+  valueChanged: onCheckedPropertyChanged
 });
 
 const boxTypeProperty = new Property<CheckBox, BEMBoxType>({
   name: 'boxType',
-  valueConverter: (v) => {
+  valueConverter: v => {
     return BoxType[v] === BoxType.circle
       ? BEMBoxType.Circle
       : BEMBoxType.Square;
-  },
+  }
 });
 
 export class CheckBox extends Button implements CheckBoxInterface {
-  public checked: boolean;
-  public boxType: number;
-  public _onCheckColor: string;
-  public _checkBoxBackgroundColor: any;
-  public _onTintColor: string;
-  public _tintColor: string;
-  public _onFillColor: string;
-  public _fillColor: string;
+  checked: boolean;
+  boxType: number;
+  _onCheckColor: string;
+  _checkBoxBackgroundColor: any;
+  _onTintColor: string;
+  _tintColor: string;
+  _onFillColor: string;
+  _fillColor: string;
   private _iosCheckbox: BEMCheckBox;
   private _delegate: BEMCheckBoxDelegateImpl;
   private _lineWidth: number = 1;
@@ -125,17 +125,17 @@ export class CheckBox extends Button implements CheckBoxInterface {
     this._iosCheckbox.onCheckColor = new Color(color).ios;
   }
 
-  public [boxTypeProperty.setNative](value: any) {
+  [boxTypeProperty.setNative](value: any) {
     if (this._iosCheckbox) {
       this._iosCheckbox.boxType = value;
     }
   }
 
-  public [checkedProperty.getDefault](): boolean {
+  [checkedProperty.getDefault](): boolean {
     return false;
   }
 
-  public [checkedProperty.setNative](value: boolean) {
+  [checkedProperty.setNative](value: boolean) {
     this._iosCheckbox.setOnAnimated(value, true);
   }
 
@@ -173,13 +173,13 @@ export class CheckBox extends Button implements CheckBoxInterface {
     return this._iosCheckbox;
   }
 
-  public reload(value: boolean) {
+  reload(value: boolean) {
     this._iosCheckbox.reload();
   }
 
-  public initNativeView() {
+  initNativeView() {
     // allow label click to change the textbox
-    this.addEventListener('tap', (args) => {
+    this.addEventListener('tap', args => {
       const checkbox = args.object as CheckBox;
       checkbox.checked = !checkbox.checked;
     });
@@ -248,12 +248,12 @@ export class CheckBox extends Button implements CheckBoxInterface {
     }
   }
 
-  public disposeNativeView() {
+  disposeNativeView() {
     this._iosCheckbox.delegate = null;
     this.removeEventListener('tap');
   }
 
-  public toggle() {
+  toggle() {
     this.checked = !this.checked;
   }
 
@@ -276,7 +276,7 @@ export class CheckBox extends Button implements CheckBoxInterface {
     }
   }
 
-  public _onCheckedPropertyChanged(checkbox: CheckBox, oldValue, newValue) {
+  _onCheckedPropertyChanged(checkbox: CheckBox, oldValue, newValue) {
     if (!this.nativeView) {
       return;
     }
@@ -284,27 +284,27 @@ export class CheckBox extends Button implements CheckBoxInterface {
   }
 }
 
+@NativeClass()
 class BEMCheckBoxDelegateImpl extends NSObject implements BEMCheckBoxDelegate {
-  public static ObjCProtocols = [BEMCheckBoxDelegate];
-  /*public static ObjCExposedMethods = {
-     "didTapCheckBox": { returns: interop.types.void, params: [NSObject] }
-     };*/
+  static ObjCProtocols = [BEMCheckBoxDelegate];
 
   private _owner: WeakRef<CheckBox>;
 
-  public static initWithOwner(
-    owner: WeakRef<CheckBox>
-  ): BEMCheckBoxDelegateImpl {
+  /* static ObjCExposedMethods = {
+     "didTapCheckBox": { returns: interop.types.void, params: [NSObject] }
+     };*/
+
+  static initWithOwner(owner: WeakRef<CheckBox>): BEMCheckBoxDelegateImpl {
     const delegate = <BEMCheckBoxDelegateImpl>BEMCheckBoxDelegateImpl.new();
     delegate._owner = owner;
     return delegate;
   }
 
-  public animationDidStopForCheckBox(checkBox: BEMCheckBox): void {
+  animationDidStopForCheckBox(checkBox: BEMCheckBox): void {
     // TODO: Maybe trigger event later?
   }
 
-  public didTapCheckBox(checkBox: BEMCheckBox): void {
+  didTapCheckBox(checkBox: BEMCheckBox): void {
     const owner = this._owner.get();
     if (owner) {
       checkedProperty.nativeValueChange(owner, checkBox.on);
