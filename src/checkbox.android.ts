@@ -1,12 +1,12 @@
 import {
   Application,
-  Device,
+  booleanConverter,
   Color,
-  View,
   CssProperty,
+  Device,
   Property,
   Style,
-  booleanConverter
+  View,
 } from '@nativescript/core';
 import { BoxType } from './checkbox-common';
 
