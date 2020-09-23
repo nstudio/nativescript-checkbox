@@ -1,10 +1,13 @@
-import { Application, Device, Color, View } from '@nativescript/core';
-import { booleanConverter } from '@nativescript/core/ui/core/view-base';
 import {
+  Application,
+  Device,
+  Color,
+  View,
   CssProperty,
   Property,
   Style,
-} from '@nativescript/core/ui/core/properties';
+  booleanConverter
+} from '@nativescript/core';
 import { BoxType } from './checkbox-common';
 
 declare const global: any;
