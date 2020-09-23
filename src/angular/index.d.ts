@@ -14,4 +14,4 @@ export declare class CheckedValueAccessor extends BaseValueAccessor<CheckableVie
 export declare class TNSCheckBoxModule {
 }
 
-//# sourceMappingURL=index.d.ts.map
+// # sourceMappingURL=index.d.ts.map
