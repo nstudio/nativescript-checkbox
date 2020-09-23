@@ -1,5 +1,10 @@
 {
   "name": "nativescript-checkbox-angular",
+  "main_ivy_ngcc": "../__ivy_ngcc__/angular/index.js",
+  "__processed_by_ivy_ngcc__": {
+    "main": "10.0.0",
+    "typings": "10.0.0"
+  },
   "main": "bundles/nativescript-checkbox-angular.umd.js",
   "module": "fesm2015/nativescript-checkbox-angular.js",
   "es2015": "fesm2015/nativescript-checkbox-angular.js",

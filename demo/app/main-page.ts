@@ -5,7 +5,7 @@ import {
   EventData,
   isAndroid,
   Label,
-  Page,
+  Page
 } from '@nativescript/core';
 import { CheckBox } from '@nstudio/nativescript-checkbox';
 import { DataItem, HelloWorldModel } from './main-view-model';

@@ -1,14 +1,13 @@
-import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-
-import { Item } from "./item";
-import { ItemService } from "./item.service";
-import { RadioOption } from "./radio-option";
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Item } from './item';
+import { ItemService } from './item.service';
+import { RadioOption } from './radio-option';
 
 @Component({
-  selector: "ns-items",
+  selector: 'ns-items',
   moduleId: module.id,
-  templateUrl: "./items.component.html"
+  templateUrl: './items.component.html'
 })
 export class ItemsComponent implements OnInit {
   formGroup: FormGroup;
@@ -36,21 +35,21 @@ export class ItemsComponent implements OnInit {
 
     // Plain ol' inline Array definition coming up :)
     this.radioOptions = [
-      new RadioOption("Radio option 1"),
-      new RadioOption("Radio option 2"),
-      new RadioOption("Radio option 3")
+      new RadioOption('Radio option 1'),
+      new RadioOption('Radio option 2'),
+      new RadioOption('Radio option 3')
     ];
   }
 
   public checkedChange(modelRef) {
-    console.log("checkedChange:", modelRef.checked);
+    console.log('checkedChange:', modelRef.checked);
   }
 
   public submit() {
-    console.log("NgModel value:", this.checkTest);
+    console.log('NgModel value:', this.checkTest);
     console.log(
-      "Reactive FormGroup value:",
-      this.formGroup.get("testCheck").value
+      'Reactive FormGroup value:',
+      this.formGroup.get('testCheck').value
     );
   }
 

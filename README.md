@@ -7,18 +7,13 @@
     <a href="https://www.npmjs.com/package/@nstudio/nativescript-checkbox">
         <img src="https://github.com/nstudio/nativescript-checkbox/workflows/Build%20CI/badge.svg" alt="Action Build">
     </a>
-    <a href="https://www.npmjs.com/package/nativescript-checkbox">
+    <a href="https://www.npmjs.com/package/@nstudio/nativescript-checkbox">
         <img src="https://img.shields.io/npm/dt/nativescript-checkbox.svg?label=npm%20downloads" alt="npm">
     </a>
-    <a href="https://github.com/bradmartin/nativescript-checkbox/stargazers">
-        <img src="https://img.shields.io/github/stars/bradmartin/nativescript-checkbox.svg" alt="stars">
+    <a href="https://github.com/@nstudio/nativescript-checkbox/stargazers">
+        <img src="https://img.shields.io/github/stars/@nstudio/nativescript-checkbox.svg" alt="stars">
     </a>
     <br />
-    <a href="http://nstudio.io">
-      <img src="./screens/nstudio-banner.png" alt="nStudio banner">
-    </a>
-    <h5 align="center">Do you need assistance on your project or plugin? Contact the nStudio team anytime at <a href="mailto:team@nstudio.io">team@nstudio.io</a> to get up to speed with the best practices in mobile and web app development.
-    </h5>
 </p>
 
 ---
@@ -27,7 +22,17 @@
 
 From your command prompt/terminal go to your app's root folder and execute:
 
-`tns plugin add @nstudio/nativescript-checkbox`
+#### NativeScript 7+:
+
+```bash
+ns plugin add @nstudio/nativescript-checkbox
+```
+
+#### NativeScript prior to 7:
+
+```bash
+tns plugin add @nstudio/nativescript-checkbox@1.0.0
+```
 
 #### Platform controls used:
 
@@ -82,7 +87,7 @@ public getCheckProp() {
 import { TNSCheckBoxModule } from '@nstudio/nativescript-checkbox/angular';
 
 @NgModule({
-  imports: [TNSCheckBoxModule],
+  imports: [TNSCheckBoxModule]
   // etc.
 })
 export class YourModule {}
@@ -122,8 +127,8 @@ Vue.registerElement(
   {
     model: {
       prop: 'checked',
-      event: 'checkedChange',
-    },
+      event: 'checkedChange'
+    }
   }
 );
 ```

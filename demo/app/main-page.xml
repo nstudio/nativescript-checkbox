@@ -1,4 +1,4 @@
-<Page xmlns="http://schemas.nativescript.org/tns.xsd" 
+<Page xmlns="http://schemas.nativescript.org/tns.xsd"
     xmlns:CheckBox="@nstudio/nativescript-checkbox" navigatedTo="onNavigatedTo">
     <ActionBar title="Checkbox Demo" icon="">
         <ActionBar.actionItems>

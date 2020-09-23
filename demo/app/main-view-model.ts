@@ -2,7 +2,7 @@ import {
   confirm,
   Observable,
   ObservableArray,
-  Utils,
+  Utils
 } from '@nativescript/core';
 
 export class HelloWorldModel extends Observable {

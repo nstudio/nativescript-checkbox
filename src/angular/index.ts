@@ -31,7 +31,7 @@ registerElement('CheckBox', () => require('../checkbox').CheckBox);
 const CHECKED_VALUE_ACCESSOR = {
   provide: NG_VALUE_ACCESSOR,
   useExisting: forwardRef(() => CheckedValueAccessor),
-  multi: true,
+  multi: true
 };
 
 export type CheckableView = { checked: boolean } & View;
@@ -48,7 +48,7 @@ export type CheckableView = { checked: boolean } & View;
 @Directive({
   selector:
     'CheckBox[ngModel], CheckBox[formControlName], CheckBox[formControl], checkBox[ngModel], checkBox[formControlName], checkBox[formControl], check-box[ngModel], check-box[formControlName], check-box[formControl]',
-  providers: [CHECKED_VALUE_ACCESSOR],
+  providers: [CHECKED_VALUE_ACCESSOR]
 })
 export class CheckedValueAccessor extends BaseValueAccessor<CheckableView> {
   constructor(@Inject(ElementRef) elementRef: ElementRef) {
@@ -75,6 +75,6 @@ export class CheckedValueAccessor extends BaseValueAccessor<CheckableView> {
   declarations: [CheckedValueAccessor],
   providers: [],
   imports: [FormsModule],
-  exports: [FormsModule, CheckedValueAccessor],
+  exports: [FormsModule, CheckedValueAccessor]
 })
 export class TNSCheckBoxModule {}

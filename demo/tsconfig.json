@@ -7,23 +7,13 @@
     "skipLibCheck": true,
     "noEmitHelpers": true,
     "noEmitOnError": false,
-    "lib": [
-      "es6",
-      "dom",
-      "es2017"
-    ],
+    "lib": ["es6", "dom", "es2017"],
     "baseUrl": ".",
     "paths": {
-      "~/*": [
-        "app/*"
-      ]
+      "~/*": ["app/*"]
     },
     "moduleResolution": "node",
     "removeComments": false
   },
-  "exclude": [
-    "node_modules",
-    "platforms",
-    "../src/node_modules"
-  ]
+  "exclude": ["node_modules", "platforms", "../src/node_modules"]
 }

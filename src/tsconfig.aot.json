@@ -25,5 +25,5 @@
     "skipTemplateCodegen": true,
     "strictMetadataEmit": true,
     "enableIvy": false
-  },
+  }
 }

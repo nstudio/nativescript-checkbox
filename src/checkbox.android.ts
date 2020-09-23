@@ -6,7 +6,7 @@ import {
   Device,
   Property,
   Style,
-  View,
+  View
 } from '@nativescript/core';
 import { BoxType } from './checkbox-common';
 
@@ -33,50 +33,50 @@ export const checkedProperty = new Property<CheckBox, boolean>({
   name: 'checked',
   defaultValue: false,
   valueConverter: booleanConverter,
-  valueChanged: onCheckedPropertyChanged,
+  valueChanged: onCheckedPropertyChanged
 });
 
 export const textProperty = new Property<CheckBox, string>({
   name: 'text',
   defaultValue: '',
-  valueChanged: onTextPropertyChanged,
+  valueChanged: onTextPropertyChanged
 });
 
 export const fillColorProperty = new CssProperty<Style, string>({
   name: 'fillColor',
   cssName: 'fill-color',
-  valueConverter: (v) => {
+  valueConverter: v => {
     return String(v);
-  },
+  }
 });
 
 export const tintColorProperty = new CssProperty<Style, string>({
   name: 'tintColor',
   cssName: 'tint-color',
   defaultValue: '#0075ff',
-  valueConverter: (v) => {
+  valueConverter: v => {
     return String(v);
-  },
+  }
 });
 
 export const fontSizeProperty = new CssProperty<Style, number>({
   name: 'fontSize',
   cssName: 'font-size',
   defaultValue: 14,
-  valueConverter: (v) => {
+  valueConverter: v => {
     const x = parseFloat(v);
     if (x < 0) {
       throw new Error(`font-size accepts values greater than 0. Value: ${v}`);
     }
 
     return x;
-  },
+  }
 });
 fontSizeProperty.register(Style);
 
 export class CheckBox extends View {
-  public checked: boolean;
-  public nativeView: androidx.appcompat.widget.AppCompatCheckBox;
+  checked: boolean;
+  nativeView: androidx.appcompat.widget.AppCompatCheckBox;
   private _android: androidx.appcompat.widget.AppCompatCheckBox;
   private _boxType: string;
   private _checkStyle: string;
@@ -149,23 +149,23 @@ export class CheckBox extends View {
   get checkPaddingBottom() {
     return this._checkPaddingBottom;
   }
-  public [checkedProperty.getDefault](): boolean {
+  [checkedProperty.getDefault](): boolean {
     return false;
   }
-  public [checkedProperty.setNative](value: boolean) {
+  [checkedProperty.setNative](value: boolean) {
     this.nativeView.setChecked(Boolean(value));
   }
-  public [textProperty.getDefault](): string {
+  [textProperty.getDefault](): string {
     return '';
   }
-  public [textProperty.setNative](value: string) {
+  [textProperty.setNative](value: string) {
     this.nativeView.setText(java.lang.String.valueOf(value));
   }
 
-  public [fontSizeProperty.getDefault](): number {
+  [fontSizeProperty.getDefault](): number {
     return 14;
   }
-  public [fontSizeProperty.setNative](value: number) {
+  [fontSizeProperty.setNative](value: number) {
     this.nativeView.setTextSize(value);
   }
 
@@ -192,7 +192,7 @@ export class CheckBox extends View {
     (this.style as any).fillColor = color;
   }
 
-  public createNativeView() {
+  createNativeView() {
     this._android = new AppCompatCheckBox_Namespace[
       BoxType[this.boxType] === BoxType.circle
         ? 'AppCompatRadioButton'
@@ -315,7 +315,7 @@ export class CheckBox extends View {
     return this._android;
   }
 
-  public initNativeView() {
+  initNativeView() {
     const that = new WeakRef(this);
     this.nativeView.setOnCheckedChangeListener(
       new android.widget.CompoundButton.OnCheckedChangeListener({
@@ -323,26 +323,26 @@ export class CheckBox extends View {
           if (that.get()) {
             checkedProperty.nativeValueChange(that.get(), isChecked);
           }
-        },
+        }
       })
     );
   }
 
-  public disposeNativeView() {
+  disposeNativeView() {
     this.nativeView.setOnCheckedChangeListener(null);
   }
 
-  public toggle(): void {
+  toggle(): void {
     this.nativeView.toggle();
   }
 
-  public _onCheckedPropertyChanged(checkbox: CheckBox, oldValue, newValue) {
+  _onCheckedPropertyChanged(checkbox: CheckBox, oldValue, newValue) {
     if (!this.nativeView) {
       return;
     }
     checkedProperty.nativeValueChange(this, newValue);
   }
-  public _onTextPropertyChanged(checkbox: CheckBox, oldValue, newValue) {
+  _onTextPropertyChanged(checkbox: CheckBox, oldValue, newValue) {
     if (!this.nativeView) {
       return;
     }
