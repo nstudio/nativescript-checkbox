@@ -4,6 +4,15 @@ import { View } from '@nativescript/core';
 export declare type CheckableView = {
     checked: boolean;
 } & View;
+/**
+ * The accessor for setting checked property and listening to changes that is used by the
+ * {@link NgModel} directives.
+ *
+ *  ### Example
+ *  ```
+ *  <CheckBox [(ngModel)]="model.test">
+ *  ```
+ */
 export declare class CheckedValueAccessor extends BaseValueAccessor<CheckableView> {
     constructor(elementRef: ElementRef);
     checkedChangeListener(event: any): void;
@@ -13,5 +22,3 @@ export declare class CheckedValueAccessor extends BaseValueAccessor<CheckableVie
 }
 export declare class TNSCheckBoxModule {
 }
-
-//# sourceMappingURL=index.d.ts.map
