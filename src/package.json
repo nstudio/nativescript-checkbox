@@ -1,6 +1,6 @@
 {
   "name": "@nstudio/nativescript-checkbox",
-  "version": "2.0.0",
+  "version": "2.0.2",
   "description": "NativeScript plugin for checkbox.",
   "main": "checkbox",
   "typings": "index.d.ts",
@@ -14,6 +14,7 @@
     "clean": "npx rimraf node_modules package-lock.json && npm i",
     "build": "npm i && ts-patch install && tsc",
     "prepublishOnly": "npm run build && npm run build.ng.module",
+    "publish": "npm run build.ng.module",
     "build.ng.module": "npm run build && ng-packagr -p angular/package.json",
     "tslint": "cd .. && tslint \"**/*.ts\" --config tslint.json --exclude \"**/node_modules/**\" --exclude \"*demo*/platforms/**\" --exclude \"**/typings/**\"",
     "ci.tslint": "npm i && tslint '**/*.ts' --config '../tslint.json' --exclude '**/node_modules/**' --exclude \"**/typings/**\"",
